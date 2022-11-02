@@ -1,0 +1,7 @@
+<resources>
+    <string name="app_name">Week1</string>
+    <string name="et_nombre">Nombre</string>
+    <string name="et_apellido">Apellido</string>
+    <string name="et_edad">Edad</string>
+    <string name="button_enviar">Enviar</string>
+</resources>
