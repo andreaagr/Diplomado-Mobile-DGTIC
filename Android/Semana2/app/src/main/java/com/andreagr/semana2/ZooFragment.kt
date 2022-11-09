@@ -40,7 +40,7 @@ class ZooFragment : Fragment() {
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         zooAdapter = ZooAdapter(zooAnimals) { animalId ->
             ZooFragmentDirections
-                .actionZooFragment2ToAnimalDetailActivity(zooAnimals[animalId.toInt()].name)
+                .actionZooFragment2ToAnimalDetailActivity(zooAnimals[animalId.toInt()])
                 .let { navController.navigate(it) }
         }
 
