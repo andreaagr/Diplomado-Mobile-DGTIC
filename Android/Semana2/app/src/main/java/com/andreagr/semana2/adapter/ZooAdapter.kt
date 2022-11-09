@@ -22,7 +22,6 @@ class ZooAdapter(
     }
 
     override fun getItemCount() = animals.size
-
 }
 
 class AnimalViewHolder(

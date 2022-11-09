@@ -18,8 +18,15 @@ class ZooFragment : Fragment() {
     private val binding: FragmentZooBinding get() = _binding!!
     private lateinit var zooAdapter: ZooAdapter
     private lateinit var navController: NavController
-    private val zooAnimals = listOf<Animal>(
-        //Animal(1, "León", )
+    private val zooAnimals = listOf(
+        Animal(1, "Elefante", R.drawable.elefante),
+        Animal(2, "Koala", R.drawable.coala),
+        Animal(3, "León", R.drawable.leon),
+        Animal(4, "Mono", R.drawable.mono),
+        Animal(5, "Jirafa", R.drawable.jirafa),
+        Animal(6, "Delfín", R.drawable.delfin),
+        Animal(7, "Hipopotamo", R.drawable.hipopotamo),
+        Animal(8, "Rinoceronte", R.drawable.rinoceronte)
     )
 
     override fun onCreateView(
@@ -33,12 +40,12 @@ class ZooFragment : Fragment() {
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         zooAdapter = ZooAdapter(zooAnimals) { animalId ->
             ZooFragmentDirections
-                .actionZooFragmentToAnimalDetailActivity(animalId)
+                .actionZooFragment2ToAnimalDetailActivity(zooAnimals[animalId.toInt()].name)
                 .let { navController.navigate(it) }
         }
 
         navController = findNavController()
-        binding.animalsRecyclerView.run {
+        binding.animalsRecyclerView.apply {
             adapter = zooAdapter
             layoutManager = GridLayoutManager(activity, 2)
         }
