@@ -1,0 +1,25 @@
+<?xml version="1.0" encoding="utf-8"?>
+<navigation xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:id="@+id/nav_graph"
+    app:startDestination="@id/zooFragment">
+    <fragment
+        android:id="@+id/zooFragment"
+        android:name="com.andreagr.semana2.ZooFragment"
+        android:label="fragment_zoo"
+        tools:layout="@layout/fragment_zoo" >
+        <action
+            android:id="@+id/action_zooFragment_to_animalDetailActivity"
+            app:destination="@id/animalDetailActivity" />
+    </fragment>
+    <activity
+        android:id="@+id/animalDetailActivity"
+        android:name="com.andreagr.semana2.AnimalDetailActivity"
+        android:label="activity_animal_detail"
+        tools:layout="@layout/activity_animal_detail" >
+        <argument
+            android:name="animalId"
+            app:argType="long" />
+    </activity>
+</navigation>
