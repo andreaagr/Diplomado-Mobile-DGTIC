@@ -1,0 +1,11 @@
+<resources>
+    <string name="app_name">Semana3</string>
+    <!-- TODO: Remove or change this placeholder text -->
+    <string name="hello_blank_fragment">Hello blank fragment</string>
+    <string name="eliminar_item">Eliminar</string>
+    <string name="actualizar_item">Actualizar</string>
+    <string name="agregar_item">Agregar</string>
+    <string name="imagen_text">Imagen</string>
+    <string name="nombre_text">Nombre</string>
+    <string name="button_label_update">Actualizar</string>
+</resources>
