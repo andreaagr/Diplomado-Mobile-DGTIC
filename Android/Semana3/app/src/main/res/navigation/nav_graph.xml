@@ -7,7 +7,7 @@
 
     <fragment
         android:id="@+id/listFragment"
-        android:name="com.andreagr.semana3.ui.ListFragment"
+        android:name="com.andreagr.semana3.ui.crudoperations.read.ListFragment"
         android:label="fragment_list"
         tools:layout="@layout/fragment_list" >
         <action
@@ -20,7 +20,7 @@
     </fragment>
     <fragment
         android:id="@+id/animalDetailFragment"
-        android:name="com.andreagr.semana3.ui.AnimalDetailFragment"
+        android:name="com.andreagr.semana3.ui.crudoperations.AnimalDetailFragment"
         android:label="fragment_animal_detail"
         tools:layout="@layout/fragment_animal_detail" >
         <argument
@@ -33,14 +33,14 @@
     </fragment>
     <fragment
         android:id="@+id/addAnimalFragment"
-        android:name="com.andreagr.semana3.ui.AddAnimalFragment"
+        android:name="com.andreagr.semana3.ui.crudoperations.AddAnimalFragment"
         android:label="fragment_add_animal"
         tools:layout="@layout/fragment_add_animal" />
     <fragment
         android:id="@+id/updateAnimalFragment"
-        android:name="com.andreagr.semana3.ui.UpdateAnimalFragment"
+        android:name="com.andreagr.semana3.ui.crudoperations.UpdateAnimalFragment"
         android:label="fragment_update_animal"
-        tools:layout="@layout/fragment_update_animal" >
+        tools:layout="@layout/fragment_add_animal" >
         <argument
             android:name="animal"
             app:argType="com.andreagr.semana3.model.ZooAnimal" />

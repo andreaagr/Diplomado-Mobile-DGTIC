@@ -1,4 +1,4 @@
-package com.andreagr.semana3.ui
+package com.andreagr.semana3.ui.crudoperations.read
 
 import android.os.Bundle
 import androidx.fragment.app.Fragment
@@ -9,7 +9,7 @@ import androidx.fragment.app.viewModels
 import androidx.navigation.fragment.findNavController
 import androidx.recyclerview.widget.GridLayoutManager
 import com.andreagr.semana3.ZooAdapter
-import com.andreagr.semana3.ZooViewModel
+import com.andreagr.semana3.ui.viewmodel.ZooViewModel
 import com.andreagr.semana3.databinding.FragmentListBinding
 import dagger.hilt.android.AndroidEntryPoint
 
@@ -21,10 +21,9 @@ class ListFragment : Fragment() {
     private val binding: FragmentListBinding get() = _binding!!
     private val navController by lazy { findNavController() }
     private val zooAdapter by lazy { ZooAdapter { id ->
-        ListFragmentDirections
-            .actionListFragmentToAnimalDetailFragment(
-                viewModel.zooList.value?.first{it.id == id}!!
-            ).let { navController.navigate(it) }
+        ListFragmentDirections.actionListFragmentToAnimalDetailFragment(
+            viewModel.zooList.value?.first { it.id == id }!!
+        ).let { navController.navigate(it) }
     } }
 
     override fun onCreateView(

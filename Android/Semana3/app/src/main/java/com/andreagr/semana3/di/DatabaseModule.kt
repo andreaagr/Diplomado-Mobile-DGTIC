@@ -1,7 +1,7 @@
 package com.andreagr.semana3.di
 
 import android.content.Context
-import com.andreagr.semana3.SqlHelper
+import com.andreagr.semana3.db.SqlHelper
 import dagger.Module
 import dagger.Provides
 import dagger.hilt.InstallIn

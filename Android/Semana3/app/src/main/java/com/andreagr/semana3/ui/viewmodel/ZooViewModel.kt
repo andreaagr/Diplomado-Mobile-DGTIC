@@ -1,9 +1,10 @@
-package com.andreagr.semana3
+package com.andreagr.semana3.ui.viewmodel
 
 import androidx.lifecycle.LiveData
 import androidx.lifecycle.MutableLiveData
 import androidx.lifecycle.ViewModel
 import androidx.lifecycle.viewModelScope
+import com.andreagr.semana3.db.SqlHelper
 import com.andreagr.semana3.model.ZooAnimal
 import dagger.hilt.android.lifecycle.HiltViewModel
 import kotlinx.coroutines.launch

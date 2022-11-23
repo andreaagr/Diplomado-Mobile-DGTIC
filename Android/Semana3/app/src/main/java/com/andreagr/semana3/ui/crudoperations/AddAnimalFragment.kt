@@ -1,4 +1,4 @@
-package com.andreagr.semana3.ui
+package com.andreagr.semana3.ui.crudoperations
 
 import android.os.Bundle
 import android.view.LayoutInflater
@@ -8,9 +8,9 @@ import android.widget.Toast
 import androidx.fragment.app.Fragment
 import androidx.fragment.app.viewModels
 import com.andreagr.semana3.R
-import com.andreagr.semana3.ZooViewModel
 import com.andreagr.semana3.databinding.FragmentAddAnimalBinding
 import com.andreagr.semana3.model.ZooAnimal
+import com.andreagr.semana3.ui.viewmodel.ZooViewModel
 import com.bumptech.glide.Glide
 import dagger.hilt.android.AndroidEntryPoint
 

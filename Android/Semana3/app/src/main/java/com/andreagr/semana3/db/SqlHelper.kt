@@ -1,4 +1,4 @@
-package com.andreagr.semana3
+package com.andreagr.semana3.db
 
 import android.content.ContentValues
 import android.content.Context
