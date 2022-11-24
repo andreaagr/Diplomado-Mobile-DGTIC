@@ -1,0 +1,30 @@
+<?xml version="1.0" encoding="utf-8"?>
+<navigation xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:id="@+id/nav_graph"
+    app:startDestination="@id/listAnimalsFragment">
+
+    <fragment
+        android:id="@+id/listAnimalsFragment"
+        android:name="com.andreagr.semana4.ui.listanimals.ListAnimalsFragment"
+        android:label="Animales"
+        tools:layout="@layout/fragment_list_animals">
+        <action
+            android:id="@+id/action_listAnimalsFragment_to_animalDetailFragment"
+            app:destination="@id/animalDetailFragment" />
+    </fragment>
+    <fragment
+        android:id="@+id/animalDetailFragment"
+        android:label="{title}"
+        android:name="com.andreagr.semana4.ui.animaldetail.AnimalDetailFragment"
+        tools:layout="@layout/fragment_animal_detail">
+        <argument
+            android:name="animal"
+            app:argType="com.andreagr.semana4.model.Animal" />
+        <argument
+            android:name="title"
+            app:argType="string"/>
+    </fragment>
+
+</navigation>

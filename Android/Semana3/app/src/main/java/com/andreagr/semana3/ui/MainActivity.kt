@@ -1,8 +1,7 @@
 package com.andreagr.semana3.ui
 
-import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
-import com.andreagr.semana3.R
+import androidx.appcompat.app.AppCompatActivity
 import com.andreagr.semana3.databinding.ActivityMainBinding
 import dagger.hilt.android.AndroidEntryPoint
 
