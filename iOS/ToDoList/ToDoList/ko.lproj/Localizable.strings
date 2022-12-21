@@ -1,0 +1,24 @@
+/* 
+  Localizable.strings
+  ToDoList
+
+  Created by Andrea Garcìa on 20/12/22.
+  
+*/
+
+"save" = "유지하다";
+"delete" = "삭제";
+"cancel" = "취소";
+"title" = "제목";
+"date" = "데이트";
+"notes" = "노트";
+"search_notes" = "메모 검색";
+"delete_modal_title" = "항목 삭제";
+"delete_modal_message" = "계속하시겠습니까?";
+"continue" = "계속하다";
+"delete_error_modal_title" = "항목을 삭제할 수 없습니다";
+"delete_error_modal_message" = "문제가 발생했습니다";
+"ok" = "승인";
+"empty_title_error_modal_title" = "제목 필드가 비어 있습니다";
+"empty_title_error_modal_message" = "계속하려면 지정된 필드를 채우십시오";
+"search_notes_placeholder" = "메모 검색";

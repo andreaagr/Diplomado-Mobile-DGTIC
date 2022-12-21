@@ -1,0 +1,24 @@
+/* 
+  Localizable.strings
+  ToDoList
+
+  Created by Andrea Garcìa on 20/12/22.
+  
+*/
+
+"save" = "Save";
+"delete" = "Delete";
+"cancel" = "Cancel";
+"title" = "Title";
+"date" = "Date";
+"notes" = "Notes";
+"search_notes" = "Search notes";
+"delete_modal_title" = "Delete item";
+"delete_modal_message" = "Are you sure want to continue?";
+"continue" = "Continue";
+"delete_error_modal_title" = "Cannot delete item";
+"delete_error_modal_message" = "Something went wrong";
+"ok" = "Ok";
+"empty_title_error_modal_title" = "Title field is empty";
+"empty_title_error_modal_message" = "Please fill the specified field to continue";
+"search_notes_placeholder" = "Search notes";
