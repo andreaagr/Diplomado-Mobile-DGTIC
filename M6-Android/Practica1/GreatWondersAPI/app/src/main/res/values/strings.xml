@@ -1,3 +1,5 @@
 <resources>
     <string name="app_name">GreatWondersAPI</string>
+    <string name="splash_brand">Wonders of the world</string>
+    <string name="accessibility_splash_logo">App logo</string>
 </resources>
