@@ -1,0 +1,25 @@
+<?xml version="1.0" encoding="utf-8"?>
+<navigation xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:id="@+id/nav_graph"
+    app:startDestination="@id/wonderListFragment">
+    <fragment
+        android:id="@+id/wonderListFragment"
+        android:name="com.andreagr.greatwondersapi.WonderListFragment"
+        android:label="fragment_wonder_list"
+        tools:layout="@layout/fragment_wonder_list" >
+        <action
+            android:id="@+id/action_wonderListFragment_to_wonderDetailFragment2"
+            app:destination="@id/wonderDetailFragment2" />
+    </fragment>
+    <fragment
+        android:id="@+id/wonderDetailFragment2"
+        android:name="com.andreagr.greatwondersapi.WonderDetailFragment"
+        android:label="fragment_wonder_detail"
+        tools:layout="@layout/fragment_wonder_detail" >
+        <argument
+            android:name="greatWonder"
+            app:argType="com.andreagr.greatwondersapi.GreatWonder" />
+    </fragment>
+</navigation>
