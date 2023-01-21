@@ -1,0 +1,17 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <dimen name="wonder_list_image_height">250dp</dimen>
+    <dimen name="wonder_detail_image_height">300dp</dimen>
+    <dimen name="fragment_detail_margin">8dp</dimen>
+    <dimen name="fragment_detail_title_text_size">24sp</dimen>
+    <dimen name="fragment_detail_content_text_size">20sp</dimen>
+    <dimen name="fragment_detail_elements_separation">16dp</dimen>
+    <dimen name="match_constraint">0dp</dimen>
+    <dimen name="fragment_detail_flag_width">75dp</dimen>
+    <dimen name="fragment_detail_flag_height">50dp</dimen>
+    <dimen name="wonder_item_card_elevation">12dp</dimen>
+    <dimen name="wonder_item_card_corner_radius">10dp</dimen>
+    <dimen name="wonder_item_card_margin">4dp</dimen>
+    <dimen name="wonder_item_elements_margin">16dp</dimen>
+    <dimen name="wonder_item_location_text_size">16sp</dimen>
+</resources>

@@ -1,5 +1,8 @@
 <resources>
     <string name="app_name">GreatWondersAPI</string>
-    <string name="splash_brand">Wonders of the world</string>
-    <string name="accessibility_splash_logo">App logo</string>
+    <string name="accessibility_splash_logo">Logo de la aplicación</string>
+    <string name="wonder_image_content_description">Imagén del monumento</string>
+    <string name="location_icon">Icono de ubicación</string>
+    <!-- TODO: Remove or change this placeholder text -->
+    <string name="hello_blank_fragment">Hello blank fragment</string>
 </resources>
