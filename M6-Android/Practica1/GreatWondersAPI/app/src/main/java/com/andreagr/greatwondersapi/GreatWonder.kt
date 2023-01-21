@@ -5,6 +5,7 @@ import kotlinx.parcelize.Parcelize
 
 @Parcelize
 data class GreatWonder(
+    val id: Int,
     val name: String,
     val image: String,
     val description: String,
