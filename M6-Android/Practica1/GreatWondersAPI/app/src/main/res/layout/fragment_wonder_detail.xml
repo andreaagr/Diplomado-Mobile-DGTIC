@@ -61,7 +61,10 @@
             android:id="@+id/flagImageView"
             android:layout_width="@dimen/fragment_detail_flag_width"
             android:layout_height="@dimen/fragment_detail_flag_height"
+            android:layout_marginTop="@dimen/fragment_detail_elements_separation"
+            android:layout_marginBottom="@dimen/fragment_detail_elements_separation"
             android:src="@drawable/bandera"
+            app:layout_constraintBottom_toBottomOf="parent"
             app:layout_constraintStart_toStartOf="@+id/locationTitleTextView"
             app:layout_constraintTop_toBottomOf="@+id/locationTitleTextView" />
 

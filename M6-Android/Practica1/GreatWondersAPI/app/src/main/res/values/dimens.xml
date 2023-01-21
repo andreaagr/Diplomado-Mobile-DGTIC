@@ -2,7 +2,7 @@
 <resources>
     <dimen name="wonder_list_image_height">250dp</dimen>
     <dimen name="wonder_detail_image_height">300dp</dimen>
-    <dimen name="fragment_detail_margin">8dp</dimen>
+    <dimen name="fragment_detail_margin">16dp</dimen>
     <dimen name="fragment_detail_title_text_size">24sp</dimen>
     <dimen name="fragment_detail_content_text_size">20sp</dimen>
     <dimen name="fragment_detail_elements_separation">8dp</dimen>
