@@ -45,11 +45,7 @@ class GreatWonderViewHolder(
         with(binding) {
             wonderNameTextView.text = greatWonder.name
             wonderLocationTextView.text = location
-            Glide.with(root)
-                .load(greatWonder.image)
-                .centerCrop()
-                .placeholder(R.drawable.imagen)
-                .into(wonderImageView)
+            showImage(greatWonder.image, wonderImageView, root.context)
             wonderCardContainer.setOnClickListener { onElementClicked }
         }
     }

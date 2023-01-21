@@ -12,7 +12,7 @@
         android:layout_height="wrap_content">
 
         <ImageView
-            android:id="@+id/imageView"
+            android:id="@+id/wonderDetailImageView"
             android:layout_width="wrap_content"
             android:layout_height="@dimen/wonder_detail_image_height"
             android:src="@drawable/imagen"
@@ -31,7 +31,7 @@
             android:textStyle="bold|italic"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toBottomOf="@+id/imageView"
+            app:layout_constraintTop_toBottomOf="@+id/wonderDetailImageView"
             tools:text="Nombre" />
 
         <TextView
@@ -54,7 +54,7 @@
             android:textStyle="bold|italic"
             app:layout_constraintStart_toStartOf="@+id/wonderTitleTextView"
             app:layout_constraintTop_toBottomOf="@+id/wonderDescriptionTextView"
-            tools:text="Ubicación" />
+            android:text="@string/location_label" />
 
         <ImageView
             android:id="@+id/flagImageView"
@@ -65,7 +65,7 @@
             app:layout_constraintTop_toBottomOf="@+id/locationTitleTextView" />
 
         <TextView
-            android:id="@+id/textView3"
+            android:id="@+id/wonderDetailLocationTextView"
             android:layout_width="@dimen/match_constraint"
             android:layout_height="wrap_content"
             android:layout_marginStart="@dimen/fragment_detail_margin"
