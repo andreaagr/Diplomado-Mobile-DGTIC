@@ -5,7 +5,7 @@
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     android:orientation="vertical"
-    tools:context=".WonderDetailFragment">
+    tools:context=".view.WonderDetailFragment">
 
     <androidx.constraintlayout.widget.ConstraintLayout
         android:layout_width="match_parent"
@@ -26,6 +26,7 @@
             android:layout_width="@dimen/match_constraint"
             android:layout_height="wrap_content"
             android:layout_marginStart="@dimen/fragment_detail_margin"
+            android:layout_marginTop="@dimen/fragment_detail_margin"
             android:layout_marginEnd="@dimen/fragment_detail_margin"
             android:textSize="@dimen/fragment_detail_title_text_size"
             android:textStyle="bold|italic"

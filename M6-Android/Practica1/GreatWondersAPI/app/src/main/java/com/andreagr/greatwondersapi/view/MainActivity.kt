@@ -1,4 +1,4 @@
-package com.andreagr.greatwondersapi
+package com.andreagr.greatwondersapi.view
 
 import android.animation.AnimatorSet
 import android.animation.ValueAnimator
@@ -7,7 +7,9 @@ import android.os.Bundle
 import android.view.animation.AnticipateInterpolator
 import androidx.core.splashscreen.SplashScreen.Companion.installSplashScreen
 import com.andreagr.greatwondersapi.databinding.ActivityMainBinding
+import dagger.hilt.android.AndroidEntryPoint
 
+@AndroidEntryPoint
 class MainActivity : AppCompatActivity() {
     private lateinit var binding: ActivityMainBinding
 

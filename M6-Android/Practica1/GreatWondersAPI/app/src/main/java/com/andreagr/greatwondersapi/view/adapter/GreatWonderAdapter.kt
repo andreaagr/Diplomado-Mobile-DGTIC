@@ -1,4 +1,4 @@
-package com.andreagr.greatwondersapi
+package com.andreagr.greatwondersapi.view.adapter
 
 import android.view.LayoutInflater
 import android.view.ViewGroup
@@ -6,7 +6,8 @@ import androidx.recyclerview.widget.DiffUtil
 import androidx.recyclerview.widget.ListAdapter
 import androidx.recyclerview.widget.RecyclerView
 import com.andreagr.greatwondersapi.databinding.WonderCardItemBinding
-import com.bumptech.glide.Glide
+import com.andreagr.greatwondersapi.model.GreatWonder
+import com.andreagr.greatwondersapi.util.showImage
 
 typealias OnElementClicked = (GreatWonder) -> Unit
 
@@ -41,12 +42,16 @@ class GreatWonderViewHolder(
 ): RecyclerView.ViewHolder(binding.root) {
 
     fun bind(greatWonder: GreatWonder) {
-        val location = greatWonder.wonderLocation.city + ", " + greatWonder.wonderLocation.country
+        val location =
+            if (!greatWonder.location.city.isNullOrEmpty())
+                greatWonder.location.city + ", " + greatWonder.location.country
+            else
+                greatWonder.location.country
         with(binding) {
             wonderNameTextView.text = greatWonder.name
             wonderLocationTextView.text = location
             showImage(greatWonder.image, wonderImageView, root.context)
-            wonderCardContainer.setOnClickListener { onElementClicked }
+            wonderCardContainer.setOnClickListener { onElementClicked(greatWonder) }
         }
     }
 }

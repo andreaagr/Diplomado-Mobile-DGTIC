@@ -1,4 +1,4 @@
-package com.andreagr.greatwondersapi
+package com.andreagr.greatwondersapi.view
 
 import android.os.Bundle
 import android.view.LayoutInflater
@@ -7,7 +7,10 @@ import android.view.ViewGroup
 import androidx.fragment.app.Fragment
 import androidx.navigation.fragment.navArgs
 import com.andreagr.greatwondersapi.databinding.FragmentWonderDetailBinding
+import com.andreagr.greatwondersapi.util.showImage
+import dagger.hilt.android.AndroidEntryPoint
 
+@AndroidEntryPoint
 class WonderDetailFragment : Fragment() {
 
     private lateinit var _binding: FragmentWonderDetailBinding
@@ -26,10 +29,10 @@ class WonderDetailFragment : Fragment() {
 
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
-        val location = navArgs.greatWonder.wonderLocation.city + ", " + navArgs.greatWonder.wonderLocation.country
+        val location = navArgs.greatWonder.location.city + ", " + navArgs.greatWonder.location.country
         with(binding) {
             showImage(navArgs.greatWonder.image, wonderDetailImageView, root.context)
-            showImage(navArgs.greatWonder.wonderLocation.flagImage, flagImageView, root.context)
+            showImage(navArgs.greatWonder.location.flagImage, flagImageView, root.context)
             wonderTitleTextView.text = navArgs.greatWonder.name
             wonderDescriptionTextView.text = navArgs.greatWonder.description
             wonderDetailLocationTextView.text = location

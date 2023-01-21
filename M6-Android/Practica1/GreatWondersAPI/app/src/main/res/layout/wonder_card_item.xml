@@ -5,7 +5,8 @@
     android:id="@+id/wonderCardContainer"
     android:layout_width="match_parent"
     android:layout_height="wrap_content"
-    android:layout_margin="@dimen/wonder_item_card_margin"
+    android:layout_marginStart="@dimen/wonder_item_card_margin"
+    android:layout_marginEnd="@dimen/wonder_item_card_margin"
     android:elevation="@dimen/wonder_item_card_elevation"
     app:cardCornerRadius="@dimen/wonder_item_card_corner_radius">
 

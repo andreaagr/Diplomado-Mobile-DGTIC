@@ -1,4 +1,4 @@
-package com.andreagr.greatwondersapi
+package com.andreagr.greatwondersapi.model
 
 import android.os.Parcelable
 import kotlinx.parcelize.Parcelize
@@ -9,7 +9,7 @@ data class GreatWonder(
     val name: String,
     val image: String,
     val description: String,
-    val wonderLocation: WonderLocation
+    val location: WonderLocation
 ): Parcelable
 
 @Parcelize

@@ -1,4 +1,4 @@
-package com.andreagr.greatwondersapi
+package com.andreagr.greatwondersapi.view
 
 import android.os.Bundle
 import androidx.fragment.app.Fragment
@@ -8,8 +8,15 @@ import android.view.ViewGroup
 import androidx.fragment.app.viewModels
 import androidx.navigation.fragment.findNavController
 import androidx.recyclerview.widget.LinearLayoutManager
+import com.andreagr.greatwondersapi.model.GreatWonder
+import com.andreagr.greatwondersapi.util.UIResponseState
 import com.andreagr.greatwondersapi.databinding.FragmentWonderListBinding
+import com.andreagr.greatwondersapi.view.adapter.GreatWonderAdapter
+import com.andreagr.greatwondersapi.view.adapter.SpacingDecoration
+import com.andreagr.greatwondersapi.view.viewmodel.GreatWonderViewModel
+import dagger.hilt.android.AndroidEntryPoint
 
+@AndroidEntryPoint
 class WonderListFragment : Fragment() {
 
     private lateinit var _binding: FragmentWonderListBinding
@@ -18,8 +25,7 @@ class WonderListFragment : Fragment() {
 
     private val wonderAdapter by lazy {
         GreatWonderAdapter { greatWonder ->
-            WonderListFragmentDirections
-                .actionWonderListFragmentToWonderDetailFragment2(greatWonder)
+            WonderListFragmentDirections.actionWonderListFragmentToWonderDetailFragment2(greatWonder)
                 .let { findNavController().navigate(it) }
         }
     }
@@ -36,12 +42,27 @@ class WonderListFragment : Fragment() {
 
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
-        viewModel.greatWonders.observe(viewLifecycleOwner) {
-            wonderAdapter.submitList(it)
+        viewModel.viewState.observe(viewLifecycleOwner) {
+            handleUIState(it)
         }
         binding.wonderListRecyclerView.apply {
             adapter = wonderAdapter
             layoutManager = LinearLayoutManager(this.context)
+            addItemDecoration(SpacingDecoration(16))
+        }
+    }
+
+    private fun handleUIState(uiState: UIResponseState) {
+        when (uiState) {
+            is UIResponseState.Loading -> {
+                //Show loader
+            }
+            is UIResponseState.Success<*> -> {
+                wonderAdapter.submitList(uiState.content as List<GreatWonder>)
+            }
+            else -> {
+                //Show error
+            }
         }
     }
 }
