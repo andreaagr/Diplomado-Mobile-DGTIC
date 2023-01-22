@@ -20,7 +20,6 @@ class GreatWonderViewModel @Inject constructor(
 
     fun loadElements() {
         viewModelScope.launch {
-            delay(1800)
             _viewState.value = UIResponseState.Loading
             _viewState.postValue(repository.getRemoteGreatWonders())
         }
