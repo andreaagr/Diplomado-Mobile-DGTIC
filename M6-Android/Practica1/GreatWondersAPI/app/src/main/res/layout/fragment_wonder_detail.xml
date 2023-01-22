@@ -15,7 +15,6 @@
             android:id="@+id/wonderDetailImageView"
             android:layout_width="wrap_content"
             android:layout_height="@dimen/wonder_detail_image_height"
-            android:layout_marginTop="@dimen/fragment_detail_margin"
             android:contentDescription="@string/wonder_image_content_description"
             android:src="@drawable/imagen"
             app:layout_constraintEnd_toEndOf="parent"
@@ -83,7 +82,7 @@
         <WebView
             android:id="@+id/mapWebView"
             android:layout_width="0dp"
-            android:layout_height="@dimen/wonder_detail_image_height"
+            android:layout_height="@dimen/map_view_height"
             android:layout_marginTop="16dp"
             android:layout_marginBottom="16dp"
             app:layout_constraintBottom_toBottomOf="parent"

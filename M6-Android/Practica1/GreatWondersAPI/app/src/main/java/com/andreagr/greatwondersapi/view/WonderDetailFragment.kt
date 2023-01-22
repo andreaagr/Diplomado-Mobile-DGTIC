@@ -1,9 +1,11 @@
 package com.andreagr.greatwondersapi.view
 
+import android.annotation.SuppressLint
 import android.os.Bundle
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
+import android.webkit.WebViewClient
 import androidx.fragment.app.Fragment
 import androidx.navigation.fragment.navArgs
 import com.andreagr.greatwondersapi.databinding.FragmentWonderDetailBinding
@@ -27,6 +29,7 @@ class WonderDetailFragment : Fragment() {
             .root
     }
 
+    @SuppressLint("SetJavaScriptEnabled")
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
         val location = if (navArgs.greatWonder.location.city.isNotEmpty())
@@ -39,6 +42,12 @@ class WonderDetailFragment : Fragment() {
             wonderTitleTextView.text = navArgs.greatWonder.name
             wonderDescriptionTextView.text = navArgs.greatWonder.description
             wonderDetailLocationTextView.text = location
+            //WebView
+            mapWebView.webViewClient = WebViewClient()
+            mapWebView.settings.javaScriptEnabled = true
+            mapWebView.loadUrl("https://www.google.com/maps?q="
+                    + navArgs.greatWonder.location.coords.latitude + ","
+                    + navArgs.greatWonder.location.coords.longitude)
         }
     }
 }

@@ -1,7 +1,7 @@
 <?xml version="1.0" encoding="utf-8"?>
 <resources>
     <dimen name="wonder_list_image_height">250dp</dimen>
-    <dimen name="wonder_detail_image_height">300dp</dimen>
+    <dimen name="wonder_detail_image_height">400dp</dimen>
     <dimen name="fragment_detail_margin">16dp</dimen>
     <dimen name="fragment_detail_title_text_size">24sp</dimen>
     <dimen name="fragment_detail_content_text_size">20sp</dimen>
@@ -17,4 +17,5 @@
     <dimen name="loading_fragment_text_size">32sp</dimen>
     <dimen name="error_animation_size">500dp</dimen>
     <dimen name="loading_animation_size">350dp</dimen>
+    <dimen name="map_view_height">400dp</dimen>
 </resources>

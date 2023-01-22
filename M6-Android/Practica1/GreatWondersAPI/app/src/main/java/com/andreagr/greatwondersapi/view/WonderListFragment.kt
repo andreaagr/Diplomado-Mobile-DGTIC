@@ -49,7 +49,7 @@ class WonderListFragment : Fragment() {
         binding.wonderListRecyclerView.apply {
             adapter = wonderAdapter
             layoutManager = LinearLayoutManager(this.context)
-            addItemDecoration(SpacingDecoration(16))
+            addItemDecoration(SpacingDecoration(32))
         }
     }
 
