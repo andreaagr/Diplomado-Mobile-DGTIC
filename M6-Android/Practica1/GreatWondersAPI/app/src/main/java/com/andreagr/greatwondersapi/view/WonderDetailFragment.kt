@@ -29,7 +29,10 @@ class WonderDetailFragment : Fragment() {
 
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
-        val location = navArgs.greatWonder.location.city + ", " + navArgs.greatWonder.location.country
+        val location = if (navArgs.greatWonder.location.city.isNotEmpty())
+            navArgs.greatWonder.location.city + ", " + navArgs.greatWonder.location.country
+        else
+            navArgs.greatWonder.location.country
         with(binding) {
             showImage(navArgs.greatWonder.image, wonderDetailImageView, root.context)
             showImage(navArgs.greatWonder.location.flagImage, flagImageView, root.context)

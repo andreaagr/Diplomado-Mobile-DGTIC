@@ -43,7 +43,7 @@ class GreatWonderViewHolder(
 
     fun bind(greatWonder: GreatWonder) {
         val location =
-            if (!greatWonder.location.city.isNullOrEmpty())
+            if (greatWonder.location.city.isNotEmpty())
                 greatWonder.location.city + ", " + greatWonder.location.country
             else
                 greatWonder.location.country

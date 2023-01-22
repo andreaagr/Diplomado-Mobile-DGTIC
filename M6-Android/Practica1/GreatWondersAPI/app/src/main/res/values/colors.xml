@@ -13,4 +13,5 @@
     <color name="light_green">#B1DA87</color>
     <color name="leaf_green">#4B5334</color>
     <color name="main_screen_background">#EBD9D1</color>
+    <color name="city_description_text_color_wonder_list">#496CAC</color>
 </resources>

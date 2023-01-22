@@ -15,8 +15,9 @@
             android:id="@+id/wonderDetailImageView"
             android:layout_width="wrap_content"
             android:layout_height="@dimen/wonder_detail_image_height"
-            android:src="@drawable/imagen"
+            android:layout_marginTop="@dimen/fragment_detail_margin"
             android:contentDescription="@string/wonder_image_content_description"
+            android:src="@drawable/imagen"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toTopOf="parent" />
@@ -50,21 +51,20 @@
             android:id="@+id/locationTitleTextView"
             android:layout_width="@dimen/match_constraint"
             android:layout_height="wrap_content"
-            android:layout_marginTop="@dimen/fragment_detail_elements_separation"
+            android:layout_marginTop="@dimen/fragment_detail_margin"
+            android:text="@string/location_label"
             android:textSize="@dimen/fragment_detail_title_text_size"
             android:textStyle="bold|italic"
             app:layout_constraintStart_toStartOf="@+id/wonderTitleTextView"
-            app:layout_constraintTop_toBottomOf="@+id/wonderDescriptionTextView"
-            android:text="@string/location_label" />
+            app:layout_constraintTop_toBottomOf="@+id/wonderDescriptionTextView" />
 
         <ImageView
             android:id="@+id/flagImageView"
             android:layout_width="@dimen/fragment_detail_flag_width"
             android:layout_height="@dimen/fragment_detail_flag_height"
-            android:layout_marginTop="@dimen/fragment_detail_elements_separation"
-            android:layout_marginBottom="@dimen/fragment_detail_elements_separation"
+            android:contentDescription="@string/flag_content_description"
+            android:layout_marginTop="@dimen/fragment_detail_margin"
             android:src="@drawable/bandera"
-            app:layout_constraintBottom_toBottomOf="parent"
             app:layout_constraintStart_toStartOf="@+id/locationTitleTextView"
             app:layout_constraintTop_toBottomOf="@+id/locationTitleTextView" />
 
@@ -73,12 +73,25 @@
             android:layout_width="@dimen/match_constraint"
             android:layout_height="wrap_content"
             android:layout_marginStart="@dimen/fragment_detail_margin"
-            tools:text="Ciudad, País"
             android:textSize="@dimen/fragment_detail_content_text_size"
             app:layout_constraintBottom_toBottomOf="@+id/flagImageView"
             app:layout_constraintEnd_toEndOf="@+id/wonderDescriptionTextView"
             app:layout_constraintStart_toEndOf="@+id/flagImageView"
-            app:layout_constraintTop_toTopOf="@+id/flagImageView" />
+            app:layout_constraintTop_toTopOf="@+id/flagImageView"
+            tools:text="Ciudad, País" />
+
+        <WebView
+            android:id="@+id/mapWebView"
+            android:layout_width="0dp"
+            android:layout_height="@dimen/wonder_detail_image_height"
+            android:layout_marginTop="16dp"
+            android:layout_marginBottom="16dp"
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintEnd_toEndOf="@+id/wonderDetailLocationTextView"
+            app:layout_constraintStart_toStartOf="@+id/flagImageView"
+            app:layout_constraintTop_toBottomOf="@+id/flagImageView"
+            tools:ignore="WebViewLayout" />
+
     </androidx.constraintlayout.widget.ConstraintLayout>
 
 </ScrollView>

@@ -7,6 +7,7 @@ import androidx.lifecycle.viewModelScope
 import com.andreagr.greatwondersapi.repository.GreatWonderRepository
 import com.andreagr.greatwondersapi.util.UIResponseState
 import dagger.hilt.android.lifecycle.HiltViewModel
+import kotlinx.coroutines.delay
 import kotlinx.coroutines.launch
 import javax.inject.Inject
 
@@ -17,8 +18,9 @@ class GreatWonderViewModel @Inject constructor(
     val viewState: LiveData<UIResponseState> get() = _viewState
     private val _viewState: MutableLiveData<UIResponseState> = MutableLiveData()
 
-    init {
+    fun loadElements() {
         viewModelScope.launch {
+            delay(1800)
             _viewState.value = UIResponseState.Loading
             _viewState.postValue(repository.getRemoteGreatWonders())
         }

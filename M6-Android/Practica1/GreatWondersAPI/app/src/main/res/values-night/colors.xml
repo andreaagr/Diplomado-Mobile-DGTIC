@@ -1,0 +1,5 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <color name="main_screen_background">#C5C6C5</color>
+    <color name="city_description_text_color_wonder_list">@color/light_green</color>
+</resources>

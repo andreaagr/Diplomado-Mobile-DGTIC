@@ -42,6 +42,7 @@ class WonderListFragment : Fragment() {
 
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
+        viewModel.loadElements()
         viewModel.viewState.observe(viewLifecycleOwner) {
             handleUIState(it)
         }
@@ -55,13 +56,15 @@ class WonderListFragment : Fragment() {
     private fun handleUIState(uiState: UIResponseState) {
         when (uiState) {
             is UIResponseState.Loading -> {
-                //Show loader
+                binding.loadingConstraintLayout.visibility = View.VISIBLE
             }
             is UIResponseState.Success<*> -> {
+                binding.lottieLoadingAnimationView.visibility = View.GONE
                 wonderAdapter.submitList(uiState.content as List<GreatWonder>)
             }
             else -> {
-                //Show error
+                binding.loadingConstraintLayout.visibility = View.GONE
+                binding.lottieErrorAnimationView.visibility = View.VISIBLE
             }
         }
     }
