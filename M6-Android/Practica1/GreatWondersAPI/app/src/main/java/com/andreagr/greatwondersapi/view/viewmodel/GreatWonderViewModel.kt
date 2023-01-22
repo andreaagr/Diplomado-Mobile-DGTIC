@@ -18,7 +18,11 @@ class GreatWonderViewModel @Inject constructor(
     val viewState: LiveData<UIResponseState> get() = _viewState
     private val _viewState: MutableLiveData<UIResponseState> = MutableLiveData()
 
-    fun loadElements() {
+    init {
+        loadElements()
+    }
+
+    private fun loadElements() {
         viewModelScope.launch {
             _viewState.value = UIResponseState.Loading
             _viewState.postValue(repository.getRemoteGreatWonders())
