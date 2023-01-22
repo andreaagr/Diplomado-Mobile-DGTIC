@@ -54,7 +54,7 @@
             android:id="@+id/wonderLocationTextView"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:layout_marginStart="8dp"
+            android:layout_marginStart="@dimen/item_separation_between_location_icon_and_info"
             android:textColor="@color/city_description_text_color_wonder_list"
             android:textSize="@dimen/wonder_item_location_text_size"
             android:textStyle="bold"

@@ -56,9 +56,9 @@
 
         <TextView
             android:id="@+id/textView"
-            android:layout_width="0dp"
+            android:layout_width="@dimen/match_constraint"
             android:layout_height="wrap_content"
-            android:layout_marginTop="16dp"
+            android:layout_marginTop="@dimen/item_separation_loading_layout"
             android:text="@string/loading_label"
             android:textAlignment="center"
             android:textSize="@dimen/loading_fragment_text_size"

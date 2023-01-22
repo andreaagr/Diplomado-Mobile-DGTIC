@@ -81,10 +81,10 @@
 
         <WebView
             android:id="@+id/mapWebView"
-            android:layout_width="0dp"
+            android:layout_width="@dimen/match_constraint"
             android:layout_height="@dimen/map_view_height"
-            android:layout_marginTop="16dp"
-            android:layout_marginBottom="16dp"
+            android:layout_marginTop="@dimen/fragment_detail_margin"
+            android:layout_marginBottom="@dimen/fragment_detail_margin"
             app:layout_constraintBottom_toBottomOf="parent"
             app:layout_constraintEnd_toEndOf="@+id/wonderDetailLocationTextView"
             app:layout_constraintStart_toStartOf="@+id/flagImageView"

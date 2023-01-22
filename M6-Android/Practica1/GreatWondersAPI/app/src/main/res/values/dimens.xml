@@ -18,4 +18,6 @@
     <dimen name="error_animation_size">500dp</dimen>
     <dimen name="loading_animation_size">350dp</dimen>
     <dimen name="map_view_height">400dp</dimen>
+    <dimen name="item_separation_loading_layout">16dp</dimen>
+    <dimen name="item_separation_between_location_icon_and_info">8dp</dimen>
 </resources>
