@@ -124,7 +124,7 @@
             android:id="@+id/forgotPasswordTextView"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:layout_marginTop="@dimen/forgot_password_margin_top"
+            android:layout_marginTop="@dimen/forgot_password_margins"
             android:text="@string/forgot_password_label"
             android:textColor="@color/log_in_screen_labels"
             android:textSize="@dimen/login_links_text_size"
