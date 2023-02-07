@@ -6,8 +6,8 @@ import androidx.lifecycle.ViewModel
 import androidx.lifecycle.viewModelScope
 import com.andreagr.greatwondersapi.repository.GreatWonderRepository
 import com.andreagr.greatwondersapi.util.UIResponseState
+import com.google.firebase.auth.FirebaseAuth
 import dagger.hilt.android.lifecycle.HiltViewModel
-import kotlinx.coroutines.delay
 import kotlinx.coroutines.launch
 import javax.inject.Inject
 
@@ -17,6 +17,7 @@ class GreatWonderViewModel @Inject constructor(
 ): ViewModel() {
     val viewState: LiveData<UIResponseState> get() = _viewState
     private val _viewState: MutableLiveData<UIResponseState> = MutableLiveData()
+    private val auth by lazy { FirebaseAuth.getInstance() }
 
     init {
         loadElements()
@@ -28,4 +29,10 @@ class GreatWonderViewModel @Inject constructor(
             _viewState.postValue(repository.getRemoteGreatWonders())
         }
     }
+
+    fun signOut() {
+        auth.signOut()
+    }
+
+    fun getCurrentUser() = auth.currentUser?.email
 }

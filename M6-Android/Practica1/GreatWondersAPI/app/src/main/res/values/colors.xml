@@ -12,6 +12,9 @@
     <color name="indian_red">#CD5C5C</color>
     <color name="light_green">#B1DA87</color>
     <color name="leaf_green">#4B5334</color>
+    <color name="log_in_button_background">#EF930C</color>
+    <color name="log_in_screen_labels">#FFE0B2</color>
+    <color name="create_account_label">#038E9F</color>
     <color name="main_screen_background">#EBD9D1</color>
     <color name="city_description_text_color_wonder_list">#496CAC</color>
     <color name="splash_screen_text_color">#2A3468</color>

@@ -7,14 +7,16 @@
     android:background="@color/main_screen_background"
     tools:context=".view.WonderListFragment">
 
+
     <androidx.recyclerview.widget.RecyclerView
         android:id="@+id/wonderListRecyclerView"
         android:layout_width="@dimen/match_constraint"
         android:layout_height="@dimen/match_constraint"
+        android:layout_marginTop="16dp"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/signOutButton"
         tools:listitem="@layout/wonder_card_item" />
 
     <com.airbnb.lottie.LottieAnimationView
@@ -69,5 +71,20 @@
             app:layout_constraintTop_toBottomOf="@+id/lottieLoadingAnimationView" />
 
     </androidx.constraintlayout.widget.ConstraintLayout>
+
+    <Button
+        android:id="@+id/signOutButton"
+        android:layout_width="0dp"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="16dp"
+        android:layout_marginTop="16dp"
+        android:layout_marginEnd="16dp"
+        android:background="@color/indian_red"
+        android:text="@string/sign_out_label"
+        android:textColor="@color/white"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent"
+        tools:ignore="TextContrastCheck" />
 
 </androidx.constraintlayout.widget.ConstraintLayout>

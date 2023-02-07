@@ -3,7 +3,7 @@
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
     android:id="@+id/nav_graph"
-    app:startDestination="@id/wonderListFragment">
+    app:startDestination="@id/loginFragment">
     <fragment
         android:id="@+id/wonderListFragment"
         android:name="com.andreagr.greatwondersapi.view.WonderListFragment"
@@ -22,4 +22,33 @@
             android:name="greatWonder"
             app:argType="com.andreagr.greatwondersapi.model.GreatWonder" />
     </fragment>
+    <fragment
+        android:id="@+id/loginFragment"
+        android:name="com.andreagr.greatwondersapi.view.LoginFragment"
+        android:label="fragment_login"
+        tools:layout="@layout/fragment_login" >
+        <action
+            android:id="@+id/action_loginFragment_to_wonderListFragment"
+            app:destination="@id/wonderListFragment"
+            app:popUpTo="@id/loginFragment"
+            app:popUpToInclusive="true" />
+        <action
+            android:id="@+id/action_loginFragment_to_createAccountFragment"
+            app:destination="@id/createAccountFragment"
+            app:popUpTo="@id/loginFragment" />
+        <action
+            android:id="@+id/action_loginFragment_to_forgotPasswordFragment"
+            app:destination="@id/forgotPasswordFragment"
+            app:popUpTo="@id/loginFragment" />
+    </fragment>
+    <fragment
+        android:id="@+id/createAccountFragment"
+        android:name="com.andreagr.greatwondersapi.view.CreateAccountFragment"
+        android:label="fragment_create_account"
+        tools:layout="@layout/fragment_create_account" />
+    <fragment
+        android:id="@+id/forgotPasswordFragment"
+        android:name="com.andreagr.greatwondersapi.view.ForgotPasswordFragment"
+        android:label="fragment_forgot_password"
+        tools:layout="@layout/fragment_forgot_password" />
 </navigation>

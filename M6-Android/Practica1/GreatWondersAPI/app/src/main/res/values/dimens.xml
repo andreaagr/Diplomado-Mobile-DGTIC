@@ -20,4 +20,5 @@
     <dimen name="map_view_height">400dp</dimen>
     <dimen name="item_separation_loading_layout">16dp</dimen>
     <dimen name="item_separation_between_location_icon_and_info">8dp</dimen>
+    <dimen name="logo_size_login_screen">175dp</dimen>
 </resources>

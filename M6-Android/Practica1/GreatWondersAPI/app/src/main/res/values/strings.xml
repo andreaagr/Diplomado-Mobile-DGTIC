@@ -3,10 +3,23 @@
     <string name="accessibility_splash_logo">Logo de la aplicación</string>
     <string name="wonder_image_content_description">Imagén del monumento</string>
     <string name="location_icon">Icono de ubicación</string>
-    <!-- TODO: Remove or change this placeholder text -->
-    <string name="hello_blank_fragment">Hello blank fragment</string>
     <string name="location_label">Ubicación</string>
     <string name="loading_label">Cargando…</string>
     <string name="error_button_label">Continuar</string>
     <string name="flag_content_description">Flag image</string>
+    <string name="email_address_hint">Correo eléctronico</string>
+    <string name="password_hint">Contraseña</string>
+    <string name="forgot_password_label">¿Olvidaste tu contraseña?</string>
+    <string name="log_in_label">Ingresar</string>
+    <string name="create_new_account">Crear nueva cuenta</string>
+    <string name="cancel_message">Cancelar</string>
+    <string name="confirm_mesage">Confirmar</string>
+    <string name="app_logo_content_description">Logo de la aplicación</string>
+    <string name="password_recovery_label">Recuperar contraseña</string>
+    <string name="empty_fields_error">Rellena todos los campos para continuar</string>
+    <string name="password_size_error">La contraseña debe contener al menos 6 caracteres</string>
+    <string name="unknow_error">Algo salió mal, intenta de nuevo</string>
+    <string name="success_send_password_recovery">Se ha enviado un correo para la actualización de la contraseña</string>
+    <string name="success_create_account">La cuenta se ha creado correctamente</string>
+    <string name="sign_out_label">Salir de la cuenta</string>
 </resources>

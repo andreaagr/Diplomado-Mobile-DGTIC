@@ -1,0 +1,39 @@
+{
+  "project_info": {
+    "project_number": "882194618866",
+    "project_id": "worldwonders-708a3",
+    "storage_bucket": "worldwonders-708a3.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:882194618866:android:16089846d3c54a05bf736b",
+        "android_client_info": {
+          "package_name": "com.andreagr.greatwondersapi"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "882194618866-99t6g2ivo99210critpj5tlstlg47ojg.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyChMh8of-jBkJIR8RF5Vp2Dj-Se1KwyW1w"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": [
+            {
+              "client_id": "882194618866-99t6g2ivo99210critpj5tlstlg47ojg.apps.googleusercontent.com",
+              "client_type": 3
+            }
+          ]
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}

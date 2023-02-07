@@ -22,11 +22,13 @@ class WonderListFragment : Fragment() {
     private lateinit var _binding: FragmentWonderListBinding
     private val binding get() = _binding
     private val viewModel by viewModels<GreatWonderViewModel>()
+    private val navController by lazy { findNavController() }
 
     private val wonderAdapter by lazy {
         GreatWonderAdapter { greatWonder ->
-            WonderListFragmentDirections.actionWonderListFragmentToWonderDetailFragment2(greatWonder)
-                .let { findNavController().navigate(it) }
+            WonderListFragmentDirections
+                .actionWonderListFragmentToWonderDetailFragment2(greatWonder)
+                .let { navController.navigate(it) }
         }
     }
 
@@ -45,10 +47,18 @@ class WonderListFragment : Fragment() {
         viewModel.viewState.observe(viewLifecycleOwner) {
             handleUIState(it)
         }
-        binding.wonderListRecyclerView.apply {
-            adapter = wonderAdapter
-            layoutManager = LinearLayoutManager(this.context)
-            addItemDecoration(SpacingDecoration(32))
+        with(binding) {
+            wonderListRecyclerView.apply {
+                adapter = wonderAdapter
+                layoutManager = LinearLayoutManager(this.context)
+                addItemDecoration(SpacingDecoration(32))
+            }
+            val buttonMessage = signOutButton.text.toString() + " (" + viewModel.getCurrentUser() + ")"
+            signOutButton.text = buttonMessage
+            signOutButton.setOnClickListener {
+                viewModel.signOut()
+                activity?.finish()
+            }
         }
     }
 
