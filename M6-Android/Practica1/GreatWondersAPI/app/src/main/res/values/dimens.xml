@@ -21,4 +21,12 @@
     <dimen name="item_separation_loading_layout">16dp</dimen>
     <dimen name="item_separation_between_location_icon_and_info">8dp</dimen>
     <dimen name="logo_size_login_screen">175dp</dimen>
+    <dimen name="min_height_edit_text">48dp</dimen>
+    <dimen name="drawable_padding_edit_text_icons">8dp</dimen>
+    <dimen name="login_edit_texts_margins">24dp</dimen>
+    <dimen name="login_button_margins">16dp</dimen>
+    <dimen name="login_links_text_size">16sp</dimen>
+    <dimen name="margin_top_create_account">8dp</dimen>
+    <dimen name="create_account_screen_text_size">28sp</dimen>
+    <dimen name="forgot_password_margins">8dp</dimen>
 </resources>
