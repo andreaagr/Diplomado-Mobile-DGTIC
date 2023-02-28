@@ -9,7 +9,8 @@ import UIKit
 
 class ViewController: UIViewController, UITableViewDataSource, UITableViewDelegate {
         
-    @IBOutlet var drinksTableView: UIView!
+    @IBOutlet weak var drinksTableView: UITableView!
+    
     var drinks = [Drink]()
     let cellIdentifier = "DrinkTableViewCell"
     
@@ -33,12 +34,23 @@ class ViewController: UIViewController, UITableViewDataSource, UITableViewDelega
     
     func retrieveDrinks() {
         guard let laURL = URL(string: "http://janzelaznog.com/DDAM/iOS/drinks.json") else { return }
-        do {
-            let bytes = try Data(contentsOf: laURL)
-            drinks = try JSONDecoder().decode([Drink].self, from: bytes)
-        } catch {
-            print ("Error al descargar el JSON " + String(describing: error))
+        let configuration = URLSessionConfiguration.ephemeral
+        let session = URLSession(configuration: configuration)
+        let elReq = URLRequest (url: laURL)
+        let task = session.dataTask(with: elReq) { bytes, response, error in
+            if error == nil {
+                guard let data = bytes else { return }
+                do {
+                    self.drinks = try JSONDecoder().decode([Drink].self, from: data)
+                    DispatchQueue.main.async {
+                        self.drinksTableView.reloadData()
+                    }
+                } catch {
+                    print ("Error al descargar el JSON " + String(describing: error))
+                }
+            }
         }
+        task.resume()
     }
 }
 
