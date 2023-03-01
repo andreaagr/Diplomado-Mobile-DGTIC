@@ -68,14 +68,6 @@ class ViewController: UIViewController, UITableViewDataSource, UITableViewDelega
     }
     
     @IBAction func unwindFromDetail(segue: UIStoryboardSegue) {
-        let source = segue.source as! AddDrinkViewController
-        //newDrink = source.createDrink
-            /*do {
-                try context.save()
-            } catch {
-                print("Error al guardar")
-            }
-            dataManager?.fetch()*/
         drinks.append(newDrink!)
         self.drinksTableView.reloadData()
     }
