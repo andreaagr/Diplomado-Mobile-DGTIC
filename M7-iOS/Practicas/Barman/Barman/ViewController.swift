@@ -24,8 +24,6 @@ class ViewController: UIViewController, UITableViewDataSource, UITableViewDelega
     
     override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
         let destination = segue.destination as! DetailViewController
-        print("Prepare")
-        print(drink)
         destination.drinkReceived = drink
     }
     

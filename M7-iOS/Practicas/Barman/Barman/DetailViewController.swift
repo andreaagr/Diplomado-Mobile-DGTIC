@@ -15,14 +15,39 @@ class DetailViewController: UIViewController {
     @IBOutlet weak var instructionsLabel: UILabel!
     
     var drinkReceived: Drink?
+    lazy var urlLocal: URL? = {
+        var tmp = URL(string: "")
+        if let documentsURL = FileManager.default.urls(for:.documentDirectory, in: .userDomainMask).first {
+            tmp = documentsURL.appendingPathComponent(drinkReceived!.img)
+        }
+        return tmp
+    }()
     
     override func viewDidLoad() {
         super.viewDidLoad()
-        print("DetailViewC")
-        print(drinkReceived)
         drinkNameLabel.text = drinkReceived?.name
         listOfIngredientsLabel.text = drinkReceived?.ingredients
         instructionsLabel.text = drinkReceived?.directions
+        if doesImageExistLocally() {
+            showImageLocally()
+        } else {
+            downloadImage(doOnSuccess: { data in
+                self.showImageFromBackgroundThread(data: data)
+                self.saveFile(data: data)
+            })
+        }
+    }
+    
+    func doesImageExistLocally() -> Bool {
+        return FileManager.default.fileExists(atPath:urlLocal?.path ?? "")
+    }
+    
+    func showImageLocally() {
+        let imageData = NSData(contentsOf: urlLocal!)
+        self.drinkImageView.image = UIImage(data: imageData! as Data)
+    }
+    
+    func downloadImage(doOnSuccess: @escaping (Data) -> Void) {
         if let laURL = URL(string: "http://janzelaznog.com/DDAM/iOS/drinksimages/\(drinkReceived?.img ?? "")") {
             let configuration = URLSessionConfiguration.ephemeral
             let session = URLSession(configuration: configuration)
@@ -30,24 +55,25 @@ class DetailViewController: UIViewController {
             let task = session.dataTask(with: elReq) { bytes, response, error in
                 if error == nil {
                     guard let data = bytes else { return }
-                    DispatchQueue.main.async {
-                        self.drinkImageView.image = UIImage(data: data)
-                    }
+                    doOnSuccess(data)
                 }
             }
             task.resume()
         }
     }
     
-    
-
-    /*
-    // MARK: - Navigation
-
-    // In a storyboard-based application, you will often want to do a little preparation before navigation
-    override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
-        // Get the new view controller using segue.destination.
-        // Pass the selected object to the new view controller.
+    func saveFile(data: Data) {
+        do {
+            try data.write(to:self.urlLocal!)
+        }
+        catch {
+            print ("Error al guardar el archivo " + String(describing: error))
+        }
     }
-    */
+    
+    func showImageFromBackgroundThread(data: Data) {
+        DispatchQueue.main.async {
+            self.drinkImageView.image = UIImage(data: data)
+        }
+    }
 }
