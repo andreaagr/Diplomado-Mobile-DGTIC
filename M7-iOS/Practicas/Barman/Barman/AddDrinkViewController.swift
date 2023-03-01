@@ -13,14 +13,50 @@ class AddDrinkViewController: UIViewController, UIImagePickerControllerDelegate,
     @IBOutlet weak var drinkNameTextField: UITextField!
     @IBOutlet weak var ingrdientsTextField: UITextField!
     @IBOutlet weak var directionsTextField: UITextField!
-    
     @IBOutlet weak var imageViewContainer: UIImageView!
-    var imgPickCon : UIImagePickerController?
+    
+    var imgPickCon: UIImagePickerController?
+    var newRecipe: Drink?
+    lazy var urlLocal: URL? = {
+        var tmp = URL(string: "")
+        if let documentsURL = FileManager.default.urls(for:.documentDirectory, in: .userDomainMask).first {
+            tmp = documentsURL.appendingPathComponent(newRecipe!.img)
+        }
+        return tmp
+    }()
     
     override func viewDidLoad() {
         super.viewDidLoad()
         
         // Do any additional setup after loading the view.
+    }
+    
+    override func shouldPerformSegue(withIdentifier identifier: String, sender: Any?) -> Bool {
+        var perform = false
+        if validateText(text: drinkNameTextField.text!) && validateText(text: directionsTextField.text!) && validateText(text: ingrdientsTextField.text!) {
+            perform = true
+        } else {
+            let alert = UIAlertController(
+                title: NSLocalizedString("Campos requeridos", comment: ""),
+                message: NSLocalizedString("Todos los campos deben contener información", comment: ""),
+                preferredStyle: .alert
+            )
+            alert.addAction(UIAlertAction(title: NSLocalizedString("ok", comment: ""), style: .default))
+            self.present(alert, animated: true)
+        }
+        return perform
+    }
+    
+    override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
+        let destination = segue.destination as! ViewController
+        newRecipe = Drink(
+            name: drinkNameTextField.text!,
+            directions: directionsTextField.text!,
+            ingredients: ingrdientsTextField.text!,
+            img: "\(drinkNameTextField.text!).jpeg"
+        )
+        saveImageInMemory(data: (imageViewContainer.image?.jpegData(compressionQuality: 0.9))!)
+        destination.newDrink = newRecipe
     }
     
     func imagePickerController(_ picker: UIImagePickerController, didFinishPickingMediaWithInfo info: [UIImagePickerController.InfoKey : Any]) {
@@ -34,10 +70,6 @@ class AddDrinkViewController: UIViewController, UIImagePickerControllerDelegate,
         picker.dismiss(animated: true)
             imageViewContainer.image = UIImage(named: "DrinkPlaceholder")
         }
-    
-    @IBAction func saveItems(_ sender: Any) {
-        
-    }
     
     @IBAction func takePhoto(_ sender: Any) {
         imgPickCon = UIImagePickerController()
@@ -74,6 +106,15 @@ class AddDrinkViewController: UIViewController, UIImagePickerControllerDelegate,
         DispatchQueue.main.async {
             self.imgPickCon?.sourceType = type
             self.present(self.imgPickCon!, animated: true)
+        }
+    }
+    
+    func saveImageInMemory(data: Data) {
+        do {
+            try data.write(to:self.urlLocal!)
+        }
+        catch {
+            print ("Error al guardar el archivo " + String(describing: error))
         }
     }
 }

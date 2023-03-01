@@ -195,7 +195,7 @@
                                         <state key="normal" title="Button"/>
                                         <buttonConfiguration key="configuration" style="plain" title="Guardar"/>
                                         <connections>
-                                            <action selector="saveItems:" destination="Rek-bm-Evt" eventType="touchUpInside" id="hk7-fg-pf5"/>
+                                            <segue destination="H1a-cl-SqV" kind="unwind" unwindAction="unwindFromDetailWithSegue:" id="4at-gz-OuW"/>
                                         </connections>
                                     </button>
                                 </subviews>
@@ -217,6 +217,7 @@
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="0h9-8C-qap" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
+                <exit id="H1a-cl-SqV" userLabel="Exit" sceneMemberID="exit"/>
             </objects>
             <point key="canvasLocation" x="1809.9236641221373" y="-434.50704225352115"/>
         </scene>
