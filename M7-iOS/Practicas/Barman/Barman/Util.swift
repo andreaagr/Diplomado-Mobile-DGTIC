@@ -15,3 +15,12 @@ func validateText(text : String) -> Bool {
         return true
     }
 }
+
+func transformRecipe(recipe: Recipe) -> Drink {
+    return Drink(
+        name: recipe.name!,
+        directions: recipe.instructions!,
+        ingredients: recipe.ingredients!,
+        img: recipe.imagePath!
+    )
+}

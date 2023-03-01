@@ -16,6 +16,8 @@ class ViewController: UIViewController, UITableViewDataSource, UITableViewDelega
     var newDrink: Drink?
     let cellIdentifier = "DrinkTableViewCell"
     let showDetailSegue = "showDetail"
+    let context = (UIApplication.shared.delegate as! AppDelegate).persistentContainer.viewContext
+    lazy var dataManager = DrinkDataManager(context: context)
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -56,6 +58,7 @@ class ViewController: UIViewController, UITableViewDataSource, UITableViewDelega
                 guard let data = bytes else { return }
                 do {
                     self.drinks = try JSONDecoder().decode([Drink].self, from: data)
+                    self.drinks.append(contentsOf: self.dataManager.fetch())
                     DispatchQueue.main.async {
                         self.drinksTableView.reloadData()
                     }
@@ -70,6 +73,11 @@ class ViewController: UIViewController, UITableViewDataSource, UITableViewDelega
     @IBAction func unwindFromDetail(segue: UIStoryboardSegue) {
         drinks.append(newDrink!)
         self.drinksTableView.reloadData()
+        saveItemInDatabase(item: newDrink!)
+    }
+    
+    func saveItemInDatabase(item: Drink) {
+        dataManager.addDrink(drink: item)
     }
 }
 
