@@ -49,29 +49,43 @@ class ViewController: UIViewController, UITableViewDataSource, UITableViewDelega
     }
     
     func retrieveDrinks() {
-        guard let laURL = URL(string: "http://janzelaznog.com/DDAM/iOS/drinks.json") else { return }
-        let configuration = URLSessionConfiguration.ephemeral
-        let session = URLSession(configuration: configuration)
-        let elReq = URLRequest (url: laURL)
-        let task = session.dataTask(with: elReq) { bytes, response, error in
-            if error == nil {
-                guard let data = bytes else { return }
-                do {
-                    self.drinks = try JSONDecoder().decode([Drink].self, from: data)
-                    self.drinks.append(contentsOf: self.dataManager.fetch())
-                    DispatchQueue.main.async {
-                        self.drinksTableView.reloadData()
+        if InternetMonitor.instance.internetStatus {
+            guard let laURL = URL(string: "http://janzelaznog.com/DDAM/iOS/drinks.json") else { return }
+            let configuration = URLSessionConfiguration.ephemeral
+            let session = URLSession(configuration: configuration)
+            let elReq = URLRequest (url: laURL)
+            let task = session.dataTask(with: elReq) { bytes, response, error in
+                if error == nil {
+                    guard let data = bytes else { return }
+                    do {
+                        self.drinks = try JSONDecoder().decode([Drink].self, from: data)
+                        self.drinks.append(contentsOf: self.dataManager.fetch())
+                        DispatchQueue.main.async {
+                            self.drinksTableView.reloadData()
+                        }
+                    } catch {
+                        print ("Error al descargar el JSON " + String(describing: error))
                     }
-                } catch {
-                    print ("Error al descargar el JSON " + String(describing: error))
                 }
             }
+            task.resume()
+        } else {
+            showNoInternetError()
         }
-        task.resume()
     }
     
     func saveItemInDatabase(item: Drink) {
         dataManager.addDrink(drink: item)
+    }
+    
+    func showNoInternetError() {
+        let alert = UIAlertController(
+            title: NSLocalizedString("No se encontró la conexión a internet", comment: ""),
+            message: NSLocalizedString("Por favor comprueba tu conexión e intenta más tarde", comment: ""),
+            preferredStyle: .alert
+        )
+        alert.addAction(UIAlertAction(title: NSLocalizedString("Ok", comment: ""), style: .default))
+        self.present(alert, animated: true)
     }
     
     @IBAction func unwindFromDetail(segue: UIStoryboardSegue) {
@@ -80,4 +94,3 @@ class ViewController: UIViewController, UITableViewDataSource, UITableViewDelega
         saveItemInDatabase(item: newDrink!)
     }
 }
-

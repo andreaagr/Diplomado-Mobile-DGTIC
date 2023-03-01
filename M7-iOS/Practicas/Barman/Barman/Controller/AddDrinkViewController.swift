@@ -35,13 +35,7 @@ class AddDrinkViewController: UIViewController, UIImagePickerControllerDelegate,
         if validateText(text: drinkNameTextField.text!) && validateText(text: directionsTextField.text!) && validateText(text: ingrdientsTextField.text!) {
             perform = true
         } else {
-            let alert = UIAlertController(
-                title: NSLocalizedString("Campos requeridos", comment: ""),
-                message: NSLocalizedString("Todos los campos deben contener información", comment: ""),
-                preferredStyle: .alert
-            )
-            alert.addAction(UIAlertAction(title: NSLocalizedString("ok", comment: ""), style: .default))
-            self.present(alert, animated: true)
+            showRequiredFieldsError()
         }
         return perform
     }
@@ -97,6 +91,16 @@ class AddDrinkViewController: UIViewController, UIImagePickerControllerDelegate,
         catch {
             print ("Error al guardar el archivo " + String(describing: error))
         }
+    }
+    
+    func showRequiredFieldsError() {
+        let alert = UIAlertController(
+            title: NSLocalizedString("Campos requeridos", comment: ""),
+            message: NSLocalizedString("Todos los campos deben contener información", comment: ""),
+            preferredStyle: .alert
+        )
+        alert.addAction(UIAlertAction(title: NSLocalizedString("Ok", comment: ""), style: .default))
+        self.present(alert, animated: true)
     }
     
     @IBAction func takePhoto(_ sender: Any) {

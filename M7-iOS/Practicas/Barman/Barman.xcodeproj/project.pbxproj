@@ -22,6 +22,7 @@
 		6C30588C29AF28B70077D4E8 /* DrinkDataManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6C30588B29AF28B70077D4E8 /* DrinkDataManager.swift */; };
 		6C30589F29AF332F0077D4E8 /* Recipe+CoreDataClass.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6C30589D29AF332F0077D4E8 /* Recipe+CoreDataClass.swift */; };
 		6C3058A029AF332F0077D4E8 /* Recipe+CoreDataProperties.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6C30589E29AF332F0077D4E8 /* Recipe+CoreDataProperties.swift */; };
+		6C3058A629AF41F10077D4E8 /* InternetMonitor.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6C3058A529AF41F10077D4E8 /* InternetMonitor.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -42,6 +43,7 @@
 		6C30588B29AF28B70077D4E8 /* DrinkDataManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DrinkDataManager.swift; sourceTree = "<group>"; };
 		6C30589D29AF332F0077D4E8 /* Recipe+CoreDataClass.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Recipe+CoreDataClass.swift"; sourceTree = "<group>"; };
 		6C30589E29AF332F0077D4E8 /* Recipe+CoreDataProperties.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Recipe+CoreDataProperties.swift"; sourceTree = "<group>"; };
+		6C3058A529AF41F10077D4E8 /* InternetMonitor.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = InternetMonitor.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -83,6 +85,7 @@
 				6C30587B29ADDDC50077D4E8 /* Info.plist */,
 				6C30587329ADDDC40077D4E8 /* Barman.xcdatamodeld */,
 				6C30588929AF18FA0077D4E8 /* Util.swift */,
+				6C3058A529AF41F10077D4E8 /* InternetMonitor.swift */,
 			);
 			path = Barman;
 			sourceTree = "<group>";
@@ -207,6 +210,7 @@
 				6C30588429ADF3130077D4E8 /* DrinkTableViewCell.swift in Sources */,
 				6C30586D29ADDDC40077D4E8 /* SceneDelegate.swift in Sources */,
 				6C3058A029AF332F0077D4E8 /* Recipe+CoreDataProperties.swift in Sources */,
+				6C3058A629AF41F10077D4E8 /* InternetMonitor.swift in Sources */,
 				6C30588629AEAD130077D4E8 /* DetailViewController.swift in Sources */,
 				6C30588829AEDA100077D4E8 /* AddDrinkViewController.swift in Sources */,
 			);

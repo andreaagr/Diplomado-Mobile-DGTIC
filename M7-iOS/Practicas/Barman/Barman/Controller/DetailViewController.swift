@@ -31,10 +31,12 @@ class DetailViewController: UIViewController {
         if doesImageExistLocally() {
             showImageLocally()
         } else {
-            downloadImage(doOnSuccess: { data in
-                self.showImageFromBackgroundThread(data: data)
-                self.saveFile(data: data)
-            })
+            if InternetMonitor.instance.internetStatus {
+                downloadImage(doOnSuccess: { data in
+                    self.showImageFromBackgroundThread(data: data)
+                    self.saveFile(data: data)
+                })
+            }
         }
     }
     
@@ -75,5 +77,15 @@ class DetailViewController: UIViewController {
         DispatchQueue.main.async {
             self.drinkImageView.image = UIImage(data: data)
         }
+    }
+    
+    func showNoInternetError() {
+        let alert = UIAlertController(
+            title: NSLocalizedString("No se encontró la conexión a internet", comment: ""),
+            message: NSLocalizedString("Por favor comprueba tu conexión e intenta más tarde", comment: ""),
+            preferredStyle: .alert
+        )
+        alert.addAction(UIAlertAction(title: NSLocalizedString("Ok", comment: ""), style: .default))
+        self.present(alert, animated: true)
     }
 }
