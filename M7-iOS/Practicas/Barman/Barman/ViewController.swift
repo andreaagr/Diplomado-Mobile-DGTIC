@@ -14,7 +14,7 @@ class ViewController: UIViewController, UITableViewDataSource, UITableViewDelega
     var drinks = [Drink]()
     var drink: Drink?
     let cellIdentifier = "DrinkTableViewCell"
-    
+    let showDetailSegue = "showDetail"
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -23,13 +23,15 @@ class ViewController: UIViewController, UITableViewDataSource, UITableViewDelega
     }
     
     override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
-        let destination = segue.destination as! DetailViewController
-        destination.drinkReceived = drink
+        if segue.identifier == showDetailSegue {
+            let destination = segue.destination as! DetailViewController
+            destination.drinkReceived = drink
+        }
     }
     
     func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
         drink = drinks[indexPath.row]
-        performSegue(withIdentifier: "showDetail", sender: Self.self)
+        performSegue(withIdentifier: showDetailSegue, sender: Self.self)
     }
     
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
