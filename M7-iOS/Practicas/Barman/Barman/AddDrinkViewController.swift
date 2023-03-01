@@ -67,25 +67,7 @@ class AddDrinkViewController: UIViewController, UIImagePickerControllerDelegate,
         
     func imagePickerControllerDidCancel(_ picker: UIImagePickerController) {
         picker.dismiss(animated: true)
-            imageViewContainer.image = UIImage(named: "DrinkPlaceholder")
-        }
-    
-    @IBAction func takePhoto(_ sender: Any) {
-        imgPickCon = UIImagePickerController()
-        imgPickCon?.delegate = self
-        if UIImagePickerController.isSourceTypeAvailable(.camera) {
-            switch AVCaptureDevice.authorizationStatus(for:.video) {
-            case .authorized: self.launchIMGPC(.camera)
-            case .notDetermined: AVCaptureDevice.requestAccess (for: .video) { permiso in
-                if permiso {
-                    self.launchIMGPC(.camera)
-                }
-            }
-            default:
-                requestPermission()
-                return
-            }
-        }
+        imageViewContainer.image = UIImage(named: "DrinkPlaceholder")
     }
     
     func requestPermission () {
@@ -114,6 +96,24 @@ class AddDrinkViewController: UIViewController, UIImagePickerControllerDelegate,
         }
         catch {
             print ("Error al guardar el archivo " + String(describing: error))
+        }
+    }
+    
+    @IBAction func takePhoto(_ sender: Any) {
+        imgPickCon = UIImagePickerController()
+        imgPickCon?.delegate = self
+        if UIImagePickerController.isSourceTypeAvailable(.camera) {
+            switch AVCaptureDevice.authorizationStatus(for:.video) {
+            case .authorized: self.launchIMGPC(.camera)
+            case .notDetermined: AVCaptureDevice.requestAccess (for: .video) { permiso in
+                if permiso {
+                    self.launchIMGPC(.camera)
+                }
+            }
+            default:
+                requestPermission()
+                return
+            }
         }
     }
 }

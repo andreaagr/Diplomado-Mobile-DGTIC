@@ -70,14 +70,14 @@ class ViewController: UIViewController, UITableViewDataSource, UITableViewDelega
         task.resume()
     }
     
+    func saveItemInDatabase(item: Drink) {
+        dataManager.addDrink(drink: item)
+    }
+    
     @IBAction func unwindFromDetail(segue: UIStoryboardSegue) {
         drinks.append(newDrink!)
         self.drinksTableView.reloadData()
         saveItemInDatabase(item: newDrink!)
-    }
-    
-    func saveItemInDatabase(item: Drink) {
-        dataManager.addDrink(drink: item)
     }
 }
 
