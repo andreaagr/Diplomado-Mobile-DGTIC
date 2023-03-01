@@ -49,6 +49,7 @@ class ViewController: UIViewController, UITableViewDataSource, UITableViewDelega
     }
     
     func retrieveDrinks() {
+        self.drinks.append(contentsOf: self.dataManager.fetch())
         if InternetMonitor.instance.internetStatus {
             guard let laURL = URL(string: "http://janzelaznog.com/DDAM/iOS/drinks.json") else { return }
             let configuration = URLSessionConfiguration.ephemeral
@@ -58,8 +59,8 @@ class ViewController: UIViewController, UITableViewDataSource, UITableViewDelega
                 if error == nil {
                     guard let data = bytes else { return }
                     do {
-                        self.drinks = try JSONDecoder().decode([Drink].self, from: data)
-                        self.drinks.append(contentsOf: self.dataManager.fetch())
+                        self.drinks.append(contentsOf: try JSONDecoder().decode([Drink].self, from: data))
+                        self.drinks = self.drinks.sorted { $0.name < $1.name }
                         DispatchQueue.main.async {
                             self.drinksTableView.reloadData()
                         }
@@ -70,6 +71,7 @@ class ViewController: UIViewController, UITableViewDataSource, UITableViewDelega
             }
             task.resume()
         } else {
+            self.drinksTableView.reloadData()
             showNoInternetError()
         }
     }
@@ -90,6 +92,7 @@ class ViewController: UIViewController, UITableViewDataSource, UITableViewDelega
     
     @IBAction func unwindFromDetail(segue: UIStoryboardSegue) {
         drinks.append(newDrink!)
+        self.drinks = self.drinks.sorted { $0.name < $1.name }
         self.drinksTableView.reloadData()
         saveItemInDatabase(item: newDrink!)
     }
