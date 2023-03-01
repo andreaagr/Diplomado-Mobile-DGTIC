@@ -74,24 +74,56 @@
 		6C30586929ADDDC40077D4E8 /* Barman */ = {
 			isa = PBXGroup;
 			children = (
-				6C30589E29AF332F0077D4E8 /* Recipe+CoreDataProperties.swift */,
-				6C30589D29AF332F0077D4E8 /* Recipe+CoreDataClass.swift */,
+				6C3058A329AF405C0077D4E8 /* Model */,
+				6C3058A229AF403A0077D4E8 /* Controller */,
+				6C3058A129AF40320077D4E8 /* View */,
 				6C30586A29ADDDC40077D4E8 /* AppDelegate.swift */,
 				6C30586C29ADDDC40077D4E8 /* SceneDelegate.swift */,
-				6C30586E29ADDDC40077D4E8 /* ViewController.swift */,
-				6C30588529AEAD130077D4E8 /* DetailViewController.swift */,
-				6C30588329ADF3130077D4E8 /* DrinkTableViewCell.swift */,
-				6C30587029ADDDC40077D4E8 /* Main.storyboard */,
 				6C30587629ADDDC50077D4E8 /* Assets.xcassets */,
-				6C30587829ADDDC50077D4E8 /* LaunchScreen.storyboard */,
 				6C30587B29ADDDC50077D4E8 /* Info.plist */,
 				6C30587329ADDDC40077D4E8 /* Barman.xcdatamodeld */,
-				6C30588129ADE3800077D4E8 /* Drink.swift */,
-				6C30588729AEDA100077D4E8 /* AddDrinkViewController.swift */,
 				6C30588929AF18FA0077D4E8 /* Util.swift */,
-				6C30588B29AF28B70077D4E8 /* DrinkDataManager.swift */,
 			);
 			path = Barman;
+			sourceTree = "<group>";
+		};
+		6C3058A129AF40320077D4E8 /* View */ = {
+			isa = PBXGroup;
+			children = (
+				6C30588329ADF3130077D4E8 /* DrinkTableViewCell.swift */,
+				6C30587029ADDDC40077D4E8 /* Main.storyboard */,
+				6C30587829ADDDC50077D4E8 /* LaunchScreen.storyboard */,
+			);
+			path = View;
+			sourceTree = "<group>";
+		};
+		6C3058A229AF403A0077D4E8 /* Controller */ = {
+			isa = PBXGroup;
+			children = (
+				6C30586E29ADDDC40077D4E8 /* ViewController.swift */,
+				6C30588529AEAD130077D4E8 /* DetailViewController.swift */,
+				6C30588729AEDA100077D4E8 /* AddDrinkViewController.swift */,
+			);
+			path = Controller;
+			sourceTree = "<group>";
+		};
+		6C3058A329AF405C0077D4E8 /* Model */ = {
+			isa = PBXGroup;
+			children = (
+				6C3058A429AF40860077D4E8 /* CoreData */,
+				6C30588129ADE3800077D4E8 /* Drink.swift */,
+			);
+			path = Model;
+			sourceTree = "<group>";
+		};
+		6C3058A429AF40860077D4E8 /* CoreData */ = {
+			isa = PBXGroup;
+			children = (
+				6C30589E29AF332F0077D4E8 /* Recipe+CoreDataProperties.swift */,
+				6C30589D29AF332F0077D4E8 /* Recipe+CoreDataClass.swift */,
+				6C30588B29AF28B70077D4E8 /* DrinkDataManager.swift */,
+			);
+			path = CoreData;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
