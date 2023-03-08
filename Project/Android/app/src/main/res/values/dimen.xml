@@ -1,0 +1,9 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <dimen name="match_constraint">0dp</dimen>
+    <dimen name="profile_picture_size_drawer_header">75dp</dimen>
+    <dimen name="side_margins_drawer_header">8dp</dimen>
+    <dimen name="top_bottom_profile_pictur_margins_drawer_header">32dp</dimen>
+    <dimen name="user_name_text_size_drawer_header">20sp</dimen>
+    <dimen name="user_email_text_size_drawer_header">16sp</dimen>
+</resources>

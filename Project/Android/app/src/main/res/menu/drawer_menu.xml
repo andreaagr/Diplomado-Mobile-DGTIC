@@ -1,0 +1,20 @@
+<?xml version="1.0" encoding="utf-8"?>
+<menu xmlns:android="http://schemas.android.com/apk/res/android">
+    <group
+        android:id="@+id/userActions">
+        <item
+            android:id="@+id/fragment_recipes"
+            android:title="@string/my_recipes_drawer_title"
+            android:icon="@drawable/chef"/>
+        <item
+            android:id="@+id/fragment_cookbooks"
+            android:title="@string/my_cookbooks_drawer_title"
+            android:icon="@drawable/recipe_book_outlined"/>
+    </group>
+    <group
+        android:id="@+id/accountOptions">
+        <item
+            android:title="@string/sign_out_drawer_title"
+            android:icon="@drawable/log_out" />
+    </group>
+</menu>

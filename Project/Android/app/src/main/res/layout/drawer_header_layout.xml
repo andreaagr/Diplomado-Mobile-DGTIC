@@ -1,0 +1,52 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    android:background="@drawable/header_background_gradient">
+
+    <ImageView
+        android:id="@+id/imageView"
+        android:layout_width="@dimen/profile_picture_size_drawer_header"
+        android:layout_height="@dimen/profile_picture_size_drawer_header"
+        android:layout_marginStart="@dimen/side_margins_drawer_header"
+        android:layout_marginTop="@dimen/top_bottom_profile_pictur_margins_drawer_header"
+        android:layout_marginBottom="@dimen/top_bottom_profile_pictur_margins_drawer_header"
+        android:contentDescription="@string/profile_photo_content_desc"
+        android:src="@drawable/profile"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent" />
+
+    <TextView
+        android:id="@+id/textView"
+        android:layout_width="@dimen/match_constraint"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="@dimen/side_margins_drawer_header"
+        android:layout_marginEnd="@dimen/side_margins_drawer_header"
+        android:fontFamily="@font/amaranth_bold"
+        android:textColor="@color/white"
+        android:textSize="@dimen/user_name_text_size_drawer_header"
+        app:layout_constraintBottom_toTopOf="@+id/textView2"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.5"
+        app:layout_constraintStart_toEndOf="@+id/imageView"
+        app:layout_constraintTop_toTopOf="parent"
+        app:layout_constraintVertical_chainStyle="packed"
+        tools:text="Full Name" />
+
+    <TextView
+        android:id="@+id/textView2"
+        android:layout_width="@dimen/match_constraint"
+        android:layout_height="wrap_content"
+        android:textColor="@color/white"
+        android:textSize="@dimen/user_email_text_size_drawer_header"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="@+id/textView"
+        app:layout_constraintHorizontal_bias="0.5"
+        app:layout_constraintStart_toStartOf="@+id/textView"
+        app:layout_constraintTop_toBottomOf="@+id/textView"
+        tools:text="user_email@gmail.com" />
+
+</androidx.constraintlayout.widget.ConstraintLayout>

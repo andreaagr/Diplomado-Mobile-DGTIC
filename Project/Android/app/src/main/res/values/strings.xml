@@ -3,4 +3,8 @@
     <string name="title_home">Home</string>
     <string name="title_dashboard">Dashboard</string>
     <string name="title_notifications">Notifications</string>
+    <string name="my_recipes_drawer_title">My recipes</string>
+    <string name="my_cookbooks_drawer_title">My cookbooks</string>
+    <string name="sign_out_drawer_title">Sign out</string>
+    <string name="profile_photo_content_desc">Profile picture</string>
 </resources>
