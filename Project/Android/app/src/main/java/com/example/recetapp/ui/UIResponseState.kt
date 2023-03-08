@@ -1,4 +1,4 @@
-package com.example.recetapp
+package com.example.recetapp.ui
 
 sealed class UIResponseState {
     object Loading: UIResponseState()
