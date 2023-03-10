@@ -15,11 +15,20 @@
         android:id="@+id/navigation_dashboard"
         android:name="com.example.recetapp.ui.dashboard.DashboardFragment"
         android:label="@string/title_dashboard"
-        tools:layout="@layout/fragment_dashboard" />
+        tools:layout="@layout/fragment_dashboard" >
+        <action
+            android:id="@+id/action_navigation_dashboard_to_recipeByIngredientFragment"
+            app:destination="@id/recipeByIngredientFragment" />
+    </fragment>
 
     <fragment
         android:id="@+id/navigation_notifications"
         android:name="com.example.recetapp.ui.notifications.NotificationsFragment"
         android:label="@string/title_notifications"
         tools:layout="@layout/fragment_notifications" />
+    <fragment
+        android:id="@+id/recipeByIngredientFragment"
+        android:name="com.example.recetapp.ui.dashboard.results.RecipeByIngredientFragment"
+        android:label="Results"
+        tools:layout="@layout/fragment_recipe_by_ingredient" />
 </navigation>

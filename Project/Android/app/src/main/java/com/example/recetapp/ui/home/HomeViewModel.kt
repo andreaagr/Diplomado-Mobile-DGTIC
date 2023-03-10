@@ -21,7 +21,7 @@ class HomeViewModel @Inject constructor(
 
     fun onCreate() {
         viewModelScope.launch(Dispatchers.IO) {
-            _viewState.postValue(repository.getRandomRecipes())
+            //_viewState.postValue(repository.getRandomRecipes())
         }
     }
 }

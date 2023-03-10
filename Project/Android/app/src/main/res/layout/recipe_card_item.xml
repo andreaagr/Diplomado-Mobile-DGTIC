@@ -1,0 +1,126 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.cardview.widget.CardView xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    android:layout_margin="@dimen/cardview_margin"
+    android:elevation="@dimen/cardview_elevation"
+    app:cardCornerRadius="@dimen/cardview_corner_radius">
+
+    <androidx.constraintlayout.widget.ConstraintLayout
+        android:layout_width="match_parent"
+        android:layout_height="match_parent">
+
+
+        <ImageView
+            android:id="@+id/recipeByIngredientImageView"
+            android:layout_width="wrap_content"
+            android:layout_height="@dimen/recipe_result_height"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toTopOf="parent"
+            app:srcCompat="@drawable/recipe_placeholder" />
+
+        <TextView
+            android:id="@+id/recipeByIngredientTitle"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:layout_marginStart="8dp"
+            android:layout_marginTop="8dp"
+            android:layout_marginEnd="8dp"
+            android:fontFamily="@font/amaranth_bold"
+            android:textSize="20sp"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/recipeByIngredientImageView"
+            tools:text="Recipe name" />
+
+        <ToggleButton
+            android:id="@+id/toggleButton"
+            android:layout_width="@dimen/top_icon_not_animated_size"
+            android:layout_height="@dimen/top_icon_not_animated_size"
+            android:layout_marginTop="8dp"
+            android:layout_marginEnd="8dp"
+            android:background="@drawable/toggle_favorite"
+            android:textOff=""
+            android:textOn=""
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintTop_toTopOf="parent" />
+
+        <ImageView
+            android:id="@+id/imageView2"
+            android:layout_width="@dimen/statistics_recipe_by_ingredients_icons_size"
+            android:layout_height="@dimen/statistics_recipe_by_ingredients_icons_size"
+            android:layout_marginTop="8dp"
+            app:layout_constraintEnd_toStartOf="@+id/imageView3"
+            app:layout_constraintHorizontal_bias="0.5"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/recipeByIngredientTitle"
+            app:srcCompat="@drawable/yes" />
+
+        <ImageView
+            android:id="@+id/imageView3"
+            android:layout_width="@dimen/statistics_recipe_by_ingredients_icons_size"
+            android:layout_height="@dimen/statistics_recipe_by_ingredients_icons_size"
+            app:layout_constraintEnd_toStartOf="@+id/imageView4"
+            app:layout_constraintHorizontal_bias="0.5"
+            app:layout_constraintStart_toEndOf="@+id/imageView2"
+            app:layout_constraintTop_toTopOf="@+id/imageView2"
+            app:srcCompat="@drawable/cancel" />
+
+        <ImageView
+            android:id="@+id/imageView4"
+            android:layout_width="@dimen/statistics_recipe_by_ingredients_icons_size"
+            android:layout_height="@dimen/statistics_recipe_by_ingredients_icons_size"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintHorizontal_bias="0.5"
+            app:layout_constraintStart_toEndOf="@+id/imageView3"
+            app:layout_constraintTop_toTopOf="@+id/imageView3"
+            app:srcCompat="@drawable/basket" />
+
+        <TextView
+            android:id="@+id/numberOfUsedIngredients"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginBottom="8dp"
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintEnd_toEndOf="@+id/imageView2"
+            app:layout_constraintStart_toStartOf="@+id/imageView2"
+            app:layout_constraintTop_toBottomOf="@+id/imageView2"
+            tools:text="1 used" />
+
+        <TextView
+            android:id="@+id/numberOfUnusedIngredients"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="1dp"
+            tools:text="0 unused"
+            app:layout_constraintEnd_toEndOf="@+id/imageView3"
+            app:layout_constraintStart_toStartOf="@+id/imageView3"
+            app:layout_constraintTop_toBottomOf="@+id/imageView3" />
+
+        <TextView
+            android:id="@+id/numberOfMissedIngredients"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="1dp"
+            tools:text="3 missed"
+            app:layout_constraintEnd_toEndOf="@+id/imageView4"
+            app:layout_constraintStart_toStartOf="@+id/imageView4"
+            app:layout_constraintTop_toBottomOf="@+id/imageView4" />
+
+        <ToggleButton
+            android:id="@+id/toggleButton2"
+            android:layout_width="@dimen/top_icon_not_animated_size"
+            android:layout_height="@dimen/top_icon_not_animated_size"
+            android:layout_marginTop="16dp"
+            android:background="@drawable/toggle_save"
+            android:textOff=""
+            android:textOn=""
+            app:layout_constraintEnd_toEndOf="@+id/toggleButton"
+            app:layout_constraintTop_toBottomOf="@+id/toggleButton" />
+
+    </androidx.constraintlayout.widget.ConstraintLayout>
+
+</androidx.cardview.widget.CardView>

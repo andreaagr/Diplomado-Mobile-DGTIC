@@ -15,4 +15,4 @@ fun getImageUrl(
     imageName: String,
     endpoint: Endpoint,
     size: ImageSize
-) = "https://spoonacular.com/cdn/${endpoint}_${size}/$imageName"
+) = "https://spoonacular.com/cdn/${endpoint.identifier}_${size.pxSize}/$imageName"

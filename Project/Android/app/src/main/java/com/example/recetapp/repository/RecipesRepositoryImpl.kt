@@ -11,4 +11,12 @@ class RecipesRepositoryImpl @Inject constructor(
     override suspend fun getRandomRecipes(): UIResponseState {
         return remoteDataSource.getRandomRecipes()
     }
+
+    override suspend fun getIngredientImage(id: Int): UIResponseState {
+        return remoteDataSource.getIngredientImage(id)
+    }
+
+    override suspend fun getRecipeByIngredients(ingredients: String): UIResponseState {
+        return remoteDataSource.getRecipeByIngredients(ingredients)
+    }
 }

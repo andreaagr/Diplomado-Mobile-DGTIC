@@ -8,4 +8,5 @@ data class ExtendedIngredient(
     val image: String,
     val measures: Measures,
     val original: String,
+    val unitLong: String
 )
