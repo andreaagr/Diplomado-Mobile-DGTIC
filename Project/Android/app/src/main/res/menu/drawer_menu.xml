@@ -4,8 +4,8 @@
         android:id="@+id/userActions">
         <item
             android:id="@+id/fragment_recipes"
-            android:title="@string/my_recipes_drawer_title"
-            android:icon="@drawable/chef"/>
+            android:title="@string/my_favorites_drawer_title"
+            android:icon="@drawable/heart"/>
         <item
             android:id="@+id/fragment_cookbooks"
             android:title="@string/my_cookbooks_drawer_title"

@@ -1,6 +1,8 @@
 package com.example.recetapp.networking
 
+import com.example.recetapp.model.ComplexSearchResponse
 import com.example.recetapp.model.RecipeByIngredients
+import com.example.recetapp.model.recipe.Recipe
 import com.example.recetapp.model.recipe.instructions.Ingredient
 import com.example.recetapp.model.response.RandomRecipeResponse
 import retrofit2.http.GET
@@ -21,7 +23,26 @@ interface FoodService {
     @GET("recipes/findByIngredients")
     suspend fun getRecipeByIngredients(
         @Query("ingredients") ingredients: String,
-        @Query("number") number: Int = 1
+        @Query("number") number: Int = 10
     ): List<RecipeByIngredients>
 
+    @GET("recipes/complexSearch")
+    suspend fun getRecipeByCuisine(
+        @Query("cuisine") cuisineName: String
+    ): ComplexSearchResponse
+
+    @GET("recipes/complexSearch")
+    suspend fun getRecipeByDiet(
+        @Query("diet") dietName: String
+    ): ComplexSearchResponse
+
+    @GET("recipes/complexSearch")
+    suspend fun getRecipeByMealType(
+        @Query("type") mealType: String
+    ): ComplexSearchResponse
+
+    @GET("recipes/{id}/information")
+    suspend fun getRecipeInformation(
+        @Path("id") id: Int
+    ): Recipe
 }

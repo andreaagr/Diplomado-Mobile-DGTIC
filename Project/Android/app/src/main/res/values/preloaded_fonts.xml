@@ -2,5 +2,8 @@
 <resources>
     <array name="preloaded_fonts" translatable="false">
         <item>@font/amaranth_bold</item>
+        <item>@font/autour_one</item>
+        <item>@font/buenard</item>
+        <item>@font/kumar_one_outline</item>
     </array>
 </resources>

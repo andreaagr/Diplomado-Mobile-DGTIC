@@ -9,7 +9,14 @@
         android:id="@+id/navigation_home"
         android:name="com.example.recetapp.ui.home.HomeFragment"
         android:label="@string/title_home"
-        tools:layout="@layout/fragment_home" />
+        tools:layout="@layout/fragment_home" >
+        <action
+            android:id="@+id/action_navigation_home_to_recipesByCategoriesFragment"
+            app:destination="@id/recipesByCategoriesFragment" />
+        <action
+            android:id="@+id/action_navigation_home_to_recipeDetailsFragment"
+            app:destination="@id/recipeDetailsFragment" />
+    </fragment>
 
     <fragment
         android:id="@+id/navigation_dashboard"
@@ -31,4 +38,14 @@
         android:name="com.example.recetapp.ui.dashboard.results.RecipeByIngredientFragment"
         android:label="Results"
         tools:layout="@layout/fragment_recipe_by_ingredient" />
+    <fragment
+        android:id="@+id/recipesByCategoriesFragment"
+        android:name="com.example.recetapp.ui.home.RecipesByCategoriesFragment"
+        android:label="fragment_recipes_by_categories"
+        tools:layout="@layout/fragment_recipe_by_categories" />
+    <fragment
+        android:id="@+id/recipeDetailsFragment"
+        android:name="com.example.recetapp.ui.RecipeDetailsFragment"
+        android:label="fragment_recipe_details"
+        tools:layout="@layout/fragment_recipe_details" />
 </navigation>

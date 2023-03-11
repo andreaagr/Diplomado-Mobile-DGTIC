@@ -1,5 +1,6 @@
 package com.example.recetapp.repository
 
+import com.example.recetapp.CategoryType
 import com.example.recetapp.ui.UIResponseState
 
 interface RecipesRepository {
@@ -9,4 +10,8 @@ interface RecipesRepository {
     suspend fun getRecipeByIngredients(
         ingredients: String
     ): UIResponseState
+
+    suspend fun getRecipeByCategory(categoryName: String, categoryType: CategoryType): UIResponseState
+
+    suspend fun getRecipeInformation(recipeId: Int): UIResponseState
 }

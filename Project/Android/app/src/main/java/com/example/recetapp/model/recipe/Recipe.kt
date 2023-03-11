@@ -1,8 +1,10 @@
 package com.example.recetapp.model.recipe
 
+import android.os.Parcelable
 import com.example.recetapp.model.recipe.ingredients.ExtendedIngredient
 import com.example.recetapp.model.recipe.instructions.AnalyzedInstruction
 import com.google.gson.annotations.SerializedName
+import kotlinx.parcelize.Parcelize
 
 data class Recipe(
     val id: Int,

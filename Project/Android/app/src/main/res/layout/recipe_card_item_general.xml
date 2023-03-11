@@ -1,0 +1,90 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.cardview.widget.CardView xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    android:layout_margin="@dimen/cardview_margin"
+    android:elevation="@dimen/cardview_elevation"
+    app:cardCornerRadius="@dimen/cardview_corner_radius">
+
+    <androidx.constraintlayout.widget.ConstraintLayout
+        android:layout_width="match_parent"
+        android:layout_height="match_parent">
+
+
+        <ImageView
+            android:id="@+id/recipeByCategoryImageView"
+            android:layout_width="150dp"
+            android:layout_height="150dp"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toTopOf="parent"
+            app:srcCompat="@drawable/recipe_placeholder" />
+
+        <TextView
+            android:id="@+id/recipeByCategoryTitle"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:layout_marginStart="8dp"
+            android:layout_marginTop="8dp"
+            android:layout_marginEnd="8dp"
+            android:fontFamily="@font/amaranth_bold"
+            android:textSize="20sp"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintHorizontal_bias="0.0"
+            app:layout_constraintStart_toEndOf="@+id/recipeByCategoryImageView"
+            app:layout_constraintTop_toTopOf="parent"
+            tools:text="Recipe name" />
+
+        <ToggleButton
+            android:id="@+id/toggleButton"
+            android:layout_width="@dimen/card_recipe_small_icons_size"
+            android:layout_height="@dimen/card_recipe_small_icons_size"
+            android:layout_marginTop="8dp"
+            android:layout_marginEnd="8dp"
+            android:layout_marginBottom="6dp"
+            android:background="@drawable/toggle_favorite"
+            android:textOff=""
+            android:textOn=""
+            android:visibility="visible"
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/chipGroup" />
+
+        <ToggleButton
+            android:id="@+id/toggleButton2"
+            android:layout_width="@dimen/card_recipe_small_icons_size"
+            android:layout_height="@dimen/card_recipe_small_icons_size"
+            android:layout_marginEnd="16dp"
+            android:background="@drawable/toggle_save"
+            android:textOff=""
+            android:textOn=""
+            android:visibility="visible"
+            app:layout_constraintEnd_toStartOf="@+id/toggleButton"
+            app:layout_constraintTop_toTopOf="@+id/toggleButton" />
+
+        <com.google.android.material.chip.ChipGroup
+            android:id="@+id/chipGroup"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="8dp"
+            app:layout_constraintEnd_toEndOf="@+id/recipeByCategoryTitle"
+            app:layout_constraintStart_toStartOf="@+id/recipeByCategoryTitle"
+            app:layout_constraintTop_toBottomOf="@+id/summaryTextView">
+
+        </com.google.android.material.chip.ChipGroup>
+
+        <TextView
+            android:id="@+id/summaryTextView"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:ellipsize="end"
+            android:maxLines="3"
+            app:layout_constraintEnd_toEndOf="@+id/recipeByCategoryTitle"
+            app:layout_constraintStart_toStartOf="@+id/recipeByCategoryTitle"
+            app:layout_constraintTop_toBottomOf="@+id/recipeByCategoryTitle"
+            tools:text="Lorem ipsum dolor sit amet, consectetur adipiscing elit. Curabitur porta justo accumsan volutpat tincidunt. Sed vitae enim ullamcorper, pharetra purus quis, dapibus ante. Pellentesque consequat neque non metus egestas blandit. Duis euismod iaculis quam sit amet accumsan. Phasellus accumsan massa vel metus rutrum congue." />
+
+    </androidx.constraintlayout.widget.ConstraintLayout>
+
+</androidx.cardview.widget.CardView>

@@ -16,4 +16,6 @@
     <dimen name="top_icon_not_animated_size">48dp</dimen>
     <dimen name="statistics_recipe_by_ingredients_icons_size">40dp</dimen>
     <dimen name="error_animation_size">500dp</dimen>
+    <dimen name="category_recyclerview_height">175dp</dimen>
+    <dimen name="card_recipe_small_icons_size">35dp</dimen>
 </resources>

@@ -6,6 +6,12 @@ enum class ImageSize(val pxSize: String) {
     BIG("500x500")
 }
 
+enum class CategoryType(val identifier: String) {
+    CUISINE("cuisine"),
+    DIET("diet"),
+    MEAL_TYPE("type")
+}
+
 enum class Endpoint(val identifier: String) {
     INGREDIENT("ingredients"),
     EQUIPMENT("equipment")
