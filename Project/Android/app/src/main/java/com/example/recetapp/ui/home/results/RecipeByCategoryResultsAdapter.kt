@@ -59,7 +59,7 @@ class GeneralRecipeViewHolder(
                 )
             }
             toggleFavoriteButton.setOnClickListener {
-                if (!toggleFavoriteButton.isChecked) {
+                if (toggleFavoriteButton.isChecked) {
                     onFavoriteTapped(recipe)
                 } else {
                     onUnFavoriteTapped(recipe)
