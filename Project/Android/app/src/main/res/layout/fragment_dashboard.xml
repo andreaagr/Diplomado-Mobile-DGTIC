@@ -76,14 +76,14 @@
     <androidx.recyclerview.widget.RecyclerView
         android:id="@+id/ingredientsRecyclerView"
         android:layout_width="0dp"
-        android:layout_height="0dp"
+        android:layout_height="wrap_content"
         android:layout_marginStart="8dp"
         android:layout_marginEnd="8dp"
         android:background="@color/added_ingredients_recycler_view_background"
         android:visibility="gone"
         app:layout_constraintBottom_toTopOf="@+id/maxHeightSearchResults"
         app:layout_constraintEnd_toEndOf="@+id/searchView"
-        app:layout_constraintHeight_default="wrap"
+        app:layout_constrainedHeight="true"
         app:layout_constraintStart_toStartOf="@+id/searchView"
         app:layout_constraintTop_toBottomOf="@+id/searchView"
         app:layout_constraintVertical_bias="0.0" />
