@@ -14,6 +14,7 @@
     <group
         android:id="@+id/accountOptions">
         <item
+            android:id="@+id/sign_out_item"
             android:title="@string/sign_out_drawer_title"
             android:icon="@drawable/log_out" />
     </group>
