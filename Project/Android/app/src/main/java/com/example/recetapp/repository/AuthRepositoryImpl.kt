@@ -1,21 +1,15 @@
 package com.example.recetapp.repository
 
-import android.util.Log
 import androidx.activity.result.ActivityResult
 import androidx.activity.result.ActivityResultLauncher
 import androidx.activity.result.IntentSenderRequest
-import androidx.activity.result.contract.ActivityResultContracts
-import androidx.lifecycle.lifecycleScope
 import com.example.recetapp.ui.UIResponseState
 import com.google.android.gms.auth.api.identity.BeginSignInRequest
 import com.google.android.gms.auth.api.identity.SignInClient
 import com.google.firebase.auth.FirebaseAuth
 import com.google.firebase.auth.FirebaseUser
 import com.google.firebase.auth.GoogleAuthProvider
-import kotlinx.coroutines.Dispatchers
-import kotlinx.coroutines.launch
 import kotlinx.coroutines.tasks.await
-import kotlinx.coroutines.withContext
 import javax.inject.Inject
 
 class AuthRepositoryImpl @Inject constructor(
@@ -36,7 +30,6 @@ class AuthRepositoryImpl @Inject constructor(
                 )
             }
         } catch (e: Exception) {
-            Log.d("SignIn Error", e.message.toString())
             doOnError()
         }
     }
@@ -50,7 +43,6 @@ class AuthRepositoryImpl @Inject constructor(
                 firebaseAuth.signInWithCredential(firebaseCredential).await()
                 UIResponseState.Success(firebaseAuth.currentUser)
             } catch (e: Exception) {
-                Log.d("SignIn Error", e.message.toString())
                 UIResponseState.Error(e.message.toString())
             }
         }
