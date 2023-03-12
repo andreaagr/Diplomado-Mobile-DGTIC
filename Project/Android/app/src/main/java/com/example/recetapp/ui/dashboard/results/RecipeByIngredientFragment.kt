@@ -5,10 +5,11 @@ import androidx.fragment.app.Fragment
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
+import android.widget.Toast
 import androidx.fragment.app.activityViewModels
 import androidx.recyclerview.widget.LinearLayoutManager
 import com.example.recetapp.databinding.FragmentRecipeByIngredientBinding
-import com.example.recetapp.model.RecipeByIngredients
+import com.example.recetapp.model.recipe.RecipeByIngredients
 import com.example.recetapp.ui.UIResponseState
 import com.example.recetapp.ui.dashboard.DashboardViewModel
 import dagger.hilt.android.AndroidEntryPoint
@@ -20,7 +21,9 @@ class RecipeByIngredientFragment : Fragment() {
     private val binding get() = _binding!!
     private val viewModel: DashboardViewModel by activityViewModels()
     private val resultsAdapter by lazy {
-        RecipeByIngredientsResultsAdapter()
+        RecipeByIngredientsResultsAdapter {
+            viewModel.addFavorite(it)
+        }
     }
 
     override fun onCreateView(
@@ -29,6 +32,14 @@ class RecipeByIngredientFragment : Fragment() {
     ): View {
         viewModel.viewState.observe(viewLifecycleOwner) {
             handleUIState(it)
+        }
+        viewModel.performActionState.observe(viewLifecycleOwner) {
+            val toastMessage: String = when (it) {
+                is UIResponseState.Success<*> -> it.content as String
+                is UIResponseState.Error -> it.errorMessage
+                else -> "Performing action..."
+            }
+            Toast.makeText(activity, toastMessage, Toast.LENGTH_SHORT).show()
         }
         // Inflate the layout for this fragment
         _binding = FragmentRecipeByIngredientBinding.inflate(inflater, container, false)

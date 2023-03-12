@@ -1,17 +1,18 @@
 package com.example.recetapp.ui.dashboard
 
-import android.util.Log
-import androidx.lifecycle.*
-import com.example.recetapp.model.IngredientItem
-import com.example.recetapp.model.RecipeByIngredients
+import androidx.lifecycle.LiveData
+import androidx.lifecycle.MutableLiveData
+import androidx.lifecycle.ViewModel
+import androidx.lifecycle.viewModelScope
+import com.example.recetapp.model.recipe.Recipe
 import com.example.recetapp.model.recipe.instructions.Ingredient
+import com.example.recetapp.model.view.IngredientItem
 import com.example.recetapp.repository.RecipesRepository
 import com.example.recetapp.ui.UIResponseState
 import dagger.hilt.android.lifecycle.HiltViewModel
 import kotlinx.coroutines.Dispatchers
 import kotlinx.coroutines.launch
 import javax.inject.Inject
-import javax.inject.Singleton
 
 @HiltViewModel
 class DashboardViewModel @Inject constructor(
@@ -21,6 +22,8 @@ class DashboardViewModel @Inject constructor(
     private val _recipeIngredients: MutableLiveData<List<Ingredient>> = MutableLiveData(listOf())
     val viewState: LiveData<UIResponseState> get() = _viewState
     private val _viewState: MutableLiveData<UIResponseState> = MutableLiveData()
+    val performActionState: LiveData<UIResponseState> get() = _performActionState
+    private val _performActionState: MutableLiveData<UIResponseState> = MutableLiveData()
 
     fun addNewIngredient(ingredientItem: IngredientItem) {
         viewModelScope.launch(Dispatchers.IO) {
@@ -70,6 +73,19 @@ class DashboardViewModel @Inject constructor(
                 _recipeIngredients.value?.joinToString(",") { it.name }
                     ?.let { repository.getRecipeByIngredients(it) }
             )
+        }
+    }
+
+    fun addFavorite(recipeId: Int) {
+        viewModelScope.launch {
+            _performActionState.postValue(UIResponseState.Loading)
+            val response = repository.getRecipeInformation(recipeId)
+            if (response is UIResponseState.Success<*>) {
+                repository.saveRecipeToFavorites(response.content as Recipe)
+                _performActionState.postValue(UIResponseState.Success("Item saved to favorites"))
+            } else {
+                _performActionState.postValue(UIResponseState.Error("Couldn't save item, try again later"))
+            }
         }
     }
 }

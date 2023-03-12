@@ -4,8 +4,8 @@ import androidx.lifecycle.LiveData
 import androidx.lifecycle.MutableLiveData
 import androidx.lifecycle.ViewModel
 import androidx.lifecycle.viewModelScope
-import com.example.recetapp.model.CategorySelected
-import com.example.recetapp.model.ComplexSearchResponse
+import com.example.recetapp.model.view.CategorySelected
+import com.example.recetapp.model.response.ComplexSearchResponse
 import com.example.recetapp.model.recipe.Recipe
 import com.example.recetapp.repository.RecipesRepository
 import com.example.recetapp.ui.UIResponseState
@@ -56,5 +56,13 @@ class HomeViewModel @Inject constructor(
                 UIResponseState.Error("Something went wrong")
             }
         }
+    }
+
+    fun addFavorite(recipe: Recipe) {
+        viewModelScope.launch(Dispatchers.IO) { repository.saveRecipeToFavorites(recipe) }
+    }
+
+    fun removeFavorite(recipe: Recipe) {
+        viewModelScope.launch { repository.removeRecipeFromFavorites(recipe) }
     }
 }

@@ -5,7 +5,7 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    tools:context=".ui.home.RecipesByCategoriesFragment">
+    tools:context=".ui.home.results.RecipesByCategoriesFragment">
 
 
     <androidx.recyclerview.widget.RecyclerView
@@ -20,7 +20,8 @@
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent" />
+        app:layout_constraintTop_toTopOf="parent"
+        tools:listitem="@layout/recipe_card_item_general" />
 
     <com.airbnb.lottie.LottieAnimationView
         android:id="@+id/lottieErrorAnimationView"

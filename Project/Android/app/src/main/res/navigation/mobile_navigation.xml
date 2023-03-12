@@ -1,5 +1,6 @@
 <?xml version="1.0" encoding="utf-8"?>
-<navigation xmlns:android="http://schemas.android.com/apk/res/android"
+<navigation
+    xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
     android:id="@+id/mobile_navigation"
@@ -40,7 +41,7 @@
         tools:layout="@layout/fragment_recipe_by_ingredient" />
     <fragment
         android:id="@+id/recipesByCategoriesFragment"
-        android:name="com.example.recetapp.ui.home.RecipesByCategoriesFragment"
+        android:name="com.example.recetapp.ui.home.results.RecipesByCategoriesFragment"
         android:label="fragment_recipes_by_categories"
         tools:layout="@layout/fragment_recipe_by_categories" />
     <fragment
@@ -48,4 +49,9 @@
         android:name="com.example.recetapp.ui.RecipeDetailsFragment"
         android:label="fragment_recipe_details"
         tools:layout="@layout/fragment_recipe_details" />
+    <fragment
+        android:id="@+id/savedRecipesFragment"
+        android:name="com.example.recetapp.ui.savedrecipes.SavedRecipesFragment"
+        android:label="fragment_saved_recipes"
+        tools:layout="@layout/fragment_saved_recipes" />
 </navigation>

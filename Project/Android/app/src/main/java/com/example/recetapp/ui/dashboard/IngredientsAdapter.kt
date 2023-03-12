@@ -2,13 +2,11 @@ package com.example.recetapp.ui.dashboard
 
 import android.view.LayoutInflater
 import android.view.ViewGroup
-import android.widget.Filter
-import android.widget.Filterable
 import androidx.recyclerview.widget.DiffUtil
 import androidx.recyclerview.widget.ListAdapter
 import androidx.recyclerview.widget.RecyclerView
 import com.example.recetapp.databinding.SimpleListItemBinding
-import com.example.recetapp.model.IngredientItem
+import com.example.recetapp.model.view.IngredientItem
 
 typealias OnElementClicked = (IngredientItem) -> Unit
 

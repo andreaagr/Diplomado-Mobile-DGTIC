@@ -7,10 +7,12 @@ import androidx.recyclerview.widget.ListAdapter
 import androidx.recyclerview.widget.RecyclerView
 import com.bumptech.glide.Glide
 import com.example.recetapp.databinding.RecipeCardItemBinding
-import com.example.recetapp.model.RecipeByIngredients
+import com.example.recetapp.model.recipe.RecipeByIngredients
 
-class RecipeByIngredientsResultsAdapter
-    : ListAdapter<RecipeByIngredients, RecipeByIngredientIngredientViewHolder>(DIFF_CALLBACK) {
+typealias OnFavoriteTappedIncompleteInfo = (Int) -> Unit
+class RecipeByIngredientsResultsAdapter(
+    private val onFavoriteTapped: OnFavoriteTappedIncompleteInfo
+) : ListAdapter<RecipeByIngredients, RecipeByIngredientIngredientViewHolder>(DIFF_CALLBACK) {
 
     companion object {
         val DIFF_CALLBACK = object : DiffUtil.ItemCallback<RecipeByIngredients>() {
@@ -32,7 +34,7 @@ class RecipeByIngredientsResultsAdapter
     }
 
     override fun onBindViewHolder(holder: RecipeByIngredientIngredientViewHolder, position: Int) {
-        holder.bind(getItem(position))
+        holder.bind(getItem(position), onFavoriteTapped)
     }
 }
 
@@ -41,7 +43,8 @@ class RecipeByIngredientIngredientViewHolder(
 ): RecyclerView.ViewHolder(binding.root) {
 
     fun bind(
-        recipeByIngredients: RecipeByIngredients
+        recipeByIngredients: RecipeByIngredients,
+        onFavoriteTapped: OnFavoriteTappedIncompleteInfo
     ) {
         with(binding) {
             Glide.with(root)
@@ -49,16 +52,12 @@ class RecipeByIngredientIngredientViewHolder(
                 .fitCenter()
                 .into(recipeByIngredientImageView)
             recipeByIngredientTitle.text = recipeByIngredients.title
-            /*recipeByIngredients.usedIngredients.forEach {
-                ingredientsContainedChips.addView(
-                    Chip(root.context).apply {
-                        text = it.originalName
-                    }
-                )
-            }*/
             numberOfUsedIngredients.text = recipeByIngredients.usedIngredientCount.toString() + " used"
             numberOfUnusedIngredients.text = recipeByIngredients.unusedIngredientCount.toString() + " unused"
             numberOfMissedIngredients.text = recipeByIngredients.missedIngredientCount.toString() + " missed"
+            toggleFavoriteButton.setOnClickListener {
+                onFavoriteTapped(recipeByIngredients.id)
+            }
         }
     }
 }

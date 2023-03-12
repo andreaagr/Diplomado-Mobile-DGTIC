@@ -1,4 +1,4 @@
-package com.example.recetapp.model
+package com.example.recetapp.model.recipe.ingredients
 
 data class Measures(
     val metric: Metric,

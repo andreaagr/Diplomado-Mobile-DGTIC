@@ -21,4 +21,6 @@
     <string name="diets_category_title">Diets</string>
     <string name="my_web_client_id">496813332038-7mkbun840uuhovji8r5go8uekomq9n19.apps.googleusercontent.com</string>
     <string name="toast_sign_in_error_message">Failed to log in, please try again later</string>
+    <!-- TODO: Remove or change this placeholder text -->
+    <string name="hello_blank_fragment">Hello blank fragment</string>
 </resources>

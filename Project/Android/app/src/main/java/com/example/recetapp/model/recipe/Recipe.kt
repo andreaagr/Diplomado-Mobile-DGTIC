@@ -1,12 +1,14 @@
 package com.example.recetapp.model.recipe
 
-import android.os.Parcelable
+import androidx.room.Entity
+import androidx.room.PrimaryKey
 import com.example.recetapp.model.recipe.ingredients.ExtendedIngredient
 import com.example.recetapp.model.recipe.instructions.AnalyzedInstruction
 import com.google.gson.annotations.SerializedName
-import kotlinx.parcelize.Parcelize
 
+@Entity
 data class Recipe(
+    @PrimaryKey(autoGenerate = true)
     val id: Int,
     val title: String,
     @SerializedName("image")
@@ -21,5 +23,5 @@ data class Recipe(
     val diets: List<String>,
     val dishTypes: List<String>,
     val extendedIngredients: List<ExtendedIngredient>,
-    val instructions: String,
+    val instructions: String
 )

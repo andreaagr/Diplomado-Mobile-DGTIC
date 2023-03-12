@@ -3,7 +3,7 @@
     <group
         android:id="@+id/userActions">
         <item
-            android:id="@+id/fragment_recipes"
+            android:id="@+id/favorite_recipes"
             android:title="@string/my_favorites_drawer_title"
             android:icon="@drawable/heart"/>
         <item

@@ -15,8 +15,8 @@ import androidx.viewpager2.widget.MarginPageTransformer
 import com.example.recetapp.CategoryType
 import com.example.recetapp.R
 import com.example.recetapp.databinding.FragmentHomeBinding
-import com.example.recetapp.model.Category
-import com.example.recetapp.model.CategorySelected
+import com.example.recetapp.model.category.Category
+import com.example.recetapp.model.view.CategorySelected
 import com.example.recetapp.model.response.RandomRecipeResponse
 import com.example.recetapp.ui.UIResponseState
 import com.google.gson.Gson

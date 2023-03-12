@@ -7,7 +7,7 @@ import androidx.recyclerview.widget.ListAdapter
 import androidx.recyclerview.widget.RecyclerView
 import com.bumptech.glide.Glide
 import com.example.recetapp.databinding.CategoryItemBinding
-import com.example.recetapp.model.Category
+import com.example.recetapp.model.category.Category
 
 typealias OnCategorySelected = (Category) -> Unit
 

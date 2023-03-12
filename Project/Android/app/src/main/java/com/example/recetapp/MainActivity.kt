@@ -10,10 +10,8 @@ import androidx.activity.viewModels
 import androidx.appcompat.app.AppCompatActivity
 import androidx.core.view.GravityCompat
 import androidx.navigation.fragment.findNavController
-import androidx.navigation.ui.AppBarConfiguration
-import androidx.navigation.ui.navigateUp
-import androidx.navigation.ui.setupActionBarWithNavController
-import androidx.navigation.ui.setupWithNavController
+import androidx.navigation.ui.*
+import androidx.navigation.ui.NavigationUI.setupWithNavController
 import com.bumptech.glide.Glide
 import com.example.recetapp.databinding.ActivityMainBinding
 import com.example.recetapp.databinding.DrawerHeaderLayoutBinding
@@ -60,14 +58,19 @@ class MainActivity : AppCompatActivity() {
             setupActionBarWithNavController(it, appBarConfiguration)
             with(binding) {
                 navView.setupWithNavController(it)
-                navDrawerView.setupWithNavController(it)
+                setupWithNavController(navDrawerView, it)
             }
         }
         binding.navDrawerView.setNavigationItemSelectedListener {
             when(it.itemId) {
                 R.id.sign_out_item -> {
-                    viewModel.signOut()
-                    hideUserDetails()
+                    if (viewModel.isUserAuthenticated()) {
+                        viewModel.signOut()
+                        hideUserDetails()
+                    }
+                }
+                R.id.favorite_recipes -> {
+                    navController?.navigate(R.id.savedRecipesFragment)
                 }
                 else -> { }
             }

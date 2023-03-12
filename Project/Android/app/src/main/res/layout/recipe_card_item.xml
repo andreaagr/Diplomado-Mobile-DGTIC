@@ -37,7 +37,7 @@
             tools:text="Recipe name" />
 
         <ToggleButton
-            android:id="@+id/toggleButton"
+            android:id="@+id/toggleFavoriteButton"
             android:layout_width="@dimen/top_icon_not_animated_size"
             android:layout_height="@dimen/top_icon_not_animated_size"
             android:layout_marginTop="8dp"
@@ -111,15 +111,15 @@
             app:layout_constraintTop_toBottomOf="@+id/imageView4" />
 
         <ToggleButton
-            android:id="@+id/toggleButton2"
+            android:id="@+id/toggleSaveButton"
             android:layout_width="@dimen/top_icon_not_animated_size"
             android:layout_height="@dimen/top_icon_not_animated_size"
             android:layout_marginTop="16dp"
             android:background="@drawable/toggle_save"
             android:textOff=""
             android:textOn=""
-            app:layout_constraintEnd_toEndOf="@+id/toggleButton"
-            app:layout_constraintTop_toBottomOf="@+id/toggleButton" />
+            app:layout_constraintEnd_toEndOf="@+id/toggleFavoriteButton"
+            app:layout_constraintTop_toBottomOf="@+id/toggleFavoriteButton" />
 
     </androidx.constraintlayout.widget.ConstraintLayout>
 
