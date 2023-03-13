@@ -2,11 +2,13 @@ package com.example.recetapp.ui.home.results
 
 
 import android.view.LayoutInflater
+import android.view.View
 import android.view.ViewGroup
 import androidx.recyclerview.widget.DiffUtil
 import androidx.recyclerview.widget.ListAdapter
 import androidx.recyclerview.widget.RecyclerView
 import com.bumptech.glide.Glide
+import com.example.recetapp.ScreenResultType
 import com.example.recetapp.databinding.RecipeCardItemGeneralBinding
 import com.example.recetapp.model.recipe.Recipe
 import com.google.android.material.chip.Chip
@@ -15,7 +17,8 @@ typealias OnFavoriteTapped = (Recipe) -> Unit
 typealias OnUnFavoriteTapped = (Recipe) -> Unit
 class RecipeByCategoryResultsAdapter(
     private val onFavoriteTapped: OnFavoriteTapped,
-    private val onUnFavoriteTapped: OnUnFavoriteTapped
+    private val onUnFavoriteTapped: OnUnFavoriteTapped,
+    private val isFrom: ScreenResultType
 ): ListAdapter<Recipe, GeneralRecipeViewHolder>(DIFF_CALLBACK) {
 
     companion object {
@@ -35,7 +38,7 @@ class RecipeByCategoryResultsAdapter(
     }
 
     override fun onBindViewHolder(holder: GeneralRecipeViewHolder, position: Int) {
-        holder.bind(getItem(position), onFavoriteTapped, onUnFavoriteTapped)
+        holder.bind(getItem(position), onFavoriteTapped, onUnFavoriteTapped, isFrom)
     }
 
 }
@@ -43,7 +46,12 @@ class RecipeByCategoryResultsAdapter(
 class GeneralRecipeViewHolder(
     private val binding: RecipeCardItemGeneralBinding,
 ): RecyclerView.ViewHolder(binding.root) {
-    fun bind(recipe: Recipe, onFavoriteTapped: OnFavoriteTapped, onUnFavoriteTapped: OnUnFavoriteTapped) {
+    fun bind(
+        recipe: Recipe,
+        onFavoriteTapped: OnFavoriteTapped,
+        onUnFavoriteTapped: OnUnFavoriteTapped,
+        isFrom: ScreenResultType
+    ) {
         with(binding) {
             Glide.with(root)
                 .load(recipe.imageUrl)
@@ -57,6 +65,10 @@ class GeneralRecipeViewHolder(
                         text = it
                     }
                 )
+            }
+            if (isFrom == ScreenResultType.FAVORITES) {
+                toggleFavoriteButton.isChecked = true
+                toggleSaveButton.visibility = View.GONE
             }
             toggleFavoriteButton.setOnClickListener {
                 if (toggleFavoriteButton.isChecked) {

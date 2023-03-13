@@ -5,6 +5,7 @@ import com.example.recetapp.CategoryType
 import com.example.recetapp.data.RecipeDao
 import com.example.recetapp.data.RecipeDatabase
 import com.example.recetapp.model.recipe.Recipe
+import com.example.recetapp.model.view.CarouselRecipe
 import com.example.recetapp.networking.RemoteApi
 import com.example.recetapp.ui.UIResponseState
 import kotlinx.coroutines.flow.Flow
@@ -45,5 +46,17 @@ class RecipesRepositoryImpl @Inject constructor(
 
     override fun removeRecipeFromFavorites(recipe: Recipe) {
         return recipeDao.deleteSavedRecipe(recipe)
+    }
+
+    override fun getCarouselRecipes(): Flow<List<CarouselRecipe>> {
+        return recipeDao.getCarouselRecipes()
+    }
+
+    override fun addNewCarouselRecipe(carouselRecipe: CarouselRecipe) {
+         recipeDao.addNewCarouselRecipe(carouselRecipe)
+    }
+
+    override fun deleteAllCarouselRecipes() {
+        recipeDao.deleteAllCarouselRecipes()
     }
 }

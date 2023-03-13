@@ -44,5 +44,4 @@ class SavedRecipeViewModel @Inject constructor(
                 _viewState.postValue(UIResponseState.Success(it))
             }
     }
-
 }

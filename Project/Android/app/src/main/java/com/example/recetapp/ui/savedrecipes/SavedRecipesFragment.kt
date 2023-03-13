@@ -8,6 +8,7 @@ import android.widget.Toast
 import androidx.fragment.app.Fragment
 import androidx.fragment.app.viewModels
 import androidx.recyclerview.widget.LinearLayoutManager
+import com.example.recetapp.ScreenResultType
 import com.example.recetapp.databinding.FragmentSavedRecipesBinding
 import com.example.recetapp.model.recipe.Recipe
 import com.example.recetapp.ui.UIResponseState
@@ -27,7 +28,8 @@ class SavedRecipesFragment : Fragment() {
             },
             {
                 viewModel.removeFavorite(it)
-            }
+            },
+            ScreenResultType.FAVORITES
         )
     }
 

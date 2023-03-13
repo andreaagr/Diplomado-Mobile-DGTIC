@@ -7,6 +7,7 @@ import android.view.View
 import android.view.ViewGroup
 import androidx.fragment.app.activityViewModels
 import androidx.recyclerview.widget.LinearLayoutManager
+import com.example.recetapp.ScreenResultType
 import com.example.recetapp.databinding.FragmentRecipeByCategoriesBinding
 import com.example.recetapp.model.recipe.Recipe
 import com.example.recetapp.ui.SpacingDecoration
@@ -19,11 +20,15 @@ class RecipesByCategoriesFragment : Fragment() {
     private val binding get() = _binding!!
     private val viewModel: HomeViewModel by activityViewModels()
     private val resultsAdapter by lazy {
-        RecipeByCategoryResultsAdapter({
-            viewModel.addFavorite(it)
-        }, {
-            viewModel.removeFavorite(it)
-        })
+        RecipeByCategoryResultsAdapter(
+            {
+                viewModel.addFavorite(it)
+            },
+            {
+                viewModel.removeFavorite(it)
+            },
+            ScreenResultType.CATEGORIES
+        )
     }
 
     override fun onCreateView(

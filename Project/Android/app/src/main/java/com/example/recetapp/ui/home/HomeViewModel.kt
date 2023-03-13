@@ -11,6 +11,8 @@ import com.example.recetapp.repository.RecipesRepository
 import com.example.recetapp.ui.UIResponseState
 import dagger.hilt.android.lifecycle.HiltViewModel
 import kotlinx.coroutines.Dispatchers
+import kotlinx.coroutines.flow.catch
+import kotlinx.coroutines.flow.flowOn
 import kotlinx.coroutines.launch
 import javax.inject.Inject
 
@@ -26,10 +28,16 @@ class HomeViewModel @Inject constructor(
     val categorySelected: LiveData<CategorySelected> get() = _categorySelected
     private val _categorySelected: MutableLiveData<CategorySelected> = MutableLiveData()
 
-    fun onCreate() {
+    fun loadRecipes() {
         viewModelScope.launch(Dispatchers.IO) {
-            _viewState.postValue(repository.getRandomRecipes())
+            repository.getCarouselRecipes()
+                .flowOn(Dispatchers.IO)
+                .catch { UIResponseState.Error("Failed to load items") }
+                .collect {
+                    _viewState.postValue(UIResponseState.Success(it))
+                }
         }
+
     }
 
     fun selectCategory(category: CategorySelected) {

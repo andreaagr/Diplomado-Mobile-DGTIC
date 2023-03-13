@@ -12,16 +12,19 @@ import androidx.recyclerview.widget.LinearLayoutManager
 import androidx.recyclerview.widget.RecyclerView
 import androidx.viewpager2.widget.CompositePageTransformer
 import androidx.viewpager2.widget.MarginPageTransformer
+import androidx.work.*
 import com.example.recetapp.CategoryType
 import com.example.recetapp.R
 import com.example.recetapp.databinding.FragmentHomeBinding
 import com.example.recetapp.model.category.Category
+import com.example.recetapp.model.view.CarouselRecipe
 import com.example.recetapp.model.view.CategorySelected
-import com.example.recetapp.model.response.RandomRecipeResponse
 import com.example.recetapp.ui.UIResponseState
+import com.example.recetapp.work.SynchronizeDataWorker
 import com.google.gson.Gson
 import com.google.gson.reflect.TypeToken
 import dagger.hilt.android.AndroidEntryPoint
+import java.util.concurrent.TimeUnit
 import kotlin.math.abs
 
 @AndroidEntryPoint
@@ -38,10 +41,11 @@ class HomeFragment : Fragment() {
     ): View {
         _binding = FragmentHomeBinding.inflate(inflater, container, false)
         val root: View = binding.root
-        viewModel.onCreate()
         viewModel.viewState.observe(viewLifecycleOwner) {
             handleUIState(it)
         }
+        viewModel.loadRecipes()
+        synchronizeApi()
         return root
     }
 
@@ -61,9 +65,9 @@ class HomeFragment : Fragment() {
     private fun handleUIState(uiState: UIResponseState?) {
         when(uiState) {
             is UIResponseState.Success<*> -> {
-                if (uiState.content is RandomRecipeResponse) {
+                if (uiState.content is List<*>) {
                     // Random recipes call
-                    binding.carouselViewPager.adapter = CarouselRVAdapter(uiState.content.recipes) {
+                    binding.carouselViewPager.adapter = CarouselRVAdapter(uiState.content as List<CarouselRecipe>) {
                         HomeFragmentDirections.actionNavigationHomeToRecipeDetailsFragment()
                     }
                 }
@@ -129,5 +133,30 @@ class HomeFragment : Fragment() {
         val categories = resources.openRawResource(res).bufferedReader().use { it.readText() }
         val typeToken = object : TypeToken<List<Category>>() {}.type
         return Gson().fromJson(categories, typeToken)
+    }
+
+    private fun synchronizeApi(){
+        val constraints = Constraints.Builder()
+            .setRequiresBatteryNotLow(true)
+            .setRequiredNetworkType(NetworkType.NOT_ROAMING)
+            .build()
+
+        val work = PeriodicWorkRequestBuilder<SynchronizeDataWorker>(1, TimeUnit.HOURS)
+            .setConstraints(constraints)
+            .build()
+
+        val workManager = activity?.baseContext?.let { WorkManager.getInstance(it) }
+        workManager?.enqueueUniquePeriodicWork("sync", ExistingPeriodicWorkPolicy.KEEP,work)
+        workManager?.getWorkInfoByIdLiveData(work.id)?.observe(viewLifecycleOwner) { workInfo: WorkInfo? ->
+            if (workInfo != null) {
+                when (workInfo.progress.getInt("Progress", 100)) {
+                    0 -> binding.lottieLoadingAnimationView.visibility = View.VISIBLE
+                    100 -> {
+                        binding.lottieLoadingAnimationView.visibility = View.GONE
+                        viewModel.loadRecipes()
+                    }
+                }
+            }
+        }
     }
 }

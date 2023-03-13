@@ -1,20 +1,16 @@
-package com.example.recetapp.model.recipe
+package com.example.recetapp.model.view
 
 import androidx.room.Entity
 import androidx.room.PrimaryKey
 import com.example.recetapp.model.recipe.ingredients.ExtendedIngredient
 import com.example.recetapp.model.recipe.instructions.AnalyzedInstruction
-import com.example.recetapp.model.view.CarouselRecipe
-import com.google.gson.annotations.SerializedName
 
-@Entity
-data class Recipe(
+@Entity(tableName = "carousel")
+data class CarouselRecipe (
     @PrimaryKey(autoGenerate = true)
     val id: Int,
     val title: String,
-    @SerializedName("image")
     val imageUrl: String,
-    @SerializedName("readyInMinutes")
     val timeOfPreparation: Int,
     val summary: String,
     val cheap: Boolean,
@@ -26,20 +22,3 @@ data class Recipe(
     val extendedIngredients: List<ExtendedIngredient>,
     val instructions: String
 )
-
-fun Recipe.toCarouselRecipe() =
-    CarouselRecipe(
-        id,
-        title,
-        imageUrl,
-        timeOfPreparation,
-        summary,
-        cheap,
-        pricePerServing,
-        servings,
-        analyzedInstructions,
-        diets,
-        dishTypes,
-        extendedIngredients,
-        instructions
-    )

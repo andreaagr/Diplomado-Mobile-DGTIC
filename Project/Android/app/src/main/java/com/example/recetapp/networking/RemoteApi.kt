@@ -1,6 +1,7 @@
 package com.example.recetapp.networking
 
 import com.example.recetapp.CategoryType
+import com.example.recetapp.model.recipe.toCarouselRecipe
 import com.example.recetapp.ui.UIResponseState
 import javax.inject.Inject
 
@@ -8,7 +9,10 @@ class RemoteApi @Inject constructor(
     private val foodService: FoodService
 ) {
     suspend fun getRandomRecipes() = try {
-        UIResponseState.Success(foodService.getRandomRecipes(4))
+        val response = foodService.getRandomRecipes(15)
+        UIResponseState.Success(
+            response.recipes.map { it.toCarouselRecipe() }
+        )
     } catch (error: Throwable) {
         UIResponseState.Error(error.message ?: "Something went wrong")
     }

@@ -1,7 +1,11 @@
 package com.example.recetapp.repository
 
+import androidx.room.Delete
+import androidx.room.Insert
+import androidx.room.Query
 import com.example.recetapp.CategoryType
 import com.example.recetapp.model.recipe.Recipe
+import com.example.recetapp.model.view.CarouselRecipe
 import com.example.recetapp.ui.UIResponseState
 import kotlinx.coroutines.flow.Flow
 
@@ -22,4 +26,10 @@ interface RecipesRepository {
     fun getFavoriteRecipes(): Flow<List<Recipe>>
 
     fun removeRecipeFromFavorites(recipe: Recipe)
+
+    fun getCarouselRecipes(): Flow<List<CarouselRecipe>>
+
+    fun addNewCarouselRecipe(carouselRecipe: CarouselRecipe)
+
+    fun deleteAllCarouselRecipes()
 }

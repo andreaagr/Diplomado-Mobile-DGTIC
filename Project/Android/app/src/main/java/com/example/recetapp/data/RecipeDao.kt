@@ -5,6 +5,7 @@ import androidx.room.Delete
 import androidx.room.Insert
 import androidx.room.Query
 import com.example.recetapp.model.recipe.Recipe
+import com.example.recetapp.model.view.CarouselRecipe
 import kotlinx.coroutines.flow.Flow
 
 @Dao
@@ -17,4 +18,13 @@ interface RecipeDao {
 
     @Delete
     fun deleteSavedRecipe(recipe: Recipe)
+
+    @Query("SELECT * FROM carousel")
+    fun getCarouselRecipes(): Flow<List<CarouselRecipe>>
+
+    @Insert
+    fun addNewCarouselRecipe(carouselRecipe: CarouselRecipe)
+
+    @Query("DELETE FROM carousel")
+    fun deleteAllCarouselRecipes()
 }

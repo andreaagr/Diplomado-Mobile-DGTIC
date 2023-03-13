@@ -6,12 +6,12 @@ import androidx.recyclerview.widget.RecyclerView
 import com.bumptech.glide.Glide
 import com.example.recetapp.R
 import com.example.recetapp.databinding.CarouselItemBinding
-import com.example.recetapp.model.recipe.Recipe
+import com.example.recetapp.model.view.CarouselRecipe
 
-typealias OnDiscoverRecipeSelected = (Recipe) -> Unit
+typealias OnDiscoverRecipeSelected = (CarouselRecipe) -> Unit
 
 class CarouselRVAdapter(
-    private val carouselDataList: List<Recipe>,
+    private val carouselDataList: List<CarouselRecipe>,
     private val onDiscoverRecipeSelected: OnDiscoverRecipeSelected
 ) : RecyclerView.Adapter<CarouselItemViewHolder>() {
 
@@ -35,7 +35,7 @@ class CarouselItemViewHolder(
 ) : RecyclerView.ViewHolder(binding.root) {
 
     fun bind(
-        recipe: Recipe,
+        recipe: CarouselRecipe,
         onDiscoverRecipeSelected: OnDiscoverRecipeSelected
     ) {
         with(binding) {

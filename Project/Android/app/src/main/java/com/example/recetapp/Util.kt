@@ -17,6 +17,11 @@ enum class Endpoint(val identifier: String) {
     EQUIPMENT("equipment")
 }
 
+enum class ScreenResultType {
+    FAVORITES,
+    CATEGORIES
+}
+
 fun getImageUrl(
     imageName: String,
     endpoint: Endpoint,
