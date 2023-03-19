@@ -1,5 +1,7 @@
 package com.example.recetapp
 
+import android.text.Html
+
 enum class ImageSize(val pxSize: String) {
     SMALL("100x100"),
     MEDIUM("250x250"),
@@ -27,3 +29,5 @@ fun getImageUrl(
     endpoint: Endpoint,
     size: ImageSize
 ) = "https://spoonacular.com/cdn/${endpoint.identifier}_${size.pxSize}/$imageName"
+
+fun formatFromHTML(htmlText: String) = Html.fromHtml(htmlText, Html.FROM_HTML_MODE_COMPACT)

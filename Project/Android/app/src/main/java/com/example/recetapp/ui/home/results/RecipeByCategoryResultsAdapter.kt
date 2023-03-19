@@ -10,6 +10,7 @@ import androidx.recyclerview.widget.RecyclerView
 import com.bumptech.glide.Glide
 import com.example.recetapp.ScreenResultType
 import com.example.recetapp.databinding.RecipeCardItemGeneralBinding
+import com.example.recetapp.formatFromHTML
 import com.example.recetapp.model.recipe.Recipe
 import com.google.android.material.chip.Chip
 
@@ -58,8 +59,8 @@ class GeneralRecipeViewHolder(
                 .circleCrop()
                 .into(recipeByCategoryImageView)
             recipeByCategoryTitle.text = recipe.title
-            summaryTextView.text = recipe.summary
-            recipe.diets.forEach {
+            summaryTextView.text = recipe.summary?.let { formatFromHTML(it) }
+            recipe.diets?.forEach {
                 chipGroup.addView(
                     Chip(root.context).apply {
                         text = it
