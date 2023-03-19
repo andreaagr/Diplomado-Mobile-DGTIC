@@ -1,0 +1,32 @@
+<?xml version="1.0" encoding="utf-8"?>
+
+<ScrollView
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    tools:context=".ui.recipedetails.RecipeSummaryFragment">
+
+    <androidx.constraintlayout.widget.ConstraintLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content">
+
+        <TextView
+            android:id="@+id/summaryDetailsTextView"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:layout_marginStart="16dp"
+            android:layout_marginTop="16dp"
+            android:layout_marginEnd="16dp"
+            android:layout_marginBottom="8dp"
+            android:textSize="16sp"
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toTopOf="parent"
+            tools:text="Lorem ipsum dolor sit amet, consectetur adipiscing elit. Morbi fermentum nunc ut nisl blandit cursus. Duis nec tellus pellentesque, accumsan tortor ut, pulvinar leo. Vivamus bibendum efficitur quam, quis mattis turpis accumsan vel. Praesent vel lacus in leo rutrum maximus ac a diam. Cras quis purus non massa pellentesque commodo. Maecenas ullamcorper semper diam in mattis. Donec massa lorem, faucibus at vehicula at, dapibus a augue. Nam id sodales ligula. Proin accumsan ex et faucibus malesuada. Praesent rhoncus luctus laoreet." />
+
+    </androidx.constraintlayout.widget.ConstraintLayout>
+
+</ScrollView>

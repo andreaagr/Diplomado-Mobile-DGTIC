@@ -37,21 +37,37 @@
     <fragment
         android:id="@+id/recipeByIngredientFragment"
         android:name="com.example.recetapp.ui.dashboard.results.RecipeByIngredientFragment"
-        android:label="Results"
-        tools:layout="@layout/fragment_recipe_by_ingredient" />
+        android:label="@string/title_results"
+        tools:layout="@layout/fragment_recipe_by_ingredient">
+        <action
+            android:id="@+id/action_recipeByIngredientFragment_to_recipeDetailsFragment"
+            app:destination="@id/recipeDetailsFragment" />
+    </fragment>
     <fragment
         android:id="@+id/recipesByCategoriesFragment"
         android:name="com.example.recetapp.ui.home.results.RecipesByCategoriesFragment"
-        android:label="fragment_recipes_by_categories"
-        tools:layout="@layout/fragment_recipe_by_categories" />
+        android:label="@string/title_results"
+        tools:layout="@layout/fragment_recipe_by_categories">
+        <action
+            android:id="@+id/action_recipesByCategoriesFragment_to_recipeDetailsFragment"
+            app:destination="@id/recipeDetailsFragment" />
+    </fragment>
     <fragment
         android:id="@+id/recipeDetailsFragment"
-        android:name="com.example.recetapp.ui.RecipeDetailsFragment"
-        android:label="fragment_recipe_details"
-        tools:layout="@layout/fragment_recipe_details" />
+        android:name="com.example.recetapp.ui.recipedetails.RecipeDetailsFragment"
+        android:label="@string/title_details"
+        tools:layout="@layout/fragment_recipe_details">
+        <argument
+            android:name="displayRecipe"
+            app:argType="com.example.recetapp.model.recipe.Recipe" />
+    </fragment>
     <fragment
         android:id="@+id/savedRecipesFragment"
         android:name="com.example.recetapp.ui.savedrecipes.SavedRecipesFragment"
-        android:label="fragment_saved_recipes"
-        tools:layout="@layout/fragment_saved_recipes" />
+        android:label="@string/title_favorites"
+        tools:layout="@layout/fragment_saved_recipes">
+        <action
+            android:id="@+id/action_savedRecipesFragment_to_recipeDetailsFragment"
+            app:destination="@id/recipeDetailsFragment" />
+    </fragment>
 </navigation>

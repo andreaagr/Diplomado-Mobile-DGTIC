@@ -1,9 +1,13 @@
 package com.example.recetapp.model.recipe.instructions
 
+import android.os.Parcelable
+import com.example.recetapp.Endpoint
 import com.google.gson.annotations.SerializedName
+import kotlinx.parcelize.Parcelize
 
+@Parcelize
 data class Equipment(
-    val name: String,
+    override val name: String,
     @SerializedName("image")
-    val imageName: String
-)
+    override val imageName: String,
+): Parcelable, Tool

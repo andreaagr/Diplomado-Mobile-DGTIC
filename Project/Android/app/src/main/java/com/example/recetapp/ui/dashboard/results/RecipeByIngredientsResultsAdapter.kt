@@ -29,7 +29,7 @@ class RecipeByIngredientsResultsAdapter(
         viewType: Int
     ): RecipeByIngredientIngredientViewHolder {
         return LayoutInflater.from(parent.context)
-            .let { layoutInflater -> RecipeCardItemBinding.inflate(layoutInflater, parent, false)  }
+            .let { layoutInflater -> RecipeCardItemBinding.inflate(layoutInflater, parent, false) }
             .let { itemBinding -> RecipeByIngredientIngredientViewHolder(itemBinding) }
     }
 

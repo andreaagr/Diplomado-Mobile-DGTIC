@@ -32,7 +32,7 @@ class HomeViewModel @Inject constructor(
         viewModelScope.launch(Dispatchers.IO) {
             repository.getCarouselRecipes()
                 .flowOn(Dispatchers.IO)
-                .catch { UIResponseState.Error("Failed to load items") }
+                .catch { _viewState.postValue(UIResponseState.Error(it.message.toString())) }
                 .collect {
                     _viewState.postValue(UIResponseState.Success(it))
                 }
@@ -71,6 +71,6 @@ class HomeViewModel @Inject constructor(
     }
 
     fun removeFavorite(recipe: Recipe) {
-        viewModelScope.launch { repository.removeRecipeFromFavorites(recipe) }
+        viewModelScope.launch(Dispatchers.IO) { repository.removeRecipeFromFavorites(recipe) }
     }
 }

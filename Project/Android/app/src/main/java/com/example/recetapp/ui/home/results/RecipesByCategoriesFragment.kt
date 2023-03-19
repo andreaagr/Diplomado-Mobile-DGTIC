@@ -6,6 +6,7 @@ import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import androidx.fragment.app.activityViewModels
+import androidx.navigation.fragment.findNavController
 import androidx.recyclerview.widget.LinearLayoutManager
 import com.example.recetapp.ScreenResultType
 import com.example.recetapp.databinding.FragmentRecipeByCategoriesBinding
@@ -27,8 +28,23 @@ class RecipesByCategoriesFragment : Fragment() {
             {
                 viewModel.removeFavorite(it)
             },
+            { recipe ->
+                RecipesByCategoriesFragmentDirections
+                    .actionRecipesByCategoriesFragmentToRecipeDetailsFragment(recipe)
+                    .let { findNavController().navigate(it) }
+            },
             ScreenResultType.CATEGORIES
         )
+    }
+
+    override fun onCreate(savedInstanceState: Bundle?) {
+        super.onCreate(savedInstanceState)
+        viewModel.categorySelected.observe(this) {
+            viewModel.searchByCategory(it)
+        }
+        viewModel.viewStateResults.observe(this) {
+            handleUIState(it)
+        }
     }
 
     override fun onCreateView(
@@ -36,12 +52,7 @@ class RecipesByCategoriesFragment : Fragment() {
         savedInstanceState: Bundle?
     ): View {
         // Inflate the layout for this fragment
-        viewModel.categorySelected.observe(viewLifecycleOwner) {
-            viewModel.searchByCategory(it)
-        }
-        viewModel.viewStateResults.observe(viewLifecycleOwner) {
-            handleUIState(it)
-        }
+
         return FragmentRecipeByCategoriesBinding.inflate(inflater, container, false)
             .apply { _binding = this }
             .root

@@ -16,9 +16,11 @@ import com.google.android.material.chip.Chip
 
 typealias OnFavoriteTapped = (Recipe) -> Unit
 typealias OnUnFavoriteTapped = (Recipe) -> Unit
+typealias OnRecipeClicked = (Recipe) -> Unit
 class RecipeByCategoryResultsAdapter(
     private val onFavoriteTapped: OnFavoriteTapped,
     private val onUnFavoriteTapped: OnUnFavoriteTapped,
+    private val onRecipeClicked: OnRecipeClicked,
     private val isFrom: ScreenResultType
 ): ListAdapter<Recipe, GeneralRecipeViewHolder>(DIFF_CALLBACK) {
 
@@ -39,7 +41,7 @@ class RecipeByCategoryResultsAdapter(
     }
 
     override fun onBindViewHolder(holder: GeneralRecipeViewHolder, position: Int) {
-        holder.bind(getItem(position), onFavoriteTapped, onUnFavoriteTapped, isFrom)
+        holder.bind(getItem(position), onFavoriteTapped, onUnFavoriteTapped, onRecipeClicked, isFrom)
     }
 
 }
@@ -51,6 +53,7 @@ class GeneralRecipeViewHolder(
         recipe: Recipe,
         onFavoriteTapped: OnFavoriteTapped,
         onUnFavoriteTapped: OnUnFavoriteTapped,
+        onRecipeClicked: OnRecipeClicked,
         isFrom: ScreenResultType
     ) {
         with(binding) {
@@ -78,6 +81,7 @@ class GeneralRecipeViewHolder(
                     onUnFavoriteTapped(recipe)
                 }
             }
+            recipeCardView.setOnClickListener { onRecipeClicked(recipe) }
         }
     }
 }

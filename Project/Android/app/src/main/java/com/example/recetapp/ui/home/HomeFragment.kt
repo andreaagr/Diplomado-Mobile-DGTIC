@@ -19,6 +19,7 @@ import com.example.recetapp.databinding.FragmentHomeBinding
 import com.example.recetapp.model.category.Category
 import com.example.recetapp.model.view.CarouselRecipe
 import com.example.recetapp.model.view.CategorySelected
+import com.example.recetapp.model.view.toRecipe
 import com.example.recetapp.ui.UIResponseState
 import com.example.recetapp.work.SynchronizeDataWorker
 import com.google.gson.Gson
@@ -45,7 +46,7 @@ class HomeFragment : Fragment() {
             handleUIState(it)
         }
         viewModel.loadRecipes()
-        synchronizeApi()
+        synchronizeApi(ExistingPeriodicWorkPolicy.KEEP)
         return root
     }
 
@@ -67,13 +68,21 @@ class HomeFragment : Fragment() {
             is UIResponseState.Success<*> -> {
                 if (uiState.content is List<*>) {
                     // Random recipes call
-                    binding.carouselViewPager.adapter = CarouselRVAdapter(uiState.content as List<CarouselRecipe>) {
-                        HomeFragmentDirections.actionNavigationHomeToRecipeDetailsFragment()
+                    if (uiState.content.isNotEmpty()) {
+                        binding.lottieErrorAnimationView.visibility = View.GONE
+                        binding.carouselViewPager.adapter = CarouselRVAdapter(uiState.content as List<CarouselRecipe>) { recipe ->
+                            HomeFragmentDirections.actionNavigationHomeToRecipeDetailsFragment(recipe.toRecipe()).let {
+                                findNavController().navigate(it)
+                            }
+                        }
+                    } else {
+                        binding.lottieErrorAnimationView.visibility = View.VISIBLE
+                        //synchronizeApi(ExistingPeriodicWorkPolicy.UPDATE)
                     }
                 }
             }
             is UIResponseState.Error -> {
-                hideCarousel()
+                binding.lottieErrorAnimationView.visibility = View.VISIBLE
             }
             else -> {}
         }
@@ -94,13 +103,6 @@ class HomeFragment : Fragment() {
             (getChildAt(0) as RecyclerView).overScrollMode =
                 RecyclerView.OVER_SCROLL_NEVER // Remove the scroll effect
             setPageTransformer(compositePageTransformer)
-        }
-    }
-
-    private fun hideCarousel() {
-        with(binding) {
-            carouselViewPager.visibility = View.GONE
-            discoverTitle.visibility = View.GONE
         }
     }
 
@@ -135,7 +137,7 @@ class HomeFragment : Fragment() {
         return Gson().fromJson(categories, typeToken)
     }
 
-    private fun synchronizeApi(){
+    private fun synchronizeApi(workPolicy: ExistingPeriodicWorkPolicy){
         val constraints = Constraints.Builder()
             .setRequiresBatteryNotLow(true)
             .setRequiredNetworkType(NetworkType.NOT_ROAMING)
@@ -146,7 +148,7 @@ class HomeFragment : Fragment() {
             .build()
 
         val workManager = activity?.baseContext?.let { WorkManager.getInstance(it) }
-        workManager?.enqueueUniquePeriodicWork("sync", ExistingPeriodicWorkPolicy.KEEP,work)
+        workManager?.enqueueUniquePeriodicWork("sync", workPolicy, work)
         workManager?.getWorkInfoByIdLiveData(work.id)?.observe(viewLifecycleOwner) { workInfo: WorkInfo? ->
             if (workInfo != null) {
                 when (workInfo.progress.getInt("Progress", 100)) {

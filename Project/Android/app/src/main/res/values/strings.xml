@@ -2,6 +2,9 @@
     <string name="app_name">RecetApp</string>
     <string name="title_home">Home</string>
     <string name="title_dashboard">What\'s in my fridge?</string>
+    <string name="title_results">Results</string>
+    <string name="title_details">Details</string>
+    <string name="title_favorites">Favorites</string>
     <string name="title_notifications">Notifications</string>
     <string name="my_recipes_drawer_title">My recipes</string>
     <string name="my_cookbooks_drawer_title">My cookbooks</string>
@@ -21,6 +24,12 @@
     <string name="diets_category_title">Diets</string>
     <string name="my_web_client_id">496813332038-7mkbun840uuhovji8r5go8uekomq9n19.apps.googleusercontent.com</string>
     <string name="toast_sign_in_error_message">Failed to log in, please try again later</string>
-    <!-- TODO: Remove or change this placeholder text -->
-    <string name="hello_blank_fragment">Hello blank fragment</string>
+    <string name="tab_item_summary">Summary</string>
+    <string name="tab_item_Ingredients">Ingredients</string>
+    <string name="tab_item_Instructions">Instructions</string>
+    <string name="tab_layout_recipe_info">Recipe information</string>
+    <string name="display_recipe_info">Display recipe info</string>
+    <string name="step_time_label">Time: </string>
+    <string name="ingredients_label">Ingredients:</string>
+    <string name="equipment_label">Equipment:</string>
 </resources>
