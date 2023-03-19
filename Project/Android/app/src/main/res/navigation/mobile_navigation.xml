@@ -30,11 +30,6 @@
     </fragment>
 
     <fragment
-        android:id="@+id/navigation_notifications"
-        android:name="com.example.recetapp.ui.notifications.NotificationsFragment"
-        android:label="@string/title_notifications"
-        tools:layout="@layout/fragment_notifications" />
-    <fragment
         android:id="@+id/recipeByIngredientFragment"
         android:name="com.example.recetapp.ui.dashboard.results.RecipeByIngredientFragment"
         android:label="@string/title_results"
