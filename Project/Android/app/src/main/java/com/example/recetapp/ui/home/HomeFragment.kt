@@ -13,7 +13,6 @@ import androidx.recyclerview.widget.RecyclerView
 import androidx.viewpager2.widget.CompositePageTransformer
 import androidx.viewpager2.widget.MarginPageTransformer
 import androidx.work.*
-import com.example.recetapp.util.CategoryType
 import com.example.recetapp.R
 import com.example.recetapp.databinding.FragmentHomeBinding
 import com.example.recetapp.model.category.Category
@@ -23,6 +22,7 @@ import com.example.recetapp.model.view.toRecipe
 import com.example.recetapp.networking.UIResponseState
 import com.example.recetapp.ui.home.adapter.CarouselRVAdapter
 import com.example.recetapp.ui.home.adapter.CategoriesAdapter
+import com.example.recetapp.util.CategoryType
 import com.example.recetapp.work.SynchronizeDataWorker
 import com.google.gson.Gson
 import com.google.gson.reflect.TypeToken

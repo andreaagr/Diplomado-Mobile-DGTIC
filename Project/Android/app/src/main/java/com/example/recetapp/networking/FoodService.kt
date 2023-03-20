@@ -1,9 +1,9 @@
 package com.example.recetapp.networking
 
-import com.example.recetapp.model.response.ComplexSearchResponse
-import com.example.recetapp.model.recipe.RecipeByIngredients
 import com.example.recetapp.model.recipe.Recipe
+import com.example.recetapp.model.recipe.RecipeByIngredients
 import com.example.recetapp.model.recipe.instructions.Ingredient
+import com.example.recetapp.model.response.ComplexSearchResponse
 import com.example.recetapp.model.response.RandomRecipeResponse
 import retrofit2.http.GET
 import retrofit2.http.Path

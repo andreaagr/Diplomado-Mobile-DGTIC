@@ -1,11 +1,11 @@
 package com.example.recetapp.ui.recipedetails
 
 import android.os.Bundle
-import androidx.fragment.app.Fragment
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import androidx.core.os.bundleOf
+import androidx.fragment.app.Fragment
 import com.example.recetapp.databinding.FragmentRecipeSummaryBinding
 import com.example.recetapp.util.formatFromHTML
 

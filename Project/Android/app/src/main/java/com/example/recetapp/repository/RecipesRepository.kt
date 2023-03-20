@@ -1,9 +1,9 @@
 package com.example.recetapp.repository
 
-import com.example.recetapp.util.CategoryType
 import com.example.recetapp.model.recipe.Recipe
 import com.example.recetapp.model.view.CarouselRecipe
 import com.example.recetapp.networking.UIResponseState
+import com.example.recetapp.util.CategoryType
 import kotlinx.coroutines.flow.Flow
 
 interface RecipesRepository {

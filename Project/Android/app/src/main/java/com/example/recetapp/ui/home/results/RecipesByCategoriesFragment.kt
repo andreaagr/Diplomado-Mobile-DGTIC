@@ -1,19 +1,19 @@
 package com.example.recetapp.ui.home.results
 
 import android.os.Bundle
-import androidx.fragment.app.Fragment
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
+import androidx.fragment.app.Fragment
 import androidx.fragment.app.activityViewModels
 import androidx.navigation.fragment.findNavController
 import androidx.recyclerview.widget.LinearLayoutManager
-import com.example.recetapp.util.ScreenResultType
 import com.example.recetapp.databinding.FragmentRecipeByCategoriesBinding
 import com.example.recetapp.model.recipe.Recipe
-import com.example.recetapp.util.SpacingDecoration
 import com.example.recetapp.networking.UIResponseState
 import com.example.recetapp.ui.home.HomeViewModel
+import com.example.recetapp.util.ScreenResultType
+import com.example.recetapp.util.SpacingDecoration
 
 class RecipesByCategoriesFragment : Fragment() {
 

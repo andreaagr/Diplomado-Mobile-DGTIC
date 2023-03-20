@@ -8,10 +8,10 @@ import androidx.recyclerview.widget.DiffUtil
 import androidx.recyclerview.widget.ListAdapter
 import androidx.recyclerview.widget.RecyclerView
 import com.bumptech.glide.Glide
-import com.example.recetapp.util.ScreenResultType
 import com.example.recetapp.databinding.RecipeCardItemGeneralBinding
-import com.example.recetapp.util.formatFromHTML
 import com.example.recetapp.model.recipe.Recipe
+import com.example.recetapp.util.ScreenResultType
+import com.example.recetapp.util.formatFromHTML
 import com.google.android.material.chip.Chip
 
 typealias OnFavoriteTapped = (Recipe) -> Unit

@@ -8,8 +8,8 @@ import com.example.recetapp.model.recipe.Recipe
 import com.example.recetapp.model.recipe.RecipeByIngredients
 import com.example.recetapp.model.recipe.instructions.Ingredient
 import com.example.recetapp.model.view.IngredientItem
-import com.example.recetapp.repository.RecipesRepository
 import com.example.recetapp.networking.UIResponseState
+import com.example.recetapp.repository.RecipesRepository
 import dagger.hilt.android.lifecycle.HiltViewModel
 import kotlinx.coroutines.Dispatchers
 import kotlinx.coroutines.flow.flowOn
@@ -27,23 +27,6 @@ class DashboardViewModel @Inject constructor(
     val performActionState: LiveData<UIResponseState> get() = _performActionState
     private val _performActionState: MutableLiveData<UIResponseState> = MutableLiveData()
     private val _favorites: MutableLiveData<List<Recipe>> = MutableLiveData()
-    /*private val observer = { favoriteRecipes: List<Recipe> ->
-        if (_viewState.value is UIResponseState.Success<*>) {
-            val result = _viewState.value as UIResponseState.Success<*>
-            if (result.content is List<*>) {
-                val recipes = result.content as List<RecipeByIngredients>
-                recipes.forEach {
-                    it.isFavorite = false
-                }
-                favoriteRecipes.forEach {
-                    val indexOf = recipes.indexOf(it)
-                    if (indexOf != -1) {
-                        result.content[indexOf].isFavorite = true
-                    }
-                }
-            }
-        }
-    }*/
 
     init {
         viewModelScope.launch(Dispatchers.IO) {
@@ -53,7 +36,6 @@ class DashboardViewModel @Inject constructor(
                     _favorites.postValue(it)
                 }
         }
-        //_favorites.observeForever(observer)
     }
 
     fun addNewIngredient(ingredientItem: IngredientItem) {
@@ -115,6 +97,15 @@ class DashboardViewModel @Inject constructor(
                     it
                 )
             }
+        }
+    }
+
+    suspend fun getRecipeInformation(recipeId: Int): Recipe? {
+        val response = repository.getRecipeInformation(recipeId)
+        return if (response is UIResponseState.Success<*>) {
+            response.content as Recipe
+        } else {
+            null
         }
     }
 

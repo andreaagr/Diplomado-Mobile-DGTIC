@@ -1,16 +1,16 @@
 package com.example.recetapp.ui.recipedetails
 
 import android.os.Bundle
-import androidx.fragment.app.Fragment
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import androidx.core.os.bundleOf
+import androidx.fragment.app.Fragment
 import androidx.recyclerview.widget.LinearLayoutManager
 import com.example.recetapp.databinding.FragmentRecipeIngredientsBinding
 import com.example.recetapp.model.recipe.ingredients.ExtendedIngredient
-import com.example.recetapp.util.SpacingDecoration
 import com.example.recetapp.ui.recipedetails.adapter.IngredientsAdapter
+import com.example.recetapp.util.SpacingDecoration
 import com.google.gson.Gson
 import com.google.gson.reflect.TypeToken
 

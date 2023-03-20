@@ -1,19 +1,24 @@
 package com.example.recetapp.ui.dashboard.results
 
 import android.os.Bundle
-import androidx.fragment.app.Fragment
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import android.widget.Toast
+import androidx.fragment.app.Fragment
 import androidx.fragment.app.activityViewModels
+import androidx.lifecycle.lifecycleScope
+import androidx.navigation.fragment.findNavController
 import androidx.recyclerview.widget.LinearLayoutManager
 import com.example.recetapp.databinding.FragmentRecipeByIngredientBinding
 import com.example.recetapp.model.recipe.RecipeByIngredients
-import com.example.recetapp.util.SpacingDecoration
 import com.example.recetapp.networking.UIResponseState
 import com.example.recetapp.ui.dashboard.DashboardViewModel
+import com.example.recetapp.util.SpacingDecoration
 import dagger.hilt.android.AndroidEntryPoint
+import kotlinx.coroutines.Dispatchers
+import kotlinx.coroutines.launch
+import kotlinx.coroutines.withContext
 
 @AndroidEntryPoint
 class RecipeByIngredientFragment : Fragment() {
@@ -28,6 +33,18 @@ class RecipeByIngredientFragment : Fragment() {
             },
             {
                 viewModel.removeFavorite(it)
+            },
+            { recipeByIngredients ->
+                lifecycleScope.launch(Dispatchers.IO) {
+                    viewModel.getRecipeInformation(recipeByIngredients.id)?.let { recipe ->
+                        recipe.isFavorite = recipeByIngredients.isFavorite
+                        withContext(Dispatchers.Main) {
+                            RecipeByIngredientFragmentDirections
+                                .actionRecipeByIngredientFragmentToRecipeDetailsFragment(recipe)
+                                .let { findNavController().navigate(it) }
+                        }
+                    }
+                }
             }
         )
     }

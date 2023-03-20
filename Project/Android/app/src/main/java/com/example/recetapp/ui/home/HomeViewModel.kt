@@ -4,11 +4,11 @@ import androidx.lifecycle.LiveData
 import androidx.lifecycle.MutableLiveData
 import androidx.lifecycle.ViewModel
 import androidx.lifecycle.viewModelScope
-import com.example.recetapp.model.view.CategorySelected
-import com.example.recetapp.model.response.ComplexSearchResponse
 import com.example.recetapp.model.recipe.Recipe
-import com.example.recetapp.repository.RecipesRepository
+import com.example.recetapp.model.response.ComplexSearchResponse
+import com.example.recetapp.model.view.CategorySelected
 import com.example.recetapp.networking.UIResponseState
+import com.example.recetapp.repository.RecipesRepository
 import dagger.hilt.android.lifecycle.HiltViewModel
 import kotlinx.coroutines.Dispatchers
 import kotlinx.coroutines.flow.catch

@@ -7,8 +7,8 @@ import androidx.work.CoroutineWorker
 import androidx.work.WorkerParameters
 import androidx.work.workDataOf
 import com.example.recetapp.model.view.CarouselRecipe
-import com.example.recetapp.repository.RecipesRepository
 import com.example.recetapp.networking.UIResponseState
+import com.example.recetapp.repository.RecipesRepository
 import dagger.assisted.Assisted
 import dagger.assisted.AssistedInject
 

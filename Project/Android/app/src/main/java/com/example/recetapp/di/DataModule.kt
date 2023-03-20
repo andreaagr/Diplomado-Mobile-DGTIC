@@ -1,9 +1,7 @@
 package com.example.recetapp.di
 
 import android.content.Context
-import androidx.room.Database
 import androidx.room.Room
-import androidx.room.RoomDatabase
 import com.example.recetapp.data.RecipeDao
 import com.example.recetapp.data.RecipeDatabase
 import com.example.recetapp.networking.RemoteApi

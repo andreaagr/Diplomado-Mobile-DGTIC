@@ -11,10 +11,12 @@ import com.example.recetapp.model.recipe.RecipeByIngredients
 
 typealias OnFavoriteSelectedIncompleteInfo = (Int) -> Unit
 typealias OnFavoriteUnSelectedIncompleteInfo = (Int) -> Unit
+typealias OnRecipeSelectedIncompleteInfo = (RecipeByIngredients) -> Unit
 
 class RecipeByIngredientsResultsAdapter(
     private val onFavoriteSelected: OnFavoriteSelectedIncompleteInfo,
-    private val onFavoriteUnSelected: OnFavoriteUnSelectedIncompleteInfo
+    private val onFavoriteUnSelected: OnFavoriteUnSelectedIncompleteInfo,
+    private val  onRecipeSelectedIncompleteInfo: OnRecipeSelectedIncompleteInfo
 ) : ListAdapter<RecipeByIngredients, RecipeByIngredientIngredientViewHolder>(DIFF_CALLBACK) {
 
     companion object {
@@ -37,7 +39,7 @@ class RecipeByIngredientsResultsAdapter(
     }
 
     override fun onBindViewHolder(holder: RecipeByIngredientIngredientViewHolder, position: Int) {
-        holder.bind(getItem(position), onFavoriteSelected, onFavoriteUnSelected)
+        holder.bind(getItem(position), onFavoriteSelected, onFavoriteUnSelected, onRecipeSelectedIncompleteInfo)
     }
 }
 
@@ -48,7 +50,8 @@ class RecipeByIngredientIngredientViewHolder(
     fun bind(
         recipeByIngredients: RecipeByIngredients,
         onFavoriteSelected: OnFavoriteSelectedIncompleteInfo,
-        onFavoriteUnSelected: OnFavoriteUnSelectedIncompleteInfo
+        onFavoriteUnSelected: OnFavoriteUnSelectedIncompleteInfo,
+        onRecipeSelectedIncompleteInfo: OnRecipeSelectedIncompleteInfo
     ) {
         with(binding) {
             Glide.with(root)
@@ -68,6 +71,9 @@ class RecipeByIngredientIngredientViewHolder(
                 } else {
                     onFavoriteUnSelected(recipeByIngredients.id)
                 }
+            }
+            recipeByIngredientsCardView.setOnClickListener {
+                onRecipeSelectedIncompleteInfo(recipeByIngredients)
             }
         }
     }
