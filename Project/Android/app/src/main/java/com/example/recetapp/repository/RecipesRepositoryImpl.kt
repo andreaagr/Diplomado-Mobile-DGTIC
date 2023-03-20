@@ -1,9 +1,7 @@
 package com.example.recetapp.repository
 
-import androidx.room.RoomDatabase
 import com.example.recetapp.CategoryType
 import com.example.recetapp.data.RecipeDao
-import com.example.recetapp.data.RecipeDatabase
 import com.example.recetapp.model.recipe.Recipe
 import com.example.recetapp.model.view.CarouselRecipe
 import com.example.recetapp.networking.RemoteApi

@@ -16,7 +16,7 @@ import com.google.android.material.chip.Chip
 
 typealias OnFavoriteTapped = (Recipe) -> Unit
 typealias OnUnFavoriteTapped = (Recipe) -> Unit
-typealias OnRecipeClicked = (Recipe) -> Unit
+typealias OnRecipeClicked = (Recipe, Boolean) -> Unit
 class RecipeByCategoryResultsAdapter(
     private val onFavoriteTapped: OnFavoriteTapped,
     private val onUnFavoriteTapped: OnUnFavoriteTapped,
@@ -73,15 +73,17 @@ class GeneralRecipeViewHolder(
             if (isFrom == ScreenResultType.FAVORITES) {
                 toggleFavoriteButton.isChecked = true
                 toggleSaveButton.visibility = View.GONE
+            } else {
+                toggleFavoriteButton.isChecked = recipe.isFavorite
             }
-            toggleFavoriteButton.setOnClickListener {
-                if (toggleFavoriteButton.isChecked) {
+            toggleFavoriteButton.setOnCheckedChangeListener { _, isChecked ->
+                if (isChecked) {
                     onFavoriteTapped(recipe)
                 } else {
                     onUnFavoriteTapped(recipe)
                 }
             }
-            recipeCardView.setOnClickListener { onRecipeClicked(recipe) }
+            recipeCardView.setOnClickListener { onRecipeClicked(recipe, toggleFavoriteButton.isChecked) }
         }
     }
 }

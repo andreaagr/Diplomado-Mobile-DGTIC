@@ -21,6 +21,8 @@ import com.example.recetapp.model.view.CarouselRecipe
 import com.example.recetapp.model.view.CategorySelected
 import com.example.recetapp.model.view.toRecipe
 import com.example.recetapp.ui.UIResponseState
+import com.example.recetapp.ui.home.adapter.CarouselRVAdapter
+import com.example.recetapp.ui.home.adapter.CategoriesAdapter
 import com.example.recetapp.work.SynchronizeDataWorker
 import com.google.gson.Gson
 import com.google.gson.reflect.TypeToken
@@ -70,8 +72,10 @@ class HomeFragment : Fragment() {
                     // Random recipes call
                     if (uiState.content.isNotEmpty()) {
                         binding.lottieErrorAnimationView.visibility = View.GONE
-                        binding.carouselViewPager.adapter = CarouselRVAdapter(uiState.content as List<CarouselRecipe>) { recipe ->
-                            HomeFragmentDirections.actionNavigationHomeToRecipeDetailsFragment(recipe.toRecipe()).let {
+                        binding.carouselViewPager.adapter = CarouselRVAdapter(uiState.content as List<CarouselRecipe>) { carouselRecipe ->
+                            val recipe = carouselRecipe.toRecipe()
+                            recipe.isFavorite = viewModel.isFavorite(recipe)
+                            HomeFragmentDirections.actionNavigationHomeToRecipeDetailsFragment(recipe).let {
                                 findNavController().navigate(it)
                             }
                         }

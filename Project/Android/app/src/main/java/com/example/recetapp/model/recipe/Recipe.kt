@@ -27,7 +27,8 @@ data class Recipe(
     val diets: List<String>?,
     val dishTypes: List<String>?,
     val extendedIngredients: List<ExtendedIngredient>?,
-    val instructions: String?
+    val instructions: String?,
+    var isFavorite: Boolean = false
 ): Parcelable
 
 fun Recipe.toCarouselRecipe() =

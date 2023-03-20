@@ -5,18 +5,21 @@ import androidx.fragment.app.Fragment
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
-import androidx.fragment.app.activityViewModels
+import androidx.fragment.app.viewModels
 import androidx.navigation.fragment.navArgs
 import com.bumptech.glide.Glide
 import com.example.recetapp.databinding.FragmentRecipeDetailsBinding
 import com.example.recetapp.ui.recipedetails.adapter.FragmentAdapter
 import com.google.android.material.tabs.TabLayoutMediator
+import dagger.hilt.android.AndroidEntryPoint
 
+@AndroidEntryPoint
 class RecipeDetailsFragment : Fragment() {
 
     private var _binding: FragmentRecipeDetailsBinding? = null
     private val binding get() = _binding!!
     private val navArgs by navArgs<RecipeDetailsFragmentArgs>()
+    private val viewModel by viewModels<RecipeDetailsViewModel>()
 
     override fun onCreateView(
         inflater: LayoutInflater, container: ViewGroup?,
@@ -56,6 +59,14 @@ class RecipeDetailsFragment : Fragment() {
                 .load(recipe.imageUrl)
                 .centerCrop()
                 .into(recipeImageView)
+            toggleFavoriteButton.isChecked = recipe.isFavorite
+            toggleFavoriteButton.setOnCheckedChangeListener { _, isChecked ->
+                if (isChecked) {
+                    viewModel.addFavorite(recipe)
+                } else {
+                    viewModel.removeFavorite(recipe)
+                }
+            }
         }
     }
 }

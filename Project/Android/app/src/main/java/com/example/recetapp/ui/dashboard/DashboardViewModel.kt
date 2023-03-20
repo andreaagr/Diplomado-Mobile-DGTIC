@@ -77,11 +77,12 @@ class DashboardViewModel @Inject constructor(
     }
 
     fun addFavorite(recipeId: Int) {
-        viewModelScope.launch {
+        viewModelScope.launch(Dispatchers.IO) {
             _performActionState.postValue(UIResponseState.Loading)
             val response = repository.getRecipeInformation(recipeId)
             if (response is UIResponseState.Success<*>) {
-                repository.saveRecipeToFavorites(response.content as Recipe)
+                val recipe = response.content as Recipe
+                repository.saveRecipeToFavorites(recipe)
                 _performActionState.postValue(UIResponseState.Success("Item saved to favorites"))
             } else {
                 _performActionState.postValue(UIResponseState.Error("Couldn't save item, try again later"))

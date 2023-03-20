@@ -13,6 +13,8 @@ import androidx.recyclerview.widget.LinearLayoutManager
 import com.example.recetapp.R
 import com.example.recetapp.databinding.FragmentDashboardBinding
 import com.example.recetapp.model.view.IngredientItem
+import com.example.recetapp.ui.dashboard.adapter.AddedIngredientAdapter
+import com.example.recetapp.ui.dashboard.adapter.IngredientsAdapter
 import com.google.gson.Gson
 import com.google.gson.reflect.TypeToken
 import dagger.hilt.android.AndroidEntryPoint

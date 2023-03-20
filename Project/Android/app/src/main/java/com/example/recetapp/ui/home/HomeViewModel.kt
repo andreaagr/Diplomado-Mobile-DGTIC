@@ -27,6 +27,40 @@ class HomeViewModel @Inject constructor(
     private val _viewStateResults: MutableLiveData<UIResponseState> = MutableLiveData()
     val categorySelected: LiveData<CategorySelected> get() = _categorySelected
     private val _categorySelected: MutableLiveData<CategorySelected> = MutableLiveData()
+    private val _favorites: MutableLiveData<List<Recipe>> = MutableLiveData()
+    private val observer = { favoriteRecipes: List<Recipe> ->
+        if (_viewStateResults.value is UIResponseState.Success<*>) {
+                val result = _viewStateResults.value as UIResponseState.Success<*>
+                if (result.content is List<*>) {
+                    val recipes = result.content as List<Recipe>
+                    recipes.forEach {
+                        it.isFavorite = false
+                    }
+                    favoriteRecipes.forEach {
+                        val indexOf = recipes.indexOf(it)
+                        if (indexOf != -1) {
+                            result.content[indexOf].isFavorite = true
+                        }
+                    }
+                }
+        }
+    }
+
+    init {
+        viewModelScope.launch(Dispatchers.IO) {
+            repository.getFavoriteRecipes()
+                .flowOn(Dispatchers.IO)
+                .collect {
+                    _favorites.postValue(it)
+                }
+        }
+        _favorites.observeForever(observer)
+    }
+
+    override fun onCleared() {
+        super.onCleared()
+        _favorites.removeObserver(observer)
+    }
 
     fun loadRecipes() {
         viewModelScope.launch(Dispatchers.IO) {
@@ -54,8 +88,11 @@ class HomeViewModel @Inject constructor(
                     response.content.results.forEach {
                         val recipeInformationResponse = repository.getRecipeInformation(it.id)
                         if (recipeInformationResponse is UIResponseState.Success<*>) {
-                            if (recipeInformationResponse.content is Recipe)
+                            if (recipeInformationResponse.content is Recipe) {
+                                val recipe = recipeInformationResponse.content
+                                recipe.isFavorite = isFavorite(recipe)
                                 newRecipeList.add(recipeInformationResponse.content)
+                            }
                         }
                     }
                 }
@@ -72,5 +109,9 @@ class HomeViewModel @Inject constructor(
 
     fun removeFavorite(recipe: Recipe) {
         viewModelScope.launch(Dispatchers.IO) { repository.removeRecipeFromFavorites(recipe) }
+    }
+
+    fun isFavorite(recipe: Recipe): Boolean {
+        return _favorites.value?.contains(recipe) ?: false
     }
 }

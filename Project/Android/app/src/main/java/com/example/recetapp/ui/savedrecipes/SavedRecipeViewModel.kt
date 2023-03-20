@@ -39,7 +39,7 @@ class SavedRecipeViewModel @Inject constructor(
         repository
             .getFavoriteRecipes()
             .flowOn(Dispatchers.IO)
-            .catch { UIResponseState.Error(errorMessage) }
+            .catch { _viewState.postValue(UIResponseState.Error(errorMessage)) }
             .collect {
                 _viewState.postValue(UIResponseState.Success(it))
             }

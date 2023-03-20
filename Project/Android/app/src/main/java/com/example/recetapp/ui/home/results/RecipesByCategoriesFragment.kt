@@ -28,7 +28,8 @@ class RecipesByCategoriesFragment : Fragment() {
             {
                 viewModel.removeFavorite(it)
             },
-            { recipe ->
+            { recipe, isFavorite ->
+                recipe.isFavorite = isFavorite
                 RecipesByCategoriesFragmentDirections
                     .actionRecipesByCategoriesFragmentToRecipeDetailsFragment(recipe)
                     .let { findNavController().navigate(it) }
