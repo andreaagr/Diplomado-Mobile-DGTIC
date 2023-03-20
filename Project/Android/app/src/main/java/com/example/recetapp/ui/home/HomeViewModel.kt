@@ -82,24 +82,36 @@ class HomeViewModel @Inject constructor(
         viewModelScope.launch(Dispatchers.IO) {
             _viewStateResults.postValue(UIResponseState.Loading)
             val response = repository.getRecipeByCategory(category.name, category.type)
-            if (response is UIResponseState.Success<*>) {
-                val newRecipeList: MutableList<Recipe> = mutableListOf()
-                if (response.content is ComplexSearchResponse) {
-                    response.content.results.forEach {
-                        val recipeInformationResponse = repository.getRecipeInformation(it.id)
-                        if (recipeInformationResponse is UIResponseState.Success<*>) {
-                            if (recipeInformationResponse.content is Recipe) {
-                                val recipe = recipeInformationResponse.content
-                                recipe.isFavorite = isFavorite(recipe)
-                                newRecipeList.add(recipeInformationResponse.content)
-                            }
+            handleComplexResponse(response)
+        }
+    }
+
+    fun searchRecipes(query: String) {
+        viewModelScope.launch(Dispatchers.IO) {
+            _viewStateResults.postValue(UIResponseState.Loading)
+            val uiResponseState = repository.searchRecipes(query)
+            handleComplexResponse(uiResponseState)
+        }
+    }
+
+    private suspend fun handleComplexResponse(uiResponseState: UIResponseState) {
+        if (uiResponseState is UIResponseState.Success<*>) {
+            val newRecipeList: MutableList<Recipe> = mutableListOf()
+            if (uiResponseState.content is ComplexSearchResponse) {
+                uiResponseState.content.results.forEach {
+                    val recipeInformationResponse = repository.getRecipeInformation(it.id)
+                    if (recipeInformationResponse is UIResponseState.Success<*>) {
+                        if (recipeInformationResponse.content is Recipe) {
+                            val recipe = recipeInformationResponse.content
+                            recipe.isFavorite = isFavorite(recipe)
+                            newRecipeList.add(recipeInformationResponse.content)
                         }
                     }
                 }
-                _viewStateResults.postValue(UIResponseState.Success(newRecipeList))
-            } else {
-                UIResponseState.Error("Something went wrong")
             }
+            _viewStateResults.postValue(UIResponseState.Success(newRecipeList))
+        } else {
+            UIResponseState.Error("Something went wrong")
         }
     }
 

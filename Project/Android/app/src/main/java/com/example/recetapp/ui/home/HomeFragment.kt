@@ -5,6 +5,7 @@ import android.os.Bundle
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
+import androidx.appcompat.widget.SearchView.OnQueryTextListener
 import androidx.fragment.app.Fragment
 import androidx.fragment.app.activityViewModels
 import androidx.navigation.fragment.findNavController
@@ -54,10 +55,24 @@ class HomeFragment : Fragment() {
 
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
-        viewPagerSetup()
-        categoriesRVSetup(binding.cuisinesRecyclerView, R.raw.cuisines, CategoryType.CUISINE)
-        categoriesRVSetup(binding.mealTypesRecyclerView, R.raw.meal_types, CategoryType.MEAL_TYPE)
-        categoriesRVSetup(binding.dietsRecyclerView, R.raw.diets, CategoryType.DIET)
+        with(binding) {
+            viewPagerSetup()
+            categoriesRVSetup(cuisinesRecyclerView, R.raw.cuisines, CategoryType.CUISINE)
+            categoriesRVSetup(mealTypesRecyclerView, R.raw.meal_types, CategoryType.MEAL_TYPE)
+            categoriesRVSetup(dietsRecyclerView, R.raw.diets, CategoryType.DIET)
+            searchView.setOnQueryTextListener(object : OnQueryTextListener {
+                override fun onQueryTextChange(newText: String): Boolean {
+                    return true
+                }
+
+                override fun onQueryTextSubmit(query: String): Boolean {
+                    HomeFragmentDirections
+                        .actionNavigationHomeToRecipesByCategoriesFragment(query)
+                        .let { destination -> findNavController().navigate(destination) }
+                    return true
+                }
+            })
+        }
     }
 
     override fun onDestroyView() {
@@ -123,7 +138,7 @@ class HomeFragment : Fragment() {
                 )
             )
             HomeFragmentDirections
-                .actionNavigationHomeToRecipesByCategoriesFragment()
+                .actionNavigationHomeToRecipesByCategoriesFragment(null)
                 .let { destination -> findNavController().navigate(destination) }
         }
         recyclerView.apply {

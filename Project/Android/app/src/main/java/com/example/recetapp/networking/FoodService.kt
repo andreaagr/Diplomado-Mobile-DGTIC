@@ -45,4 +45,9 @@ interface FoodService {
     suspend fun getRecipeInformation(
         @Path("id") id: Int
     ): Recipe
+
+    @GET("recipes/complexSearch")
+    suspend fun searchRecipes(
+        @Query("query") query: String
+    ): ComplexSearchResponse
 }

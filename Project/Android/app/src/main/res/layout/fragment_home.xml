@@ -1,174 +1,185 @@
 <?xml version="1.0" encoding="utf-8"?>
-<ScrollView
-    xmlns:android="http://schemas.android.com/apk/res/android"
+<ScrollView xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent">
 
-<androidx.constraintlayout.widget.ConstraintLayout
-    android:layout_width="match_parent"
-    android:layout_height="wrap_content"
-    tools:context=".ui.home.HomeFragment"
-    android:clipChildren="false"
-    android:clipToPadding="false">
-
-    <TextView
-        android:id="@+id/discoverTitle"
-        android:layout_width="wrap_content"
+    <androidx.constraintlayout.widget.ConstraintLayout
+        android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:layout_marginStart="8dp"
-        android:layout_marginTop="8dp"
-        android:fontFamily="@font/amaranth_bold"
-        android:text="@string/discover_title"
-        android:textSize="24sp"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent" />
+        android:clipChildren="false"
+        android:clipToPadding="false"
+        tools:context=".ui.home.HomeFragment">
 
-    <TextView
-        android:id="@+id/categoriesTitle"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_marginStart="8dp"
-        android:layout_marginTop="8dp"
-        android:fontFamily="@font/amaranth_bold"
-        android:text="@string/categories_title"
-        android:textSize="24sp"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/carouselViewPager" />
+        <androidx.appcompat.widget.SearchView
+            android:id="@+id/searchView"
+            android:layout_width="@dimen/match_constraint"
+            android:layout_height="wrap_content"
+            android:layout_marginStart="8dp"
+            android:layout_marginTop="8dp"
+            android:layout_marginEnd="8dp"
+            android:background="@drawable/search_view_background"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toTopOf="parent" />
 
-    <androidx.constraintlayout.widget.Guideline
-        android:id="@+id/guideline2"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:orientation="vertical"
-        app:layout_constraintGuide_percent="0.1" />
+        <TextView
+            android:id="@+id/discoverTitle"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginStart="8dp"
+            android:layout_marginTop="8dp"
+            android:fontFamily="@font/amaranth_bold"
+            android:text="@string/discover_title"
+            android:textSize="24sp"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/searchView" />
 
-    <androidx.constraintlayout.widget.Guideline
-        android:id="@+id/guideline3"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:orientation="vertical"
-        app:layout_constraintGuide_percent="0.9" />
+        <TextView
+            android:id="@+id/categoriesTitle"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginStart="8dp"
+            android:layout_marginTop="8dp"
+            android:fontFamily="@font/amaranth_bold"
+            android:text="@string/categories_title"
+            android:textSize="24sp"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/carouselViewPager" />
 
-    <androidx.constraintlayout.widget.Guideline
-        android:id="@+id/guideline4"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:orientation="horizontal"
-        app:layout_constraintGuide_percent="0.3"
-        tools:visibility="gone" />
+        <androidx.constraintlayout.widget.Guideline
+            android:id="@+id/guideline2"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:orientation="vertical"
+            app:layout_constraintGuide_percent="0.1" />
 
-    <androidx.viewpager2.widget.ViewPager2
-        android:id="@+id/carouselViewPager"
-        android:layout_width="0dp"
-        android:layout_height="0dp"
-        android:layout_marginTop="8dp"
-        android:visibility="visible"
-        app:layout_constraintBottom_toTopOf="@+id/guideline4"
-        app:layout_constraintEnd_toStartOf="@+id/guideline3"
-        app:layout_constraintStart_toStartOf="@+id/guideline2"
-        app:layout_constraintTop_toBottomOf="@+id/discoverTitle">
+        <androidx.constraintlayout.widget.Guideline
+            android:id="@+id/guideline3"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:orientation="vertical"
+            app:layout_constraintGuide_percent="0.9" />
 
-    </androidx.viewpager2.widget.ViewPager2>
+        <androidx.constraintlayout.widget.Guideline
+            android:id="@+id/guideline4"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:orientation="horizontal"
+            app:layout_constraintGuide_percent="0.33"
+            tools:visibility="visible" />
 
-    <TextView
-        android:id="@+id/mealTypesTitle"
-        android:layout_width="0dp"
-        android:layout_height="wrap_content"
-        android:layout_marginTop="8dp"
-        android:layout_marginEnd="8dp"
-        android:fontFamily="@font/buenard"
-        android:text="@string/meal_type_category_title"
-        android:textSize="20sp"
-        android:textStyle="bold"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintStart_toStartOf="@+id/categoriesTitle"
-        app:layout_constraintTop_toBottomOf="@+id/categoriesTitle" />
+        <androidx.viewpager2.widget.ViewPager2
+            android:id="@+id/carouselViewPager"
+            android:layout_width="0dp"
+            android:layout_height="0dp"
+            android:layout_marginTop="8dp"
+            android:visibility="visible"
+            app:layout_constraintBottom_toTopOf="@+id/guideline4"
+            app:layout_constraintEnd_toStartOf="@+id/guideline3"
+            app:layout_constraintStart_toStartOf="@+id/guideline2"
+            app:layout_constraintTop_toBottomOf="@+id/discoverTitle">
 
-    <androidx.recyclerview.widget.RecyclerView
-        android:id="@+id/mealTypesRecyclerView"
-        android:layout_width="0dp"
-        android:layout_height="@dimen/category_recyclerview_height"
-        android:layout_marginTop="8dp"
-        app:layout_constraintEnd_toEndOf="@+id/mealTypesTitle"
-        app:layout_constraintHorizontal_bias="0.0"
-        app:layout_constraintStart_toStartOf="@+id/mealTypesTitle"
-        app:layout_constraintTop_toBottomOf="@+id/mealTypesTitle" />
+        </androidx.viewpager2.widget.ViewPager2>
 
-    <TextView
-        android:id="@+id/cuisinesTitle"
-        android:layout_width="0dp"
-        android:layout_height="wrap_content"
-        android:layout_marginTop="8dp"
-        android:fontFamily="@font/buenard"
-        android:text="@string/cuisine_category_title"
-        android:textSize="20sp"
-        android:textStyle="bold"
-        app:layout_constraintEnd_toEndOf="@+id/mealTypesRecyclerView"
-        app:layout_constraintStart_toStartOf="@+id/mealTypesTitle"
-        app:layout_constraintTop_toBottomOf="@+id/mealTypesRecyclerView" />
+        <TextView
+            android:id="@+id/mealTypesTitle"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="8dp"
+            android:layout_marginEnd="8dp"
+            android:fontFamily="@font/buenard"
+            android:text="@string/meal_type_category_title"
+            android:textSize="20sp"
+            android:textStyle="bold"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="@+id/categoriesTitle"
+            app:layout_constraintTop_toBottomOf="@+id/categoriesTitle" />
 
-    <androidx.recyclerview.widget.RecyclerView
-        android:id="@+id/cuisinesRecyclerView"
-        android:layout_width="0dp"
-        android:layout_height="@dimen/category_recyclerview_height"
-        android:layout_marginTop="8dp"
-        app:layout_constraintEnd_toEndOf="@+id/cuisinesTitle"
-        app:layout_constraintStart_toStartOf="@+id/mealTypesRecyclerView"
-        app:layout_constraintTop_toBottomOf="@+id/cuisinesTitle" />
+        <androidx.recyclerview.widget.RecyclerView
+            android:id="@+id/mealTypesRecyclerView"
+            android:layout_width="0dp"
+            android:layout_height="@dimen/category_recyclerview_height"
+            android:layout_marginTop="8dp"
+            app:layout_constraintEnd_toEndOf="@+id/mealTypesTitle"
+            app:layout_constraintHorizontal_bias="0.0"
+            app:layout_constraintStart_toStartOf="@+id/mealTypesTitle"
+            app:layout_constraintTop_toBottomOf="@+id/mealTypesTitle" />
 
-    <TextView
-        android:id="@+id/dietsTitle"
-        android:layout_width="0dp"
-        android:layout_height="wrap_content"
-        android:layout_marginTop="8dp"
-        android:fontFamily="@font/buenard"
-        android:text="@string/diets_category_title"
-        android:textSize="20sp"
-        android:textStyle="bold"
-        app:layout_constraintEnd_toEndOf="@+id/cuisinesRecyclerView"
-        app:layout_constraintStart_toStartOf="@+id/cuisinesTitle"
-        app:layout_constraintTop_toBottomOf="@+id/cuisinesRecyclerView" />
+        <TextView
+            android:id="@+id/cuisinesTitle"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="8dp"
+            android:fontFamily="@font/buenard"
+            android:text="@string/cuisine_category_title"
+            android:textSize="20sp"
+            android:textStyle="bold"
+            app:layout_constraintEnd_toEndOf="@+id/mealTypesRecyclerView"
+            app:layout_constraintStart_toStartOf="@+id/mealTypesTitle"
+            app:layout_constraintTop_toBottomOf="@+id/mealTypesRecyclerView" />
 
-    <androidx.recyclerview.widget.RecyclerView
-        android:id="@+id/dietsRecyclerView"
-        android:layout_width="0dp"
-        android:layout_height="@dimen/category_recyclerview_height"
-        android:layout_marginTop="8dp"
-        android:layout_marginBottom="16dp"
-        app:layout_constraintBottom_toBottomOf="parent"
-        app:layout_constraintEnd_toEndOf="@+id/dietsTitle"
-        app:layout_constraintStart_toStartOf="@+id/dietsTitle"
-        app:layout_constraintTop_toBottomOf="@+id/dietsTitle" />
+        <androidx.recyclerview.widget.RecyclerView
+            android:id="@+id/cuisinesRecyclerView"
+            android:layout_width="0dp"
+            android:layout_height="@dimen/category_recyclerview_height"
+            android:layout_marginTop="8dp"
+            app:layout_constraintEnd_toEndOf="@+id/cuisinesTitle"
+            app:layout_constraintStart_toStartOf="@+id/mealTypesRecyclerView"
+            app:layout_constraintTop_toBottomOf="@+id/cuisinesTitle" />
 
-    <com.airbnb.lottie.LottieAnimationView
-        android:id="@+id/lottieErrorAnimationView"
-        android:layout_width="@dimen/error_animation_size"
-        android:layout_height="0dp"
-        android:visibility="gone"
-        app:layout_constraintBottom_toTopOf="@+id/guideline4"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="@+id/carouselViewPager"
-        app:lottie_autoPlay="true"
-        app:lottie_loop="true"
-        app:lottie_rawRes="@raw/error_map" />
+        <TextView
+            android:id="@+id/dietsTitle"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="8dp"
+            android:fontFamily="@font/buenard"
+            android:text="@string/diets_category_title"
+            android:textSize="20sp"
+            android:textStyle="bold"
+            app:layout_constraintEnd_toEndOf="@+id/cuisinesRecyclerView"
+            app:layout_constraintStart_toStartOf="@+id/cuisinesTitle"
+            app:layout_constraintTop_toBottomOf="@+id/cuisinesRecyclerView" />
 
-    <com.airbnb.lottie.LottieAnimationView
-        android:id="@+id/lottieLoadingAnimationView"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:visibility="gone"
-        app:layout_constraintBottom_toBottomOf="parent"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.5"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent"
-        app:lottie_autoPlay="true"
-        app:lottie_loop="true"
-        app:lottie_rawRes="@raw/loading" />
+        <androidx.recyclerview.widget.RecyclerView
+            android:id="@+id/dietsRecyclerView"
+            android:layout_width="0dp"
+            android:layout_height="@dimen/category_recyclerview_height"
+            android:layout_marginTop="8dp"
+            android:layout_marginBottom="16dp"
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintEnd_toEndOf="@+id/dietsTitle"
+            app:layout_constraintStart_toStartOf="@+id/dietsTitle"
+            app:layout_constraintTop_toBottomOf="@+id/dietsTitle" />
 
-</androidx.constraintlayout.widget.ConstraintLayout>
+        <com.airbnb.lottie.LottieAnimationView
+            android:id="@+id/lottieErrorAnimationView"
+            android:layout_width="@dimen/error_animation_size"
+            android:layout_height="0dp"
+            android:visibility="gone"
+            app:layout_constraintBottom_toTopOf="@+id/guideline4"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toTopOf="@+id/carouselViewPager"
+            app:lottie_autoPlay="true"
+            app:lottie_loop="true"
+            app:lottie_rawRes="@raw/error_map" />
+
+        <com.airbnb.lottie.LottieAnimationView
+            android:id="@+id/lottieLoadingAnimationView"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:visibility="gone"
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintHorizontal_bias="0.5"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toTopOf="parent"
+            app:lottie_autoPlay="true"
+            app:lottie_loop="true"
+            app:lottie_rawRes="@raw/loading" />
+
+    </androidx.constraintlayout.widget.ConstraintLayout>
 
 </ScrollView>

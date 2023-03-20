@@ -7,6 +7,7 @@ import android.view.ViewGroup
 import androidx.fragment.app.Fragment
 import androidx.fragment.app.activityViewModels
 import androidx.navigation.fragment.findNavController
+import androidx.navigation.fragment.navArgs
 import androidx.recyclerview.widget.LinearLayoutManager
 import com.example.recetapp.databinding.FragmentRecipeByCategoriesBinding
 import com.example.recetapp.model.recipe.Recipe
@@ -20,6 +21,7 @@ class RecipesByCategoriesFragment : Fragment() {
     private var _binding: FragmentRecipeByCategoriesBinding? = null
     private val binding get() = _binding!!
     private val viewModel: HomeViewModel by activityViewModels()
+    private val navArgs by navArgs<RecipesByCategoriesFragmentArgs>()
     private val resultsAdapter by lazy {
         RecipeByCategoryResultsAdapter(
             {
@@ -40,11 +42,15 @@ class RecipesByCategoriesFragment : Fragment() {
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
-        viewModel.categorySelected.observe(this) {
-            viewModel.searchByCategory(it)
-        }
         viewModel.viewStateResults.observe(this) {
             handleUIState(it)
+        }
+        if (!navArgs.query.isNullOrEmpty()) {
+            viewModel.searchRecipes(navArgs.query!!)
+        } else {
+            viewModel.categorySelected.observe(this) {
+                viewModel.searchByCategory(it)
+            }
         }
     }
 
@@ -53,7 +59,6 @@ class RecipesByCategoriesFragment : Fragment() {
         savedInstanceState: Bundle?
     ): View {
         // Inflate the layout for this fragment
-
         return FragmentRecipeByCategoriesBinding.inflate(inflater, container, false)
             .apply { _binding = this }
             .root

@@ -57,4 +57,8 @@ class RecipesRepositoryImpl @Inject constructor(
     override fun deleteAllCarouselRecipes() {
         recipeDao.deleteAllCarouselRecipes()
     }
+
+    override suspend fun searchRecipes(query: String): UIResponseState {
+        return remoteDataSource.searchRecipes(query)
+    }
 }

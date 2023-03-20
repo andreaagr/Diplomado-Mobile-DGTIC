@@ -18,6 +18,8 @@ interface RecipesRepository {
 
     suspend fun getRecipeInformation(recipeId: Int): UIResponseState
 
+    suspend fun searchRecipes(query: String): UIResponseState
+
     fun saveRecipeToFavorites(recipe: Recipe)
 
     fun getFavoriteRecipes(): Flow<List<Recipe>>

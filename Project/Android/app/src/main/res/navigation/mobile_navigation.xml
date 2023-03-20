@@ -46,6 +46,10 @@
         <action
             android:id="@+id/action_recipesByCategoriesFragment_to_recipeDetailsFragment"
             app:destination="@id/recipeDetailsFragment" />
+        <argument
+            android:name="query"
+            app:argType="string"
+            app:nullable="true" />
     </fragment>
     <fragment
         android:id="@+id/recipeDetailsFragment"
