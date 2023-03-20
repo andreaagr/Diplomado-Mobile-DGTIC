@@ -69,17 +69,21 @@ class RecipesByCategoriesFragment : Fragment() {
     }
 
     private fun handleUIState(uiState: UIResponseState) {
-        when (uiState) {
-            is UIResponseState.Loading -> {
-                binding.lottieLoadingAnimationView.visibility = View.VISIBLE
-            }
-            is UIResponseState.Success<*> -> {
-                binding.lottieLoadingAnimationView.visibility = View.GONE
-                resultsAdapter.submitList(uiState.content as List<Recipe>)
-            }
-            else -> {
-                binding.lottieLoadingAnimationView.visibility = View.GONE
-                binding.lottieErrorAnimationView.visibility = View.VISIBLE
+        with(binding) {
+            when (uiState) {
+                is UIResponseState.Loading -> {
+                    searchByCategoryResultsRecyclerView.visibility = View.GONE
+                    lottieLoadingAnimationView.visibility = View.VISIBLE
+                }
+                is UIResponseState.Success<*> -> {
+                    searchByCategoryResultsRecyclerView.visibility = View.VISIBLE
+                    lottieLoadingAnimationView.visibility = View.GONE
+                    resultsAdapter.submitList(uiState.content as List<Recipe>)
+                }
+                else -> {
+                    lottieLoadingAnimationView.visibility = View.GONE
+                    lottieErrorAnimationView.visibility = View.VISIBLE
+                }
             }
         }
     }
