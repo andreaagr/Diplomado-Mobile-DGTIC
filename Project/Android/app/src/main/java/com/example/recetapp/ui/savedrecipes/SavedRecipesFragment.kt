@@ -64,6 +64,9 @@ class SavedRecipesFragment : Fragment() {
             is UIResponseState.Success<*> -> {
                 if (uiResponseState.content is List<*>) {
                     favoritesAdapter.submitList(uiResponseState.content as List<Recipe>)
+                    if (uiResponseState.content.isEmpty()) {
+                        binding.emptyScreenMessageContainer.visibility = View.VISIBLE
+                    }
                 }
             }
             is UIResponseState.Error -> {
