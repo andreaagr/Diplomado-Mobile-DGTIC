@@ -86,12 +86,13 @@ class MainActivity : AppCompatActivity() {
         viewModel.internetState.observe(this) {
             when(it) {
                 MyState.Error -> {
-                    InternetFragmentDialog(this).startDialog()
+                    InternetFragmentDialog(this, getString(R.string.no_internet_connection_change_message)).startDialog()
                 }
                 else -> {}
             }
         }
         setupBackPressedCallback()
+        checkInternetConnection()
     }
 
     private fun handleUIResponse(response: UIResponseState) {
@@ -177,5 +178,12 @@ class MainActivity : AppCompatActivity() {
             getString(R.string.toast_sign_in_error_message),
             Toast.LENGTH_SHORT
         ).show()
+    }
+
+    private fun checkInternetConnection() {
+        if (!viewModel.hasInternetConnection()) {
+            val dialog = InternetFragmentDialog(this, getString(R.string.no_internet_connection))
+            dialog.startDialog()
+        }
     }
 }

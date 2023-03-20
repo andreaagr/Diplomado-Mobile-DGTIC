@@ -39,6 +39,15 @@ class NetworkStatusTracker(context: Context) {
             connectivityManager.unregisterNetworkCallback(networkStatusCallback)
         }
     }
+
+    fun hasInternetConnection(): Boolean {
+        val network = connectivityManager.activeNetwork ?: return false
+        val capabilities = connectivityManager.getNetworkCapabilities(network) ?: return false
+
+        return capabilities.hasTransport(NetworkCapabilities.TRANSPORT_WIFI)
+                || capabilities.hasTransport(NetworkCapabilities.TRANSPORT_CELLULAR)
+                || capabilities.hasTransport(NetworkCapabilities.TRANSPORT_VPN)
+    }
 }
 
 inline fun <Result> Flow<NetworkStatus>.map(

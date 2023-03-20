@@ -4,12 +4,15 @@ import android.app.AlertDialog
 import androidx.fragment.app.FragmentActivity
 import com.example.recetapp.databinding.InternetFragmentDialogBinding
 
-class InternetFragmentDialog(private val activity: FragmentActivity) {
+class InternetFragmentDialog(
+    private val activity: FragmentActivity,
+    private val message: String
+) {
 
-    private val alertDialog  by lazy { createLoadingDialog() }
+    private val alertDialog  by lazy { createLoadingDialog(message) }
     private lateinit var binding: InternetFragmentDialogBinding
 
-    private fun createLoadingDialog() : AlertDialog {
+    private fun createLoadingDialog(message: String) : AlertDialog {
         val builder = AlertDialog.Builder(activity)
         val inflater = activity.layoutInflater
         builder.setView(
@@ -18,6 +21,7 @@ class InternetFragmentDialog(private val activity: FragmentActivity) {
             }.root
         )
         binding.button.setOnClickListener { alertDialog.dismiss() }
+        binding.textView.text = message
         return builder.create()
     }
 

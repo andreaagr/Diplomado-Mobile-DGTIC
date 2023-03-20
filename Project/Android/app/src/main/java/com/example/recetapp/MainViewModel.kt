@@ -53,6 +53,8 @@ class MainViewModel @Inject constructor(
     fun getCurrentUser(): FirebaseUser? {
         return authRepository.getCurrentUser()
     }
+
+    fun hasInternetConnection() = networkStatusTracker.hasInternetConnection()
 }
 
 sealed class MyState {

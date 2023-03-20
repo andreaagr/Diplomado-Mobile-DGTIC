@@ -6,10 +6,10 @@
             android:id="@+id/favorite_recipes"
             android:title="@string/my_favorites_drawer_title"
             android:icon="@drawable/heart"/>
-        <item
+        <!--<item
             android:id="@+id/fragment_cookbooks"
             android:title="@string/my_cookbooks_drawer_title"
-            android:icon="@drawable/recipe_book_outlined"/>
+            android:icon="@drawable/recipe_book_outlined"/>-->
     </group>
     <group
         android:id="@+id/accountOptions">
