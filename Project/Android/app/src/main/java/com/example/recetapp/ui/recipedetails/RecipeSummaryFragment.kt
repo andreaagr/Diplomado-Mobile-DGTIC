@@ -7,7 +7,7 @@ import android.view.View
 import android.view.ViewGroup
 import androidx.core.os.bundleOf
 import com.example.recetapp.databinding.FragmentRecipeSummaryBinding
-import com.example.recetapp.formatFromHTML
+import com.example.recetapp.util.formatFromHTML
 
 class RecipeSummaryFragment : Fragment() {
 

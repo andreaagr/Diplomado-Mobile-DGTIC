@@ -5,11 +5,11 @@ import android.view.ViewGroup
 import androidx.recyclerview.widget.RecyclerView
 import androidx.recyclerview.widget.RecyclerView.ViewHolder
 import com.bumptech.glide.Glide
-import com.example.recetapp.Endpoint
-import com.example.recetapp.ImageSize
+import com.example.recetapp.util.Endpoint
+import com.example.recetapp.util.ImageSize
 import com.example.recetapp.R
 import com.example.recetapp.databinding.CategoryItemBinding
-import com.example.recetapp.getImageUrl
+import com.example.recetapp.util.getImageUrl
 import com.example.recetapp.model.recipe.instructions.Ingredient
 import com.example.recetapp.model.recipe.instructions.Tool
 

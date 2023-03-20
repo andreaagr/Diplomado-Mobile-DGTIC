@@ -9,7 +9,7 @@ import androidx.core.os.bundleOf
 import androidx.recyclerview.widget.LinearLayoutManager
 import com.example.recetapp.databinding.FragmentRecipeIngredientsBinding
 import com.example.recetapp.model.recipe.ingredients.ExtendedIngredient
-import com.example.recetapp.ui.SpacingDecoration
+import com.example.recetapp.util.SpacingDecoration
 import com.example.recetapp.ui.recipedetails.adapter.IngredientsAdapter
 import com.google.gson.Gson
 import com.google.gson.reflect.TypeToken

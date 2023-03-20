@@ -8,11 +8,9 @@ import androidx.work.WorkerParameters
 import androidx.work.workDataOf
 import com.example.recetapp.model.view.CarouselRecipe
 import com.example.recetapp.repository.RecipesRepository
-import com.example.recetapp.ui.UIResponseState
+import com.example.recetapp.networking.UIResponseState
 import dagger.assisted.Assisted
 import dagger.assisted.AssistedInject
-import dagger.hilt.android.AndroidEntryPoint
-import javax.inject.Inject
 
 @HiltWorker
 class SynchronizeDataWorker @AssistedInject constructor (

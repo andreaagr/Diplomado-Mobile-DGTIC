@@ -9,9 +9,12 @@ import com.bumptech.glide.Glide
 import com.example.recetapp.databinding.RecipeCardItemBinding
 import com.example.recetapp.model.recipe.RecipeByIngredients
 
-typealias OnFavoriteTappedIncompleteInfo = (Int) -> Unit
+typealias OnFavoriteSelectedIncompleteInfo = (Int) -> Unit
+typealias OnFavoriteUnSelectedIncompleteInfo = (Int) -> Unit
+
 class RecipeByIngredientsResultsAdapter(
-    private val onFavoriteTapped: OnFavoriteTappedIncompleteInfo
+    private val onFavoriteSelected: OnFavoriteSelectedIncompleteInfo,
+    private val onFavoriteUnSelected: OnFavoriteUnSelectedIncompleteInfo
 ) : ListAdapter<RecipeByIngredients, RecipeByIngredientIngredientViewHolder>(DIFF_CALLBACK) {
 
     companion object {
@@ -34,7 +37,7 @@ class RecipeByIngredientsResultsAdapter(
     }
 
     override fun onBindViewHolder(holder: RecipeByIngredientIngredientViewHolder, position: Int) {
-        holder.bind(getItem(position), onFavoriteTapped)
+        holder.bind(getItem(position), onFavoriteSelected, onFavoriteUnSelected)
     }
 }
 
@@ -44,7 +47,8 @@ class RecipeByIngredientIngredientViewHolder(
 
     fun bind(
         recipeByIngredients: RecipeByIngredients,
-        onFavoriteTapped: OnFavoriteTappedIncompleteInfo
+        onFavoriteSelected: OnFavoriteSelectedIncompleteInfo,
+        onFavoriteUnSelected: OnFavoriteUnSelectedIncompleteInfo
     ) {
         with(binding) {
             Glide.with(root)
@@ -52,12 +56,34 @@ class RecipeByIngredientIngredientViewHolder(
                 .fitCenter()
                 .into(recipeByIngredientImageView)
             recipeByIngredientTitle.text = recipeByIngredients.title
-            numberOfUsedIngredients.text = recipeByIngredients.usedIngredientCount.toString() + " used"
-            numberOfUnusedIngredients.text = recipeByIngredients.unusedIngredientCount.toString() + " unused"
-            numberOfMissedIngredients.text = recipeByIngredients.missedIngredientCount.toString() + " missed"
-            toggleFavoriteButton.setOnClickListener {
-                onFavoriteTapped(recipeByIngredients.id)
+            setSummaryBannerInfo(
+                recipeByIngredients.usedIngredientCount.toString(),
+                recipeByIngredients.unusedIngredientCount.toString(),
+                recipeByIngredients.missedIngredientCount.toString()
+            )
+            toggleFavoriteButton.isChecked = recipeByIngredients.isFavorite
+            toggleFavoriteButton.setOnCheckedChangeListener { _, isChecked ->
+                if (isChecked) {
+                    onFavoriteSelected(recipeByIngredients.id)
+                } else {
+                    onFavoriteUnSelected(recipeByIngredients.id)
+                }
             }
+        }
+    }
+
+    private fun setSummaryBannerInfo(
+        usedIngredients: String,
+        unusedIngredient: String,
+        missedIngredient: String
+    ) {
+        val used = usedIngredients + "used"
+        val unused = unusedIngredient + "unused"
+        val missed = missedIngredient + "missed"
+        with(binding) {
+            numberOfUsedIngredients.text = used
+            numberOfUnusedIngredients.text = unused
+            numberOfMissedIngredients.text = missed
         }
     }
 }

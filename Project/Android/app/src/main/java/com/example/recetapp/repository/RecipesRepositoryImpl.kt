@@ -1,11 +1,11 @@
 package com.example.recetapp.repository
 
-import com.example.recetapp.CategoryType
+import com.example.recetapp.util.CategoryType
 import com.example.recetapp.data.RecipeDao
 import com.example.recetapp.model.recipe.Recipe
 import com.example.recetapp.model.view.CarouselRecipe
 import com.example.recetapp.networking.RemoteApi
-import com.example.recetapp.ui.UIResponseState
+import com.example.recetapp.networking.UIResponseState
 import kotlinx.coroutines.flow.Flow
 import javax.inject.Inject
 

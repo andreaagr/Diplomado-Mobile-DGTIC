@@ -6,11 +6,11 @@ import androidx.recyclerview.widget.DiffUtil
 import androidx.recyclerview.widget.ListAdapter
 import androidx.recyclerview.widget.RecyclerView.ViewHolder
 import com.bumptech.glide.Glide
-import com.example.recetapp.Endpoint
-import com.example.recetapp.ImageSize
+import com.example.recetapp.util.Endpoint
+import com.example.recetapp.util.ImageSize
 import com.example.recetapp.R
 import com.example.recetapp.databinding.IngredientRowBinding
-import com.example.recetapp.getImageUrl
+import com.example.recetapp.util.getImageUrl
 import com.example.recetapp.model.recipe.ingredients.ExtendedIngredient
 
 class IngredientsAdapter: ListAdapter<ExtendedIngredient, ExtendedIngredientViewHolder>(DIFF_CALLBACK) {

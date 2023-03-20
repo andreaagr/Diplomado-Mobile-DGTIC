@@ -9,10 +9,10 @@ import androidx.fragment.app.Fragment
 import androidx.fragment.app.viewModels
 import androidx.navigation.fragment.findNavController
 import androidx.recyclerview.widget.LinearLayoutManager
-import com.example.recetapp.ScreenResultType
+import com.example.recetapp.util.ScreenResultType
 import com.example.recetapp.databinding.FragmentSavedRecipesBinding
 import com.example.recetapp.model.recipe.Recipe
-import com.example.recetapp.ui.UIResponseState
+import com.example.recetapp.networking.UIResponseState
 import com.example.recetapp.ui.home.results.RecipeByCategoryResultsAdapter
 import dagger.hilt.android.AndroidEntryPoint
 

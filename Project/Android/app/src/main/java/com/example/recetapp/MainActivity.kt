@@ -15,7 +15,7 @@ import androidx.navigation.ui.NavigationUI.setupWithNavController
 import com.bumptech.glide.Glide
 import com.example.recetapp.databinding.ActivityMainBinding
 import com.example.recetapp.databinding.DrawerHeaderLayoutBinding
-import com.example.recetapp.ui.UIResponseState
+import com.example.recetapp.networking.UIResponseState
 import com.google.firebase.auth.FirebaseUser
 import dagger.hilt.android.AndroidEntryPoint
 

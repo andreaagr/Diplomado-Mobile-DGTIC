@@ -3,7 +3,7 @@ package com.example.recetapp.repository
 import androidx.activity.result.ActivityResult
 import androidx.activity.result.ActivityResultLauncher
 import androidx.activity.result.IntentSenderRequest
-import com.example.recetapp.ui.UIResponseState
+import com.example.recetapp.networking.UIResponseState
 import com.google.firebase.auth.FirebaseUser
 
 interface AuthRepository {

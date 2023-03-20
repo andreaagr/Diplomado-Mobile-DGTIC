@@ -8,10 +8,10 @@ import androidx.recyclerview.widget.ListAdapter
 import androidx.recyclerview.widget.RecyclerView
 import com.airbnb.lottie.LottieAnimationView
 import com.bumptech.glide.Glide
-import com.example.recetapp.Endpoint
-import com.example.recetapp.ImageSize
+import com.example.recetapp.util.Endpoint
+import com.example.recetapp.util.ImageSize
 import com.example.recetapp.databinding.IngredientListItemBinding
-import com.example.recetapp.getImageUrl
+import com.example.recetapp.util.getImageUrl
 import com.example.recetapp.model.recipe.instructions.Ingredient
 
 typealias OnDeleteElementClicked = (Int) -> Unit

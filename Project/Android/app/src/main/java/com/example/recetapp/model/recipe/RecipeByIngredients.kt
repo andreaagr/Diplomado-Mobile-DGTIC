@@ -11,5 +11,6 @@ data class RecipeByIngredients(
     val missedIngredientCount: Int,
     val missedIngredients: List<ExtendedIngredient>,
     val unusedIngredients: List<ExtendedIngredient>,
-    val usedIngredients: List<ExtendedIngredient>
+    val usedIngredients: List<ExtendedIngredient>,
+    var isFavorite: Boolean = false
 )

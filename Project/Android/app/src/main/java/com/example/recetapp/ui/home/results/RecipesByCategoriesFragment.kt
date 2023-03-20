@@ -8,11 +8,11 @@ import android.view.ViewGroup
 import androidx.fragment.app.activityViewModels
 import androidx.navigation.fragment.findNavController
 import androidx.recyclerview.widget.LinearLayoutManager
-import com.example.recetapp.ScreenResultType
+import com.example.recetapp.util.ScreenResultType
 import com.example.recetapp.databinding.FragmentRecipeByCategoriesBinding
 import com.example.recetapp.model.recipe.Recipe
-import com.example.recetapp.ui.SpacingDecoration
-import com.example.recetapp.ui.UIResponseState
+import com.example.recetapp.util.SpacingDecoration
+import com.example.recetapp.networking.UIResponseState
 import com.example.recetapp.ui.home.HomeViewModel
 
 class RecipesByCategoriesFragment : Fragment() {

@@ -10,7 +10,8 @@ import androidx.fragment.app.activityViewModels
 import androidx.recyclerview.widget.LinearLayoutManager
 import com.example.recetapp.databinding.FragmentRecipeByIngredientBinding
 import com.example.recetapp.model.recipe.RecipeByIngredients
-import com.example.recetapp.ui.UIResponseState
+import com.example.recetapp.util.SpacingDecoration
+import com.example.recetapp.networking.UIResponseState
 import com.example.recetapp.ui.dashboard.DashboardViewModel
 import dagger.hilt.android.AndroidEntryPoint
 
@@ -21,9 +22,14 @@ class RecipeByIngredientFragment : Fragment() {
     private val binding get() = _binding!!
     private val viewModel: DashboardViewModel by activityViewModels()
     private val resultsAdapter by lazy {
-        RecipeByIngredientsResultsAdapter {
-            viewModel.addFavorite(it)
-        }
+        RecipeByIngredientsResultsAdapter(
+            {
+                viewModel.addFavorite(it)
+            },
+            {
+                viewModel.removeFavorite(it)
+            }
+        )
     }
 
     override fun onCreateView(
@@ -51,6 +57,7 @@ class RecipeByIngredientFragment : Fragment() {
         binding.recipesByIngredientRecyclerView.apply {
             layoutManager = LinearLayoutManager(activity)
             adapter = resultsAdapter
+            addItemDecoration(SpacingDecoration(8))
         }
         resultsAdapter.submitList(listOf())
         viewModel.getRecipesByIngredients()

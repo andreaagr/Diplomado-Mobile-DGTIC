@@ -1,12 +1,9 @@
 package com.example.recetapp.repository
 
-import androidx.room.Delete
-import androidx.room.Insert
-import androidx.room.Query
-import com.example.recetapp.CategoryType
+import com.example.recetapp.util.CategoryType
 import com.example.recetapp.model.recipe.Recipe
 import com.example.recetapp.model.view.CarouselRecipe
-import com.example.recetapp.ui.UIResponseState
+import com.example.recetapp.networking.UIResponseState
 import kotlinx.coroutines.flow.Flow
 
 interface RecipesRepository {

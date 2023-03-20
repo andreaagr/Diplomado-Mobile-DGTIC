@@ -1,7 +1,6 @@
 package com.example.recetapp.model.recipe.instructions
 
 import android.os.Parcelable
-import com.example.recetapp.Endpoint
 import com.google.gson.annotations.SerializedName
 import kotlinx.parcelize.Parcelize
 

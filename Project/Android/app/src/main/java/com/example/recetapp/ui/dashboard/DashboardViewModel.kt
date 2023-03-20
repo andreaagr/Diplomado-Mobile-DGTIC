@@ -5,12 +5,14 @@ import androidx.lifecycle.MutableLiveData
 import androidx.lifecycle.ViewModel
 import androidx.lifecycle.viewModelScope
 import com.example.recetapp.model.recipe.Recipe
+import com.example.recetapp.model.recipe.RecipeByIngredients
 import com.example.recetapp.model.recipe.instructions.Ingredient
 import com.example.recetapp.model.view.IngredientItem
 import com.example.recetapp.repository.RecipesRepository
-import com.example.recetapp.ui.UIResponseState
+import com.example.recetapp.networking.UIResponseState
 import dagger.hilt.android.lifecycle.HiltViewModel
 import kotlinx.coroutines.Dispatchers
+import kotlinx.coroutines.flow.flowOn
 import kotlinx.coroutines.launch
 import javax.inject.Inject
 
@@ -24,6 +26,35 @@ class DashboardViewModel @Inject constructor(
     private val _viewState: MutableLiveData<UIResponseState> = MutableLiveData()
     val performActionState: LiveData<UIResponseState> get() = _performActionState
     private val _performActionState: MutableLiveData<UIResponseState> = MutableLiveData()
+    private val _favorites: MutableLiveData<List<Recipe>> = MutableLiveData()
+    /*private val observer = { favoriteRecipes: List<Recipe> ->
+        if (_viewState.value is UIResponseState.Success<*>) {
+            val result = _viewState.value as UIResponseState.Success<*>
+            if (result.content is List<*>) {
+                val recipes = result.content as List<RecipeByIngredients>
+                recipes.forEach {
+                    it.isFavorite = false
+                }
+                favoriteRecipes.forEach {
+                    val indexOf = recipes.indexOf(it)
+                    if (indexOf != -1) {
+                        result.content[indexOf].isFavorite = true
+                    }
+                }
+            }
+        }
+    }*/
+
+    init {
+        viewModelScope.launch(Dispatchers.IO) {
+            repository.getFavoriteRecipes()
+                .flowOn(Dispatchers.IO)
+                .collect {
+                    _favorites.postValue(it)
+                }
+        }
+        //_favorites.observeForever(observer)
+    }
 
     fun addNewIngredient(ingredientItem: IngredientItem) {
         viewModelScope.launch(Dispatchers.IO) {
@@ -69,10 +100,21 @@ class DashboardViewModel @Inject constructor(
     fun getRecipesByIngredients() {
         viewModelScope.launch(Dispatchers.IO) {
             _viewState.postValue(UIResponseState.Loading)
-            _viewState.postValue(
-                _recipeIngredients.value?.joinToString(",") { it.name }
-                    ?.let { repository.getRecipeByIngredients(it) }
-            )
+            val uiResponseState = _recipeIngredients.value?.joinToString(",") { it.name }
+                ?.let { repository.getRecipeByIngredients(it) }
+            if (uiResponseState is UIResponseState.Success<*>) {
+                if (uiResponseState.content is List<*>) {
+                    val recipeByIngredients = uiResponseState.content as List<RecipeByIngredients>
+                    recipeByIngredients.forEach {
+                        it.isFavorite = isFavorite(it.id)
+                    }
+                }
+            }
+            uiResponseState.let {
+                _viewState.postValue(
+                    it
+                )
+            }
         }
     }
 
@@ -88,5 +130,23 @@ class DashboardViewModel @Inject constructor(
                 _performActionState.postValue(UIResponseState.Error("Couldn't save item, try again later"))
             }
         }
+    }
+
+    fun removeFavorite(recipeId: Int) {
+        viewModelScope.launch(Dispatchers.IO) {
+            _performActionState.postValue(UIResponseState.Loading)
+            val response = repository.getRecipeInformation(recipeId)
+            if (response is UIResponseState.Success<*>) {
+                val recipe = response.content as Recipe
+                repository.removeRecipeFromFavorites(recipe)
+                _performActionState.postValue(UIResponseState.Success("Item removed from favorites"))
+            } else {
+                _performActionState.postValue(UIResponseState.Error("Couldn't perform the action. Try again later"))
+            }
+        }
+    }
+
+    fun isFavorite(recipeId: Int): Boolean {
+        return _favorites.value?.map{ it.id }?.contains(recipeId) ?: false
     }
 }

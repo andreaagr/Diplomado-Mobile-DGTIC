@@ -9,7 +9,6 @@ import androidx.recyclerview.widget.RecyclerView
 import androidx.recyclerview.widget.RecyclerView.ViewHolder
 import com.example.recetapp.databinding.InstructionRowBinding
 import com.example.recetapp.model.recipe.instructions.AnalyzedInstruction
-import com.example.recetapp.ui.SpacingDecoration
 
 class AnalyzedInstructionsAdapter(
   private val analyzedInstructions: List<AnalyzedInstruction>
