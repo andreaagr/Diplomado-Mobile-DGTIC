@@ -19,6 +19,7 @@ import com.bumptech.glide.Glide
 import com.example.recetapp.databinding.ActivityMainBinding
 import com.example.recetapp.databinding.DrawerHeaderLayoutBinding
 import com.example.recetapp.networking.UIResponseState
+import com.example.recetapp.ui.InternetFragmentDialog
 import com.google.firebase.auth.FirebaseUser
 import dagger.hilt.android.AndroidEntryPoint
 
@@ -81,6 +82,14 @@ class MainActivity : AppCompatActivity() {
         }
         viewModel.viewState.observe(this) {
             handleUIResponse(it)
+        }
+        viewModel.internetState.observe(this) {
+            when(it) {
+                MyState.Error -> {
+                    InternetFragmentDialog(this).startDialog()
+                }
+                else -> {}
+            }
         }
         setupBackPressedCallback()
     }

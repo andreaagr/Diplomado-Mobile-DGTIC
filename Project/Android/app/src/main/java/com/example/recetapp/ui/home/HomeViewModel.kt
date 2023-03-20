@@ -111,7 +111,7 @@ class HomeViewModel @Inject constructor(
             }
             _viewStateResults.postValue(UIResponseState.Success(newRecipeList))
         } else {
-            UIResponseState.Error("Something went wrong")
+            _viewStateResults.postValue(UIResponseState.Error("Something went wrong"))
         }
     }
 

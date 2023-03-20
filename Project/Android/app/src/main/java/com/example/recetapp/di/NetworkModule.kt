@@ -1,9 +1,12 @@
 package com.example.recetapp.di
 
+import android.content.Context
 import com.example.recetapp.networking.FoodService
+import com.example.recetapp.networking.NetworkStatusTracker
 import dagger.Module
 import dagger.Provides
 import dagger.hilt.InstallIn
+import dagger.hilt.android.qualifiers.ApplicationContext
 import dagger.hilt.components.SingletonComponent
 import okhttp3.Interceptor
 import okhttp3.OkHttpClient
@@ -41,5 +44,11 @@ object NetworkModule {
     @Singleton
     fun provideGreatWonderService(retrofit: Retrofit): FoodService {
         return retrofit.create(FoodService::class.java)
+    }
+
+    @Provides
+    @Singleton
+    fun provideNetworkStatusTracker(@ApplicationContext context: Context): NetworkStatusTracker {
+        return NetworkStatusTracker(context)
     }
 }

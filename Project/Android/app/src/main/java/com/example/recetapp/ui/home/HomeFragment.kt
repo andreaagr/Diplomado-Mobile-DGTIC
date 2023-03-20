@@ -96,7 +96,7 @@ class HomeFragment : Fragment() {
                         }
                     } else {
                         binding.lottieErrorAnimationView.visibility = View.VISIBLE
-                        //synchronizeApi(ExistingPeriodicWorkPolicy.UPDATE)
+                        synchronizeApi(ExistingPeriodicWorkPolicy.UPDATE)
                     }
                 }
             }

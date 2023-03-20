@@ -21,4 +21,5 @@
     <dimen name="ingredient_card_view_size">100dp</dimen>
     <dimen name="recycler_view_side_margins">8dp</dimen>
     <dimen name="list_summary_rv_size">130dp</dimen>
+    <dimen name="image_size_dialog_fragment">200dp</dimen>
 </resources>

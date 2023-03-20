@@ -3,24 +3,29 @@ package com.example.recetapp
 import androidx.activity.result.ActivityResult
 import androidx.activity.result.ActivityResultLauncher
 import androidx.activity.result.IntentSenderRequest
-import androidx.lifecycle.LiveData
-import androidx.lifecycle.MutableLiveData
-import androidx.lifecycle.ViewModel
-import androidx.lifecycle.viewModelScope
+import androidx.lifecycle.*
+import com.example.recetapp.networking.NetworkStatusTracker
 import com.example.recetapp.networking.UIResponseState
+import com.example.recetapp.networking.map
 import com.example.recetapp.repository.AuthRepository
 import com.google.firebase.auth.FirebaseUser
 import dagger.hilt.android.lifecycle.HiltViewModel
+import kotlinx.coroutines.Dispatchers
 import kotlinx.coroutines.launch
 import javax.inject.Inject
 
 @HiltViewModel
 class MainViewModel @Inject constructor(
-    private val authRepository: AuthRepository
+    private val authRepository: AuthRepository,
+    private val networkStatusTracker: NetworkStatusTracker
 ): ViewModel() {
 
     val viewState: LiveData<UIResponseState> get() = _viewState
     private val _viewState: MutableLiveData<UIResponseState> = MutableLiveData()
+    val internetState = networkStatusTracker.networkStatus.map(
+        onUnavailable = { MyState.Error },
+        onAvailable = { MyState.Fetched },
+    ).asLiveData(Dispatchers.IO)
 
     fun signIn(
         intentSenderRequest: ActivityResultLauncher<IntentSenderRequest>,
@@ -48,4 +53,9 @@ class MainViewModel @Inject constructor(
     fun getCurrentUser(): FirebaseUser? {
         return authRepository.getCurrentUser()
     }
+}
+
+sealed class MyState {
+    object Fetched : MyState()
+    object Error : MyState()
 }
