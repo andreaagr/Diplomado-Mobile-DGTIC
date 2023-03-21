@@ -11,9 +11,10 @@ El logo de la aplicación muestra una piramide alimenticia y algunos alimentos s
 
 ## Justificación de la elección del tipo de dispositivo, versión del sistema operativo y las orientaciones soportadas.
 La app está pensada para todo tipo de dispositivos aunque se recomienda el uso de tabletas para una mejor visualización del contenido, esto debido a, la gran cantidad de información que puede llegar a presentarse en pantalla. Teniendo esto en mente, la app puede utilizarse en modo landscape y todas las pantallas son responsivas.
-![Modo lanscape](images/landscape.png){width=200px height=100px}
 
-![Modo portrait](images/portrait.png){width=200px height=100px}
+![Modo lanscape](images/landscape.png)
+
+![Modo portrait](images/portrait.png)
 
 El nivel mínimo de API es el 24, el cual equivale a Android Nougat y hace que la app este disponible para el 94.4% de los dispositivos. Se decidió de esta manera, ya que es posible que los dispositivos debajo de la versión mencionada no cuenten con los requerimientos de hardware adecuados, por ejemplo, el tamaño y resolución de pantalla
 
@@ -21,7 +22,7 @@ El nivel mínimo de API es el 24, el cual equivale a Android Nougat y hace que l
 ## Credenciales para poder acceder al app
 La app implementa la autenticación por medio de Google One Tap, en donde es posible seleccionar una cuenta Google como medio de identificación, por lo que no se necesitan usuarios ni contraseñas. Para probar esta funcionalidad en la app, solamente es necesario seguir el siguiente flujo:
 
-![Proceso de autenticación](images/authentication.png){width=200px height=100px}
+![Proceso de autenticación](images/authentication.png)
 
 ## Dependencias del proyecto
 - Material Design 1.8.0
@@ -39,10 +40,17 @@ La app implementa la autenticación por medio de Google One Tap, en donde es pos
 ## Preview
 
 ### Manejo de errores
-![Errores](images/errores.png){width=200px height=100px}
+
+![Errores](images/errores.png)
 
 ### Home
 
+![Home](images/home.png)
+
 ### What's in my fridge?
 
+![Recipe by ingredients](images/wimf.png)
+
 ### Favorites
+
+![Favorites](images/favorites.png)
