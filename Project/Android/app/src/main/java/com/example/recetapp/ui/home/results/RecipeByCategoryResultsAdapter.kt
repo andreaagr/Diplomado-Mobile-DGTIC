@@ -72,7 +72,7 @@ class GeneralRecipeViewHolder(
             }
             if (isFrom == ScreenResultType.FAVORITES) {
                 toggleFavoriteButton.isChecked = true
-                toggleSaveButton.visibility = View.GONE
+                //toggleSaveButton.visibility = View.GONE
             } else {
                 toggleFavoriteButton.isChecked = recipe.isFavorite
             }

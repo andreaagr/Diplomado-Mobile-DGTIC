@@ -1,8 +1,7 @@
 package com.example.recetapp.networking
 
-import com.example.recetapp.CategoryType
 import com.example.recetapp.model.recipe.toCarouselRecipe
-import com.example.recetapp.ui.UIResponseState
+import com.example.recetapp.util.CategoryType
 import javax.inject.Inject
 
 class RemoteApi @Inject constructor(
@@ -59,5 +58,11 @@ class RemoteApi @Inject constructor(
         UIResponseState.Success(foodService.getRecipeInformation(recipeId))
     } catch (error: Throwable) {
         UIResponseState.Error(error.message ?: "Failed to retrieve items")
+    }
+
+    suspend fun searchRecipes(query: String) = try {
+        UIResponseState.Success(foodService.searchRecipes(query))
+    } catch (error: Throwable) {
+        UIResponseState.Error(error.message ?: "No data found")
     }
 }

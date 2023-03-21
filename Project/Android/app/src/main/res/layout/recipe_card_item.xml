@@ -110,7 +110,7 @@
             app:layout_constraintStart_toStartOf="@+id/imageView4"
             app:layout_constraintTop_toBottomOf="@+id/imageView4" />
 
-        <ToggleButton
+        <!--<ToggleButton
             android:id="@+id/toggleSaveButton"
             android:layout_width="@dimen/top_icon_not_animated_size"
             android:layout_height="@dimen/top_icon_not_animated_size"
@@ -119,7 +119,7 @@
             android:textOff=""
             android:textOn=""
             app:layout_constraintEnd_toEndOf="@+id/toggleFavoriteButton"
-            app:layout_constraintTop_toBottomOf="@+id/toggleFavoriteButton" />
+            app:layout_constraintTop_toBottomOf="@+id/toggleFavoriteButton" />-->
 
     </androidx.constraintlayout.widget.ConstraintLayout>
 
