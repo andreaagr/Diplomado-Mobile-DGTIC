@@ -7,13 +7,6 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
-		6C1B3C4129CB6F6D0032B6F5 /* meal_types.json in Resources */ = {isa = PBXBuildFile; fileRef = 6C1B3C3D29CB6F6D0032B6F5 /* meal_types.json */; };
-		6C1B3C4229CB6F6D0032B6F5 /* diets.json in Resources */ = {isa = PBXBuildFile; fileRef = 6C1B3C3E29CB6F6D0032B6F5 /* diets.json */; };
-		6C1B3C4329CB6F6D0032B6F5 /* cuisines.json in Resources */ = {isa = PBXBuildFile; fileRef = 6C1B3C3F29CB6F6D0032B6F5 /* cuisines.json */; };
-		6C1B3C4429CB6F6D0032B6F5 /* ingredients.json in Resources */ = {isa = PBXBuildFile; fileRef = 6C1B3C4029CB6F6D0032B6F5 /* ingredients.json */; };
-		6C1B3C4829CB70450032B6F5 /* loading_animation.json in Resources */ = {isa = PBXBuildFile; fileRef = 6C1B3C4529CB70450032B6F5 /* loading_animation.json */; };
-		6C1B3C4929CB70450032B6F5 /* lost_connection.json in Resources */ = {isa = PBXBuildFile; fileRef = 6C1B3C4629CB70450032B6F5 /* lost_connection.json */; };
-		6C1B3C4A29CB70450032B6F5 /* error_map.json in Resources */ = {isa = PBXBuildFile; fileRef = 6C1B3C4729CB70450032B6F5 /* error_map.json */; };
 		6CF5D68F29CA63160099E7CF /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6CF5D68E29CA63160099E7CF /* AppDelegate.swift */; };
 		6CF5D69129CA63160099E7CF /* SceneDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6CF5D69029CA63160099E7CF /* SceneDelegate.swift */; };
 		6CF5D69329CA63160099E7CF /* ViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6CF5D69229CA63160099E7CF /* ViewController.swift */; };
@@ -24,13 +17,6 @@
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
-		6C1B3C3D29CB6F6D0032B6F5 /* meal_types.json */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.json; name = meal_types.json; path = ../../../../Android/app/src/main/res/raw/meal_types.json; sourceTree = "<group>"; };
-		6C1B3C3E29CB6F6D0032B6F5 /* diets.json */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.json; name = diets.json; path = ../../../../Android/app/src/main/res/raw/diets.json; sourceTree = "<group>"; };
-		6C1B3C3F29CB6F6D0032B6F5 /* cuisines.json */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.json; name = cuisines.json; path = ../../../../Android/app/src/main/res/raw/cuisines.json; sourceTree = "<group>"; };
-		6C1B3C4029CB6F6D0032B6F5 /* ingredients.json */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.json; name = ingredients.json; path = ../../../../Android/app/src/main/res/raw/ingredients.json; sourceTree = "<group>"; };
-		6C1B3C4529CB70450032B6F5 /* loading_animation.json */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.json; name = loading_animation.json; path = ../../../../Android/app/src/main/res/raw/loading_animation.json; sourceTree = "<group>"; };
-		6C1B3C4629CB70450032B6F5 /* lost_connection.json */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.json; name = lost_connection.json; path = ../../../../Android/app/src/main/res/raw/lost_connection.json; sourceTree = "<group>"; };
-		6C1B3C4729CB70450032B6F5 /* error_map.json */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.json; name = error_map.json; path = ../../../../Android/app/src/main/res/raw/error_map.json; sourceTree = "<group>"; };
 		6CF5D68B29CA63160099E7CF /* RecetApp.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = RecetApp.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		6CF5D68E29CA63160099E7CF /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		6CF5D69029CA63160099E7CF /* SceneDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SceneDelegate.swift; sourceTree = "<group>"; };
@@ -53,27 +39,6 @@
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
-		6C1B3C3B29CB6DF30032B6F5 /* Animations */ = {
-			isa = PBXGroup;
-			children = (
-				6C1B3C4729CB70450032B6F5 /* error_map.json */,
-				6C1B3C4529CB70450032B6F5 /* loading_animation.json */,
-				6C1B3C4629CB70450032B6F5 /* lost_connection.json */,
-			);
-			path = Animations;
-			sourceTree = "<group>";
-		};
-		6C1B3C3C29CB6E020032B6F5 /* JSON */ = {
-			isa = PBXGroup;
-			children = (
-				6C1B3C3F29CB6F6D0032B6F5 /* cuisines.json */,
-				6C1B3C3E29CB6F6D0032B6F5 /* diets.json */,
-				6C1B3C4029CB6F6D0032B6F5 /* ingredients.json */,
-				6C1B3C3D29CB6F6D0032B6F5 /* meal_types.json */,
-			);
-			path = JSON;
-			sourceTree = "<group>";
-		};
 		6CF5D68229CA63160099E7CF = {
 			isa = PBXGroup;
 			children = (
@@ -93,8 +58,6 @@
 		6CF5D68D29CA63160099E7CF /* RecetApp */ = {
 			isa = PBXGroup;
 			children = (
-				6C1B3C3C29CB6E020032B6F5 /* JSON */,
-				6C1B3C3B29CB6DF30032B6F5 /* Animations */,
 				6CF5D68E29CA63160099E7CF /* AppDelegate.swift */,
 				6CF5D69029CA63160099E7CF /* SceneDelegate.swift */,
 				6CF5D69229CA63160099E7CF /* ViewController.swift */,
@@ -165,15 +128,8 @@
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				6C1B3C4929CB70450032B6F5 /* lost_connection.json in Resources */,
-				6C1B3C4A29CB70450032B6F5 /* error_map.json in Resources */,
 				6CF5D69E29CA63170099E7CF /* LaunchScreen.storyboard in Resources */,
 				6CF5D69B29CA63170099E7CF /* Assets.xcassets in Resources */,
-				6C1B3C4329CB6F6D0032B6F5 /* cuisines.json in Resources */,
-				6C1B3C4829CB70450032B6F5 /* loading_animation.json in Resources */,
-				6C1B3C4129CB6F6D0032B6F5 /* meal_types.json in Resources */,
-				6C1B3C4229CB6F6D0032B6F5 /* diets.json in Resources */,
-				6C1B3C4429CB6F6D0032B6F5 /* ingredients.json in Resources */,
 				6CF5D69629CA63160099E7CF /* Main.storyboard in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;

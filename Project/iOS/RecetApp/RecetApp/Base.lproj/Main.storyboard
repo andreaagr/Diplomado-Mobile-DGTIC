@@ -18,19 +18,8 @@
                         <viewLayoutGuide key="safeArea" id="6Tk-OE-BBY"/>
                         <color key="backgroundColor" systemColor="systemBackgroundColor"/>
                     </view>
-                    <connections>
-                        <outlet property="searchDisplayController" destination="tob-pV-fQP" id="6em-lf-P4x"/>
-                    </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="dkx-z0-nzr" sceneMemberID="firstResponder"/>
-                <searchDisplayController id="tob-pV-fQP">
-                    <connections>
-                        <outlet property="delegate" destination="BYZ-38-t0r" id="rj1-C5-uKT"/>
-                        <outlet property="searchContentsController" destination="BYZ-38-t0r" id="h7y-1a-lE1"/>
-                        <outlet property="searchResultsDataSource" destination="BYZ-38-t0r" id="NDr-Be-p1V"/>
-                        <outlet property="searchResultsDelegate" destination="BYZ-38-t0r" id="af9-mF-Rz8"/>
-                    </connections>
-                </searchDisplayController>
             </objects>
             <point key="canvasLocation" x="-120" y="4"/>
         </scene>
