@@ -233,6 +233,13 @@
                         </constraints>
                     </view>
                     <navigationItem key="navigationItem" id="DaE-NY-jjO"/>
+                    <connections>
+                        <outlet property="recipeDetailsTableView" destination="1tA-bX-KCu" id="HAl-kr-hWB"/>
+                        <outlet property="recipeImageView" destination="ImS-6i-a3B" id="Brd-fF-8hS"/>
+                        <outlet property="recipePriceLabel" destination="Kkz-4o-adm" id="yb1-09-bO9"/>
+                        <outlet property="recipeServesLabel" destination="G7a-e8-SJt" id="2CI-tJ-Lg3"/>
+                        <outlet property="recipeTimeInMinutesLabel" destination="BhQ-i5-MmP" id="ipV-Kx-WUX"/>
+                    </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="b96-KR-u6t" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
             </objects>

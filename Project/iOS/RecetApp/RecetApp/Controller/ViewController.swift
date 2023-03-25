@@ -83,7 +83,7 @@ extension ViewController: CollectionViewCellDelegate {
     func collectionView(collectionviewcell: CategoryCollectionViewCell?, index: Int, didTappedInTableViewCell: CategoryTableViewCell) {
             if let categoryRow = didTappedInTableViewCell.categoryRowItems {
                 resultType = ResultType.CATEGORY
-                switch didTappedInTableViewCell.categoryRowItems?.count {
+                switch categoryRow.count {
                 case 11: categoryType = Category.MEAL_TYPE
                 case 17: categoryType = Category.CUISINE
                 case 7: categoryType = Category.DIET

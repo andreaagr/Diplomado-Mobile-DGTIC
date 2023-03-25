@@ -16,6 +16,8 @@ class ResultsViewController: UIViewController {
     var keyword: String?
     var resultType: ResultType?
     var results: [Recipe] = []
+    var showDetailSegue = "showResultDetail"
+    var recipeSelected: Recipe?
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -35,6 +37,12 @@ class ResultsViewController: UIViewController {
      // Pass the selected object to the new view controller.
      }
      */
+    override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
+        if segue.identifier == showDetailSegue {
+            let destination = segue.destination as! RecipeDetailViewController
+            destination.recipe = recipeSelected
+        }
+    }
     
     func performSearchRecipeQuery() {
         guard var URL = URLComponents(string: API_SPOONACULAR_URL + COMPLEX_SEARCH_ENDPOINT) else { return }
@@ -56,8 +64,8 @@ class ResultsViewController: UIViewController {
                 queryName = ""
             }
             queryItem = URLQueryItem(name: queryName, value: categorySelected)
-            URL.queryItems = [queryItem!]
         }
+        URL.queryItems = [queryItem!]
         
         builRequest(urlComponents: URL, onSuccess: { data in
             let recipes = try? JSONDecoder().decode(ComplexSearchResponse.self, from: data)
@@ -116,7 +124,8 @@ extension ResultsViewController: UITableViewDataSource, UITableViewDelegate {
     }
     
     func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
-        print("Element tappe \(indexPath.row)")
+        recipeSelected = results[indexPath.row]
+        performSegue(withIdentifier: showDetailSegue, sender: Self.self)
     }
     
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
