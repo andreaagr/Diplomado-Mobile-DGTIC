@@ -91,9 +91,7 @@ extension ViewController: CollectionViewCellDelegate {
                     categoryType = Category.MEAL_TYPE
                 }
                 categorySelected = categoryRow[index].name
-                print("You tapped the cell \(index) in the row of colors \(categoryRow[index])")
                 performSegue(withIdentifier: showResultsSegue, sender: Self.self)
-                // You can also do changes to the cell you tapped using the 'collectionviewcell'
             }
         
     }
