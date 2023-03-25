@@ -138,14 +138,14 @@
                         <rect key="frame" x="0.0" y="0.0" width="393" height="852"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
-                            <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="ImS-6i-a3B">
+                            <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="RecipePlaceholder" translatesAutoresizingMaskIntoConstraints="NO" id="ImS-6i-a3B">
                                 <rect key="frame" x="0.0" y="103" width="393" height="200"/>
                                 <constraints>
                                     <constraint firstAttribute="height" constant="200" id="aQ4-ZI-80a"/>
                                 </constraints>
                             </imageView>
                             <stackView opaque="NO" contentMode="scaleAspectFill" distribution="equalSpacing" spacingType="standard" translatesAutoresizingMaskIntoConstraints="NO" id="x9V-dh-MtN">
-                                <rect key="frame" x="16" y="307" width="361" height="80"/>
+                                <rect key="frame" x="16" y="336" width="361" height="80"/>
                                 <subviews>
                                     <stackView opaque="NO" contentMode="scaleToFill" axis="vertical" distribution="fillProportionally" translatesAutoresizingMaskIntoConstraints="NO" id="vcG-j1-LKH">
                                         <rect key="frame" x="0.0" y="0.0" width="100" height="80"/>
@@ -213,23 +213,32 @@
                                 </constraints>
                             </stackView>
                             <tableView clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="default" rowHeight="-1" estimatedRowHeight="-1" sectionHeaderHeight="-1" estimatedSectionHeaderHeight="-1" sectionFooterHeight="-1" estimatedSectionFooterHeight="-1" translatesAutoresizingMaskIntoConstraints="NO" id="1tA-bX-KCu">
-                                <rect key="frame" x="8" y="387" width="377" height="431"/>
+                                <rect key="frame" x="8" y="416" width="377" height="402"/>
                                 <color key="backgroundColor" systemColor="systemBackgroundColor"/>
                             </tableView>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Label" textAlignment="center" lineBreakMode="tailTruncation" numberOfLines="2" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="XcK-Nj-div">
+                                <rect key="frame" x="8" y="307" width="377" height="20.333333333333314"/>
+                                <fontDescription key="fontDescription" type="system" weight="medium" pointSize="17"/>
+                                <nil key="textColor"/>
+                                <nil key="highlightedColor"/>
+                            </label>
                         </subviews>
                         <viewLayoutGuide key="safeArea" id="LVf-Wk-cQx"/>
                         <color key="backgroundColor" systemColor="systemBackgroundColor"/>
                         <constraints>
+                            <constraint firstItem="XcK-Nj-div" firstAttribute="leading" secondItem="LVf-Wk-cQx" secondAttribute="leading" constant="8" id="0ni-9D-jxP"/>
                             <constraint firstItem="LVf-Wk-cQx" firstAttribute="trailing" secondItem="ImS-6i-a3B" secondAttribute="trailing" id="5uB-6S-sGN"/>
                             <constraint firstItem="1tA-bX-KCu" firstAttribute="top" secondItem="x9V-dh-MtN" secondAttribute="bottom" id="7Mn-Oj-lHY"/>
                             <constraint firstItem="1tA-bX-KCu" firstAttribute="leading" secondItem="LVf-Wk-cQx" secondAttribute="leading" constant="8" id="BAt-Xf-5f1"/>
                             <constraint firstItem="LVf-Wk-cQx" firstAttribute="trailing" secondItem="x9V-dh-MtN" secondAttribute="trailing" constant="16" id="Kui-PR-GTM"/>
                             <constraint firstItem="LVf-Wk-cQx" firstAttribute="bottom" secondItem="1tA-bX-KCu" secondAttribute="bottom" id="MXa-Ha-IIW"/>
                             <constraint firstItem="ImS-6i-a3B" firstAttribute="top" secondItem="LVf-Wk-cQx" secondAttribute="top" id="QmV-SD-8OI"/>
+                            <constraint firstItem="x9V-dh-MtN" firstAttribute="top" secondItem="XcK-Nj-div" secondAttribute="bottom" constant="8.6666666666666856" id="RO9-cv-9rs"/>
                             <constraint firstItem="x9V-dh-MtN" firstAttribute="leading" secondItem="LVf-Wk-cQx" secondAttribute="leading" constant="16" id="WcC-2b-LPb"/>
-                            <constraint firstItem="x9V-dh-MtN" firstAttribute="top" secondItem="ImS-6i-a3B" secondAttribute="bottom" constant="4" id="dCN-4D-SGu"/>
                             <constraint firstItem="LVf-Wk-cQx" firstAttribute="trailing" secondItem="1tA-bX-KCu" secondAttribute="trailing" constant="8" id="dj7-ev-ZkZ"/>
                             <constraint firstItem="ImS-6i-a3B" firstAttribute="leading" secondItem="LVf-Wk-cQx" secondAttribute="leading" id="e6O-qf-GBf"/>
+                            <constraint firstItem="LVf-Wk-cQx" firstAttribute="trailing" secondItem="XcK-Nj-div" secondAttribute="trailing" constant="8" id="onj-hv-vXM"/>
+                            <constraint firstItem="XcK-Nj-div" firstAttribute="top" secondItem="ImS-6i-a3B" secondAttribute="bottom" constant="4" id="pvf-ak-IQn"/>
                         </constraints>
                     </view>
                     <navigationItem key="navigationItem" id="DaE-NY-jjO"/>
@@ -239,6 +248,7 @@
                         <outlet property="recipePriceLabel" destination="Kkz-4o-adm" id="yb1-09-bO9"/>
                         <outlet property="recipeServesLabel" destination="G7a-e8-SJt" id="2CI-tJ-Lg3"/>
                         <outlet property="recipeTimeInMinutesLabel" destination="BhQ-i5-MmP" id="ipV-Kx-WUX"/>
+                        <outlet property="recipeTitleLabel" destination="XcK-Nj-div" id="f3w-Iw-li9"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="b96-KR-u6t" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
@@ -268,6 +278,7 @@
         <segue reference="5o9-9A-xfg"/>
     </inferredMetricsTieBreakers>
     <resources>
+        <image name="RecipePlaceholder" width="256" height="256"/>
         <image name="RecipePrice" width="256" height="256"/>
         <image name="RecipeServes" width="256" height="256"/>
         <image name="RecipeTime" width="256" height="256"/>
