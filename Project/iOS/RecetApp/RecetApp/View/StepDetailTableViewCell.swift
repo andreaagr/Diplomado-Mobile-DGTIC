@@ -1,8 +1,8 @@
 //
-//  InstructionTableViewCell.swift
+//  StepDetailTableViewCell.swift
 //  RecetApp
 //
-//  Created by Andrea García Ruiz on 25/03/23.
+//  Created by Andrea Garcìa on 25/03/23.
 //
 
 import UIKit
@@ -20,6 +20,10 @@ class StepDetailTableViewCell: UITableViewCell, UICollectionViewDelegate, UIColl
         super.awakeFromNib()
         // Initialization code
         // Register the xib for collection view cell
+        self.ingredientsCollectionView.dataSource = self
+        self.ingredientsCollectionView.delegate = self
+        self.equipmentCollectionView.dataSource = self
+        self.equipmentCollectionView.delegate = self
         let cellNib = UINib(nibName: "CategoryCollectionViewCell", bundle: nil)
         self.ingredientsCollectionView.register(cellNib, forCellWithReuseIdentifier: "CategoryCollectionViewCell")
         self.equipmentCollectionView.register(cellNib, forCellWithReuseIdentifier: "CategoryCollectionViewCell")
@@ -43,10 +47,12 @@ class StepDetailTableViewCell: UITableViewCell, UICollectionViewDelegate, UIColl
         if collectionView == ingredientsCollectionView {
             let cell = ingredientsCollectionView.dequeueReusableCell(withReuseIdentifier: "CategoryCollectionViewCell", for: indexPath) as! CategoryCollectionViewCell
             cell.categoryNameLabel.text = ingRowItems?[indexPath.row].name
+            cell.categoryImageView.loadFrom(URLAddress: API_IMAGE_URL + (ingRowItems?[indexPath.row].image ?? ""))
             return cell
         } else {
             let cell = equipmentCollectionView.dequeueReusableCell(withReuseIdentifier: "CategoryCollectionViewCell", for: indexPath) as! CategoryCollectionViewCell
             cell.categoryNameLabel.text = equipRowItems?[indexPath.row].name
+            cell.categoryImageView.loadFrom(URLAddress: API_EQUIPMENT_URL + (ingRowItems?[indexPath.row].image ?? ""))
             return cell
         }
     }

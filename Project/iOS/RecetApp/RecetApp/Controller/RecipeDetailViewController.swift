@@ -23,6 +23,8 @@ class RecipeDetailViewController: UIViewController {
 
         // Do any additional setup after loading the view.
         loadRecipe()
+        let cellNib = UINib(nibName: "InstructionTableViewCell", bundle: nil)
+        self.recipeDetailsTableView.register(cellNib, forCellReuseIdentifier: "InstructionTableViewCell")
     }
     
 
@@ -62,5 +64,9 @@ extension RecipeDetailViewController: UITableViewDelegate, UITableViewDataSource
     
     func tableView(_ tableView: UITableView, titleForHeaderInSection section: Int) -> String? {
         recipe?.analyzedInstructions[section].name
+    }
+    
+    func tableView(_ tableView: UITableView, heightForRowAt indexPath: IndexPath) -> CGFloat {
+        500
     }
 }

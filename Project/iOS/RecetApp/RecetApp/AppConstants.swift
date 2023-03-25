@@ -13,3 +13,5 @@ let COMPLEX_SEARCH_ENDPOINT = "recipes/complexSearch"
 func buildRecipeInfoURL(recipeId: Int) -> String {
     API_SPOONACULAR_URL + "recipes/\(recipeId)/information"
 }
+let API_IMAGE_URL = "https://spoonacular.com/cdn/ingredients_100x100/"
+let API_EQUIPMENT_URL = "https://spoonacular.com/cdn/equipment_100x100/"
