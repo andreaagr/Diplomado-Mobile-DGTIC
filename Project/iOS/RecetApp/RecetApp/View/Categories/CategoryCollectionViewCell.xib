@@ -1,0 +1,53 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.XIB" version="3.0" toolsVersion="21507" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES">
+    <device id="retina6_12" orientation="portrait" appearance="light"/>
+    <dependencies>
+        <deployment identifier="iOS"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="21505"/>
+        <capability name="Safe area layout guides" minToolsVersion="9.0"/>
+        <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
+    </dependencies>
+    <objects>
+        <placeholder placeholderIdentifier="IBFilesOwner" id="-1" userLabel="File's Owner"/>
+        <placeholder placeholderIdentifier="IBFirstResponder" id="-2" customClass="UIResponder"/>
+        <collectionViewCell opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" reuseIdentifier="CategoryCollectionViewCell" id="gTV-IL-0wX" customClass="CategoryCollectionViewCell" customModule="RecetApp" customModuleProvider="target">
+            <rect key="frame" x="0.0" y="0.0" width="125" height="150"/>
+            <autoresizingMask key="autoresizingMask"/>
+            <view key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center">
+                <rect key="frame" x="0.0" y="0.0" width="125" height="150"/>
+                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                <subviews>
+                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Italian" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="qbr-Xr-YBW">
+                        <rect key="frame" x="0.0" y="129.66666666666666" width="125" height="20.333333333333343"/>
+                        <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                        <nil key="textColor"/>
+                        <nil key="highlightedColor"/>
+                    </label>
+                    <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="CategoryPlaceholder" translatesAutoresizingMaskIntoConstraints="NO" id="Kil-EY-tdH">
+                        <rect key="frame" x="0.0" y="0.0" width="125" height="125"/>
+                        <constraints>
+                            <constraint firstAttribute="width" secondItem="Kil-EY-tdH" secondAttribute="height" multiplier="1:1" id="Wsg-EH-ERo"/>
+                        </constraints>
+                    </imageView>
+                </subviews>
+            </view>
+            <viewLayoutGuide key="safeArea" id="ZTg-uK-7eu"/>
+            <constraints>
+                <constraint firstItem="Kil-EY-tdH" firstAttribute="centerX" secondItem="gTV-IL-0wX" secondAttribute="centerX" id="8lm-Sa-TQS"/>
+                <constraint firstAttribute="trailing" secondItem="qbr-Xr-YBW" secondAttribute="trailing" id="AyO-el-j17"/>
+                <constraint firstAttribute="bottom" secondItem="qbr-Xr-YBW" secondAttribute="bottom" id="HiG-7u-9Iz"/>
+                <constraint firstItem="Kil-EY-tdH" firstAttribute="top" secondItem="gTV-IL-0wX" secondAttribute="top" id="SOk-5k-cHO"/>
+                <constraint firstItem="qbr-Xr-YBW" firstAttribute="leading" secondItem="gTV-IL-0wX" secondAttribute="leading" id="neT-3d-q0A"/>
+                <constraint firstItem="Kil-EY-tdH" firstAttribute="leading" secondItem="qbr-Xr-YBW" secondAttribute="leading" id="rgI-32-eQv"/>
+            </constraints>
+            <connections>
+                <outlet property="categoryImageView" destination="Kil-EY-tdH" id="5ty-ZO-6YW"/>
+                <outlet property="categoryNameLabel" destination="qbr-Xr-YBW" id="R2f-g2-7EQ"/>
+            </connections>
+            <point key="canvasLocation" x="65.648854961832058" y="19.718309859154932"/>
+        </collectionViewCell>
+    </objects>
+    <resources>
+        <image name="CategoryPlaceholder" width="256" height="256"/>
+    </resources>
+</document>
