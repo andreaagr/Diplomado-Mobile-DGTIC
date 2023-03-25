@@ -115,6 +115,10 @@ extension ResultsViewController: UITableViewDataSource, UITableViewDelegate {
         results.count
     }
     
+    func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
+        print("Element tappe \(indexPath.row)")
+    }
+    
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         let cell = tableView.dequeueReusableCell(withIdentifier: "RecipeTableViewCell", for: indexPath) as! RecipeTableViewCell
         cell.recipeImageView.loadFrom(URLAddress: results[indexPath.row].image)

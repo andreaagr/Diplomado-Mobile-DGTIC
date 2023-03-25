@@ -8,6 +8,8 @@
 import UIKit
 
 class RecipeDetailViewController: UIViewController {
+    
+    var recipe: Recipe?
 
     override func viewDidLoad() {
         super.viewDidLoad()
