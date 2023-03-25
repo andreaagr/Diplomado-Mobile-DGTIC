@@ -11,6 +11,7 @@ class RecipeDetailViewController: UIViewController {
     
     var recipe: Recipe?
     
+    @IBOutlet var recipeTitleLabel: UILabel!
     @IBOutlet var recipeImageView: UIImageView!
     @IBOutlet var recipeTimeInMinutesLabel: UILabel!
     @IBOutlet var recipeServesLabel: UILabel!
@@ -35,9 +36,31 @@ class RecipeDetailViewController: UIViewController {
     }
     */
     private func loadRecipe() {
+        recipeTitleLabel.text = recipe?.title
         recipeImageView.loadFrom(URLAddress: recipe?.image ?? "")
         recipeTimeInMinutesLabel.text = "\(recipe?.readyInMinutes ?? 0) minutes"
         recipePriceLabel.text = "$\(recipe?.pricePerServing ?? 0.0)"
         recipeServesLabel.text = "Serves \(recipe?.servings ?? 0)"
+    }
+}
+
+extension RecipeDetailViewController: UITableViewDelegate, UITableViewDataSource {
+    
+    func numberOfSections(in tableView: UITableView) -> Int {
+        recipe?.analyzedInstructions.count ?? 0
+    }
+    
+    func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
+        recipe?.analyzedInstructions[section].steps.count ?? 0
+    }
+    
+    func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
+        let cell = recipeDetailsTableView.dequeueReusableCell(withIdentifier: "InstructionTableViewCell", for: indexPath) as! InstructionTableViewCell
+        cell.updateCellWith(row: recipe?.analyzedInstructions[indexPath.section].steps ?? [])
+        return cell
+    }
+    
+    func tableView(_ tableView: UITableView, titleForHeaderInSection section: Int) -> String? {
+        recipe?.analyzedInstructions[section].name
     }
 }
