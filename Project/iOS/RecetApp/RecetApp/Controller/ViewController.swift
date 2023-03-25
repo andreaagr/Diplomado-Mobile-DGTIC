@@ -14,7 +14,12 @@ class ViewController: UIViewController {
     
     var presenter: ViewToPresenterProtocol?
     var categoryItemsList = [[RecipeCategory]]()
+    var resultType: ResultType?
+    var categorySelected: String?
+    var categoryType: Category?
+    var keyword: String?
     let sectionTitles = ["Meal types", "Cuisines", "Diets"]
+    let showResultsSegue = "showRecipeSearchResults"
 
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -22,8 +27,17 @@ class ViewController: UIViewController {
         presenter?.startFetchingCategories()
         // Register the xib for tableview cell
         categoriesTableView.register(UINib(nibName: "CategoryTableViewCell", bundle: nil), forCellReuseIdentifier: "CategoryTableViewCell")
-        
         showCategories()
+    }
+    
+    override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
+        if segue.identifier == showResultsSegue {
+            let destination = segue.destination as! ResultsViewController
+            destination.keyword = keyword
+            destination.resultType = resultType
+            destination.categorySelected = categorySelected
+            destination.categoryType = categoryType
+        }
     }
     
     private func readLocalFile(forName name: String) -> Data? {
@@ -51,7 +65,6 @@ class ViewController: UIViewController {
             print(error.localizedDescription)
         }
         
-        //self.categoryItemsList = categoryItems
         self.categoriesTableView.reloadData()
     }
     
@@ -68,10 +81,21 @@ class ViewController: UIViewController {
 
 extension ViewController: CollectionViewCellDelegate {
     func collectionView(collectionviewcell: CategoryCollectionViewCell?, index: Int, didTappedInTableViewCell: CategoryTableViewCell) {
-        if let colorsRow = didTappedInTableViewCell.categoryRowItems {
-            print("You tapped the cell \(index) in the row of colors \(colorsRow[index])")
-            // You can also do changes to the cell you tapped using the 'collectionviewcell'
-        }
+            if let categoryRow = didTappedInTableViewCell.categoryRowItems {
+                resultType = ResultType.CATEGORY
+                switch didTappedInTableViewCell.categoryRowItems?.count {
+                case 11: categoryType = Category.MEAL_TYPE
+                case 17: categoryType = Category.CUISINE
+                case 7: categoryType = Category.DIET
+                default:
+                    categoryType = Category.MEAL_TYPE
+                }
+                categorySelected = categoryRow[index].name
+                print("You tapped the cell \(index) in the row of colors \(categoryRow[index])")
+                performSegue(withIdentifier: showResultsSegue, sender: Self.self)
+                // You can also do changes to the cell you tapped using the 'collectionviewcell'
+            }
+        
     }
 }
 
@@ -122,6 +146,8 @@ extension ViewController: UISearchBarDelegate {
     }
     
     func searchBarSearchButtonClicked(_ searchBar: UISearchBar) {
-        print(self.searchBar.text ?? "")
+        resultType = ResultType.KEYWORD
+        keyword = self.searchBar.text ?? ""
+        performSegue(withIdentifier: showResultsSegue, sender: Self.self)
     }
 }

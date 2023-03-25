@@ -26,13 +26,6 @@ struct Recipe: Codable {
 struct AnalyzedInstruction: Codable {
     let name: String
     let steps: [Step]
-    let ingredients, equipment: [AnalyzedInstructionTool]
-}
-
-// MARK: - AnalyzedInstructionEquipment
-struct AnalyzedInstructionTool: Codable {
-    let id: Int
-    let name: String
 }
 
 // MARK: - Step
@@ -53,7 +46,6 @@ struct ExtendedIngredient: Codable {
     let id: Int
     let image: String
     let name, original: String
-    let unitLong: String
 }
 
 enum Consitency: String, Codable {

@@ -25,9 +25,9 @@ class HeartButton: UIButton {
 
         setImage(unlikedImage, for: .normal)
     }
-
+    
     required init?(coder: NSCoder) {
-        fatalError("init(coder:) has not been implemented")
+        super.init(coder: coder)
     }
     
     public func flipLikedState() {
