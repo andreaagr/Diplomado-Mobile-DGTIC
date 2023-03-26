@@ -12,7 +12,6 @@ class ViewController: UIViewController {
     @IBOutlet var searchBar: UISearchBar!
     @IBOutlet var categoriesTableView: UITableView!
     
-    var presenter: ViewToPresenterProtocol?
     var categoryItemsList = [[RecipeCategory]]()
     var resultType: ResultType?
     var categorySelected: String?
@@ -24,7 +23,6 @@ class ViewController: UIViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
         // Do any additional setup after loading the view.
-        presenter?.startFetchingCategories()
         // Register the xib for tableview cell
         categoriesTableView.register(UINib(nibName: "CategoryTableViewCell", bundle: nil), forCellReuseIdentifier: "CategoryTableViewCell")
         if !InternetMonitor.instance.internetStatus {
