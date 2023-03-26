@@ -27,6 +27,8 @@ extension UIImageView {
                 DispatchQueue.main.async {
                     self.image = UIImage(data: data)
                 }
+            } else {
+                self.image = UIImage(named: "CategoryPlaceholder")
             }
         }
         // iniciamos la tarea

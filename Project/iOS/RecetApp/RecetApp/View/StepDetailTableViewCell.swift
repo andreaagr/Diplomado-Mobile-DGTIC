@@ -47,20 +47,27 @@ class StepDetailTableViewCell: UITableViewCell, UICollectionViewDelegate, UIColl
         if collectionView == ingredientsCollectionView {
             let cell = ingredientsCollectionView.dequeueReusableCell(withReuseIdentifier: "CategoryCollectionViewCell", for: indexPath) as! CategoryCollectionViewCell
             cell.categoryNameLabel.text = ingRowItems?[indexPath.row].name
-            cell.categoryImageView.loadFrom(URLAddress: API_IMAGE_URL + (ingRowItems?[indexPath.row].image ?? ""))
+            if !(ingRowItems?[indexPath.row].image.isEmpty ?? false) {
+                cell.categoryImageView.loadFrom(URLAddress: API_IMAGE_URL + (ingRowItems?[indexPath.row].image ?? ""))
+            }
             return cell
         } else {
             let cell = equipmentCollectionView.dequeueReusableCell(withReuseIdentifier: "CategoryCollectionViewCell", for: indexPath) as! CategoryCollectionViewCell
             cell.categoryNameLabel.text = equipRowItems?[indexPath.row].name
-            cell.categoryImageView.loadFrom(URLAddress: API_EQUIPMENT_URL + (ingRowItems?[indexPath.row].image ?? ""))
+            if !(equipRowItems?[indexPath.row].image.isEmpty ?? false) {
+                cell.categoryImageView.loadFrom(URLAddress: API_EQUIPMENT_URL + (ingRowItems?[indexPath.row].image ?? ""))
+            }
             return cell
         }
     }
     
-    func updateCellWith(rowIng: [StepTool], rowEquip: [StepTool]) {
-        self.ingRowItems = rowIng
+    func updateCellWith(rowEquip: [StepTool]) {
         self.equipRowItems = rowEquip
-        self.ingredientsCollectionView.reloadData()
         self.equipmentCollectionView.reloadData()
+    }
+    
+    func updateCellWith(rowIng: [StepTool]) {
+        self.ingRowItems = rowIng
+        self.ingredientsCollectionView.reloadData()
     }
 }

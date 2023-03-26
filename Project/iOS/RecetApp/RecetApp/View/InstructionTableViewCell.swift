@@ -48,9 +48,22 @@ extension InstructionTableViewCell: UITableViewDelegate, UITableViewDataSource {
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
 
         let cell = stepTableView.dequeueReusableCell(withIdentifier: "StepDetailTableViewCell", for: indexPath) as! StepDetailTableViewCell
-        cell.instructionDetailLabel.text = steps?[indexPath.section].step
-        cell.updateCellWith(rowIng: steps?[indexPath.section].ingredients ?? [], rowEquip: steps?[indexPath.section].equipment ?? [])
+        cell.instructionDetailLabel.text = "\(steps?[indexPath.row].number ?? 1). \(steps?[indexPath.row].step ?? "")"
+        let ingredients = steps?[indexPath.row].ingredients ?? []
+        let equipment = steps?[indexPath.row].equipment ?? []
+        
+        if !ingredients.isEmpty {
+            cell.updateCellWith(rowIng: ingredients)
+        } else {
+            cell.ingredientsCollectionView.isHidden = true
+        }
+        
+        if !equipment.isEmpty {
+            cell.updateCellWith(rowEquip: equipment)
+        } else {
+            cell.equipmentCollectionView.isHidden = true
+        }
+        
         return cell
-
     }
 }

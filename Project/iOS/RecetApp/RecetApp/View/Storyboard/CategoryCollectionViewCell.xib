@@ -18,12 +18,15 @@
                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                 <subviews>
                     <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Italian" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="qbr-Xr-YBW">
-                        <rect key="frame" x="0.0" y="129.66666666666666" width="125" height="20.333333333333343"/>
+                        <rect key="frame" x="0.0" y="130" width="125" height="20"/>
+                        <constraints>
+                            <constraint firstAttribute="height" constant="20" id="DjY-DL-ojl"/>
+                        </constraints>
                         <fontDescription key="fontDescription" type="system" pointSize="17"/>
                         <nil key="textColor"/>
                         <nil key="highlightedColor"/>
                     </label>
-                    <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="Kil-EY-tdH">
+                    <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" preservesSuperviewLayoutMargins="YES" image="CategoryPlaceholder" translatesAutoresizingMaskIntoConstraints="NO" id="Kil-EY-tdH">
                         <rect key="frame" x="0.0" y="0.0" width="125" height="125"/>
                         <constraints>
                             <constraint firstAttribute="width" secondItem="Kil-EY-tdH" secondAttribute="height" multiplier="1:1" id="Wsg-EH-ERo"/>
@@ -47,4 +50,7 @@
             <point key="canvasLocation" x="65.648854961832058" y="19.718309859154932"/>
         </collectionViewCell>
     </objects>
+    <resources>
+        <image name="CategoryPlaceholder" width="256" height="256"/>
+    </resources>
 </document>
