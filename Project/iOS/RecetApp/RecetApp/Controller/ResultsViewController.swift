@@ -52,18 +52,7 @@ class ResultsViewController: UIViewController {
         if resultType == ResultType.KEYWORD {
             queryItem = URLQueryItem(name: "query", value: keyword)
         } else {
-            var queryName: String
-            switch categoryType {
-            case .MEAL_TYPE:
-                queryName = "meal_type"
-            case .CUISINE:
-                queryName = "cuisine"
-            case .DIET:
-                queryName = "diet"
-            case .none:
-                queryName = ""
-            }
-            queryItem = URLQueryItem(name: queryName, value: categorySelected)
+            queryItem = URLQueryItem(name: categoryType!.rawValue, value: categorySelected)
         }
         URL.queryItems = [queryItem!]
         
@@ -138,7 +127,7 @@ extension ResultsViewController: UITableViewDataSource, UITableViewDelegate {
 }
 
 enum Category: String {
-    case MEAL_TYPE = "meal_type"
+    case MEAL_TYPE = "type"
     case CUISINE = "cuisine"
     case DIET = "diet"
 }
