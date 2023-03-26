@@ -22,7 +22,7 @@
                         <rect key="frame" x="8" y="8" width="304" height="97"/>
                         <string key="text">
 Lorem ipsum dolor sit amet, consectetur adipiscing elit. Quisque tortor lacus, lacinia ac pellentesque quis, hendrerit lobortis sem. Integer in tempus nunc. </string>
-                        <fontDescription key="fontDescription" type="system" pointSize="14"/>
+                        <fontDescription key="fontDescription" style="UICTFontTextStyleCaption1"/>
                         <nil key="textColor"/>
                         <nil key="highlightedColor"/>
                     </label>
