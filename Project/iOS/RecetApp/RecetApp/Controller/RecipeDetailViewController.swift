@@ -6,6 +6,7 @@
 //
 
 import UIKit
+import FaveButton
 
 class RecipeDetailViewController: UIViewController {
     
@@ -22,6 +23,13 @@ class RecipeDetailViewController: UIViewController {
         super.viewDidLoad()
 
         // Do any additional setup after loading the view.
+        let faveButton = FaveButton(
+            frame: CGRect(x: view.bounds.maxX - 85, y: 75, width: 75, height: 75),
+            faveIconNormal: UIImage(named: "FavoriteButtonSelected")
+        )
+        faveButton.autoresizingMask = [.flexibleLeftMargin, .flexibleBottomMargin]
+        faveButton.delegate = self
+        view.addSubview(faveButton)
         loadRecipe()
         let cellNib = UINib(nibName: "InstructionTableViewCell", bundle: nil)
         self.recipeDetailsTableView.register(cellNib, forCellReuseIdentifier: "InstructionTableViewCell")
@@ -68,5 +76,18 @@ extension RecipeDetailViewController: UITableViewDelegate, UITableViewDataSource
     
     func tableView(_ tableView: UITableView, heightForRowAt indexPath: IndexPath) -> CGFloat {
         500
+    }
+}
+
+extension RecipeDetailViewController: FaveButtonDelegate {
+    
+    func faveButton(_ faveButton: FaveButton, didSelected selected: Bool) {
+        if selected {
+            // Save to favorites
+            print("Selected")
+        } else {
+            // Remove from favorites
+            print("Not selected")
+        }
     }
 }
