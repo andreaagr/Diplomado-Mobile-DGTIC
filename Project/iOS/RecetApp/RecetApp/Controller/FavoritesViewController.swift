@@ -12,7 +12,9 @@ class FavoritesViewController: UIViewController {
     @IBOutlet var favoritesTableView: UITableView!
     
     var basicRecipeInfoList: [RecipeCD] = []
+    var recipe: Recipe?
     let context = (UIApplication.shared.delegate as! AppDelegate).persistentContainer.viewContext
+    let showFavoriteDetail = "showFavoriteDetail"
     lazy var dataManager = RecipeDataManager(context: context)
 
     override func viewDidLoad() {
@@ -20,10 +22,22 @@ class FavoritesViewController: UIViewController {
 
         // Do any additional setup after loading the view.
         favoritesTableView.register(UINib(nibName: "RecipeTableViewCell", bundle: nil), forCellReuseIdentifier: "RecipeTableViewCell")
+    }
+    
+    override func viewWillAppear(_ animated: Bool) {
+        super.viewWillAppear(animated)
         fetchFavorites()
     }
     
+    override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
+        if segue.identifier == showFavoriteDetail {
+            let destination = segue.destination as! RecipeDetailViewController
+            destination.recipe = recipe
+        }
+    }
+    
     private func fetchFavorites() {
+        dataManager.fetch()
         basicRecipeInfoList = dataManager.recipes
         favoritesTableView.reloadData()
     }
@@ -56,5 +70,31 @@ extension FavoritesViewController: UITableViewDelegate, UITableViewDataSource {
     
     func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
         // Ask for recipe info and start detail segue
+        getRecipeInformation(recipeId: Int(basicRecipeInfoList[indexPath.row].id))
+        
+    }
+    
+    private func getRecipeInformation(recipeId: Int) {
+        guard let url = URL(string: buildRecipeInfoURL(recipeId: recipeId)) else { return }
+        var request = URLRequest(url: url)
+        request.httpMethod = "GET"
+        request.setValue(API_KEY, forHTTPHeaderField: "x-api-key")
+        let configuration = URLSessionConfiguration.ephemeral
+        let session = URLSession(configuration: configuration)
+        let task = session.dataTask(with: request) { bytes, response, error in
+            if error == nil {
+                guard let data = bytes else { return }
+                let recipeInfo = try? JSONDecoder().decode(Recipe.self, from: data)
+                if recipeInfo != nil {
+                    self.recipe = recipeInfo
+                    DispatchQueue.main.async { [self] in
+                        performSegue(withIdentifier: self.showFavoriteDetail, sender: Self.self)
+                    }
+                }
+            } else {
+                print(error?.localizedDescription ?? "")
+            }
+        }
+        task.resume()
     }
 }
