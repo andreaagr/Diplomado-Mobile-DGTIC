@@ -91,7 +91,7 @@ extension RecipeDetailViewController: FaveButtonDelegate {
             print("Selected")
         } else {
             // Remove from favorites
-            dataManager.removeRecipe(recipe: recipe!)
+            dataManager.removeRecipe(recipeId: recipe!.id)
             print("Not selected")
         }
     }
