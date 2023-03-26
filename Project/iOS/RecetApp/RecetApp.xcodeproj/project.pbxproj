@@ -22,6 +22,7 @@
 		6C1B3C6C29CBDBF90032B6F5 /* RandomRecipeResponse.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6C1B3C6B29CBDBF90032B6F5 /* RandomRecipeResponse.swift */; };
 		6C1B3C6E29CBDCBF0032B6F5 /* ComplexSearchResponse.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6C1B3C6D29CBDCBF0032B6F5 /* ComplexSearchResponse.swift */; };
 		6C1B3C7029CBE2670032B6F5 /* AppConstants.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6C1B3C6F29CBE2670032B6F5 /* AppConstants.swift */; };
+		6C1CF39E29CFEC5B003FEC66 /* InternetMonitor.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6C1CF39D29CFEC5B003FEC66 /* InternetMonitor.swift */; };
 		6C28ABCD29CD148200DF3405 /* CategoryCollectionViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6C28ABCB29CD148200DF3405 /* CategoryCollectionViewCell.swift */; };
 		6C28ABCE29CD148200DF3405 /* CategoryCollectionViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 6C28ABCC29CD148200DF3405 /* CategoryCollectionViewCell.xib */; };
 		6C28ABD229CD19FF00DF3405 /* RecetAppProtocol.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6C28ABD129CD19FF00DF3405 /* RecetAppProtocol.swift */; };
@@ -61,6 +62,7 @@
 		6C1B3C6B29CBDBF90032B6F5 /* RandomRecipeResponse.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RandomRecipeResponse.swift; sourceTree = "<group>"; };
 		6C1B3C6D29CBDCBF0032B6F5 /* ComplexSearchResponse.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ComplexSearchResponse.swift; sourceTree = "<group>"; };
 		6C1B3C6F29CBE2670032B6F5 /* AppConstants.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppConstants.swift; sourceTree = "<group>"; };
+		6C1CF39D29CFEC5B003FEC66 /* InternetMonitor.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = InternetMonitor.swift; sourceTree = "<group>"; };
 		6C28ABCB29CD148200DF3405 /* CategoryCollectionViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CategoryCollectionViewCell.swift; sourceTree = "<group>"; };
 		6C28ABCC29CD148200DF3405 /* CategoryCollectionViewCell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = CategoryCollectionViewCell.xib; sourceTree = "<group>"; };
 		6C28ABD129CD19FF00DF3405 /* RecetAppProtocol.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RecetAppProtocol.swift; sourceTree = "<group>"; };
@@ -225,6 +227,7 @@
 				6CF5D69729CA63160099E7CF /* RecetApp.xcdatamodeld */,
 				6C1B3C6F29CBE2670032B6F5 /* AppConstants.swift */,
 				6C28ABD129CD19FF00DF3405 /* RecetAppProtocol.swift */,
+				6C1CF39D29CFEC5B003FEC66 /* InternetMonitor.swift */,
 			);
 			path = RecetApp;
 			sourceTree = "<group>";
@@ -312,6 +315,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				6CF5D69329CA63160099E7CF /* ViewController.swift in Sources */,
+				6C1CF39E29CFEC5B003FEC66 /* InternetMonitor.swift in Sources */,
 				6C1B3C7029CBE2670032B6F5 /* AppConstants.swift in Sources */,
 				6CDADB7229CE15D900B7F796 /* UIImageExtension.swift in Sources */,
 				6CDADB7529CE71CC00B7F796 /* RecipeTableViewCell.swift in Sources */,

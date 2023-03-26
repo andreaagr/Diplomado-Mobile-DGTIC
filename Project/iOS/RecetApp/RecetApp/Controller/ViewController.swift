@@ -27,6 +27,9 @@ class ViewController: UIViewController {
         presenter?.startFetchingCategories()
         // Register the xib for tableview cell
         categoriesTableView.register(UINib(nibName: "CategoryTableViewCell", bundle: nil), forCellReuseIdentifier: "CategoryTableViewCell")
+        if !InternetMonitor.instance.internetStatus {
+            showInternetError()
+        }
         showCategories()
     }
     
@@ -72,6 +75,16 @@ class ViewController: UIViewController {
         let alert = UIAlertController(
             title: "Algo salió mal 😔",
             message: "Por favor intentalo de nuevo",
+            preferredStyle: .alert
+        )
+        alert.addAction(UIAlertAction(title: "Ok", style: .default))
+        self.present(alert, animated: true)
+    }
+    
+    func showInternetError() {
+        let alert = UIAlertController(
+            title: "No se detectó conexión a internet 📶",
+            message: "Algunas funciones podrían no estar disponibles",
             preferredStyle: .alert
         )
         alert.addAction(UIAlertAction(title: "Ok", style: .default))
