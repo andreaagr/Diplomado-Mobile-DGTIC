@@ -24,7 +24,6 @@ class FavoritesViewController: UIViewController {
     }
     
     private func fetchFavorites() {
-        dataManager.fetch()
         basicRecipeInfoList = dataManager.recipes
         favoritesTableView.reloadData()
     }

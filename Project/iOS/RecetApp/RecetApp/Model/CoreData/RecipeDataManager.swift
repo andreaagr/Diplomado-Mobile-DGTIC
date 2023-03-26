@@ -15,6 +15,7 @@ class RecipeDataManager {
     
     init(context: NSManagedObjectContext) {
         self.context = context
+        fetch()
     }
 
     func fetch() {
@@ -41,14 +42,15 @@ class RecipeDataManager {
     
     func removeRecipe(recipeId: Int) {
         let recipe = recipes.filter { $0.id == recipeId }
-        print(recipes.map { $0.title })
-        print("Item for being removed")
-        print(recipe.map { $0.title })
         context.delete(recipe[0])
         do {
             try context.save()
         } catch {
             print("Error al eliminar")
         }
+    }
+    
+    func isFavorite(recipeId: Int) -> Bool {
+        return recipes.contains(where: { $0.id == recipeId })
     }
 }

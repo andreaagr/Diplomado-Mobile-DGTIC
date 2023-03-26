@@ -21,15 +21,15 @@ class RecipeDetailViewController: UIViewController {
     
     let context = (UIApplication.shared.delegate as! AppDelegate).persistentContainer.viewContext
     lazy var dataManager = RecipeDataManager(context: context)
+    lazy var faveButton = FaveButton(
+        frame: CGRect(x: view.bounds.maxX - 85, y: 75, width: 65, height: 65),
+        faveIconNormal: UIImage(named: "FavoriteButtonSelected")
+    )
     
     override func viewDidLoad() {
         super.viewDidLoad()
 
         // Do any additional setup after loading the view.
-        let faveButton = FaveButton(
-            frame: CGRect(x: view.bounds.maxX - 85, y: 75, width: 75, height: 75),
-            faveIconNormal: UIImage(named: "FavoriteButtonSelected")
-        )
         faveButton.autoresizingMask = [.flexibleLeftMargin, .flexibleBottomMargin]
         faveButton.delegate = self
         view.addSubview(faveButton)
@@ -54,6 +54,7 @@ class RecipeDetailViewController: UIViewController {
         recipeTimeInMinutesLabel.text = "\(recipe?.readyInMinutes ?? 0) minutes"
         recipePriceLabel.text = "$\(recipe?.pricePerServing ?? 0.0)"
         recipeServesLabel.text = "Serves \(recipe?.servings ?? 0)"
+        faveButton.isSelected = dataManager.isFavorite(recipeId: recipe?.id ?? -1)
     }
 }
 
@@ -88,11 +89,9 @@ extension RecipeDetailViewController: FaveButtonDelegate {
         if selected {
             // Save to favorites
             dataManager.addRecipe(recipe: recipe!)
-            print("Selected")
         } else {
             // Remove from favorites
             dataManager.removeRecipe(recipeId: recipe!.id)
-            print("Not selected")
         }
     }
 }
