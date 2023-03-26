@@ -23,8 +23,6 @@
 		6C1B3C6E29CBDCBF0032B6F5 /* ComplexSearchResponse.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6C1B3C6D29CBDCBF0032B6F5 /* ComplexSearchResponse.swift */; };
 		6C1B3C7029CBE2670032B6F5 /* AppConstants.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6C1B3C6F29CBE2670032B6F5 /* AppConstants.swift */; };
 		6C1CF39E29CFEC5B003FEC66 /* InternetMonitor.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6C1CF39D29CFEC5B003FEC66 /* InternetMonitor.swift */; };
-		6C1CF3A129CFFBD2003FEC66 /* FaveButton.xcframework in Frameworks */ = {isa = PBXBuildFile; fileRef = 6C1CF3A029CFFBD2003FEC66 /* FaveButton.xcframework */; };
-		6C1CF3A229CFFBD2003FEC66 /* FaveButton.xcframework in Embed Frameworks */ = {isa = PBXBuildFile; fileRef = 6C1CF3A029CFFBD2003FEC66 /* FaveButton.xcframework */; settings = {ATTRIBUTES = (CodeSignOnCopy, RemoveHeadersOnCopy, ); }; };
 		6C28ABCD29CD148200DF3405 /* CategoryCollectionViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6C28ABCB29CD148200DF3405 /* CategoryCollectionViewCell.swift */; };
 		6C28ABCE29CD148200DF3405 /* CategoryCollectionViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 6C28ABCC29CD148200DF3405 /* CategoryCollectionViewCell.xib */; };
 		6C28ABD229CD19FF00DF3405 /* RecetAppProtocol.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6C28ABD129CD19FF00DF3405 /* RecetAppProtocol.swift */; };
@@ -47,20 +45,6 @@
 		6CF5D69B29CA63170099E7CF /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 6CF5D69A29CA63170099E7CF /* Assets.xcassets */; };
 		6CF5D69E29CA63170099E7CF /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 6CF5D69C29CA63170099E7CF /* LaunchScreen.storyboard */; };
 /* End PBXBuildFile section */
-
-/* Begin PBXCopyFilesBuildPhase section */
-		6C1CF3A329CFFBD2003FEC66 /* Embed Frameworks */ = {
-			isa = PBXCopyFilesBuildPhase;
-			buildActionMask = 2147483647;
-			dstPath = "";
-			dstSubfolderSpec = 10;
-			files = (
-				6C1CF3A229CFFBD2003FEC66 /* FaveButton.xcframework in Embed Frameworks */,
-			);
-			name = "Embed Frameworks";
-			runOnlyForDeploymentPostprocessing = 0;
-		};
-/* End PBXCopyFilesBuildPhase section */
 
 /* Begin PBXFileReference section */
 		44584DCE29CF9F9300E7D5FD /* InstructionTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = InstructionTableViewCell.swift; sourceTree = "<group>"; };
@@ -110,7 +94,6 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				6C1CF3A129CFFBD2003FEC66 /* FaveButton.xcframework in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -269,7 +252,6 @@
 				6CF5D68729CA63160099E7CF /* Sources */,
 				6CF5D68829CA63160099E7CF /* Frameworks */,
 				6CF5D68929CA63160099E7CF /* Resources */,
-				6C1CF3A329CFFBD2003FEC66 /* Embed Frameworks */,
 			);
 			buildRules = (
 			);
