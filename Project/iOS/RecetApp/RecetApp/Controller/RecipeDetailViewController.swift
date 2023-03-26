@@ -19,6 +19,9 @@ class RecipeDetailViewController: UIViewController {
     @IBOutlet var recipePriceLabel: UILabel!
     @IBOutlet var recipeDetailsTableView: UITableView!
     
+    let context = (UIApplication.shared.delegate as! AppDelegate).persistentContainer.viewContext
+    lazy var dataManager = RecipeDataManager(context: context)
+    
     override func viewDidLoad() {
         super.viewDidLoad()
 
@@ -84,9 +87,11 @@ extension RecipeDetailViewController: FaveButtonDelegate {
     func faveButton(_ faveButton: FaveButton, didSelected selected: Bool) {
         if selected {
             // Save to favorites
+            dataManager.addRecipe(recipe: recipe!)
             print("Selected")
         } else {
             // Remove from favorites
+            dataManager.removeRecipe(recipe: recipe!)
             print("Not selected")
         }
     }
