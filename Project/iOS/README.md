@@ -34,6 +34,8 @@ El manejo de dependecias se realizó por medio de Carthage, así que será neces
 
 ## Preview
 
+### Splash Screen
+
 ### Manejo de errores
 
 
