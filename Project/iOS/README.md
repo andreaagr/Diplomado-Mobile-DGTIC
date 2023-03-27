@@ -12,6 +12,7 @@ El logo de la aplicación muestra una piramide alimenticia y algunos alimentos s
 ## Justificación de la elección del tipo de dispositivo, versión del sistema operativo y las orientaciones soportadas.
 La app está pensada para todo tipo de dispositivos aunque se recomienda el uso de tabletas para una mejor visualización del contenido, esto debido a, la gran cantidad de información que puede llegar a presentarse en pantalla. Teniendo esto en mente, la app puede utilizarse en modo landscape en todas las pantallas excepto la vista de detalle porque las instrucciones se cortan.
 
+![Dispositivos](images/devices.png)
 
 El minimum deployment ha sido definido en iOS 12.0, lo que significa que la app estará disponible en todos los dispositivos que soporten al menos esta versión de sistema operativo. Se decidió de esta manera para permitir un mayor alcance; debido a que la gama de dispositivos suele ser más limitada y costosa en iOS, es posible que algunos usuarios conserven sus dispositivos antiguos o no los cambien con tanta regularidad.
 
@@ -36,10 +37,16 @@ El manejo de dependecias se realizó por medio de Carthage, así que será neces
 
 ### Splash Screen
 
+![Splash Screen](images/splash_screen.png)
+
 ### Manejo de errores
 
+![Errores](images/errors.png)
 
 ### Home
 
+![Home](images/home.png)
 
 ### Favorites
+
+![Favoritos](images/favorites.png)
