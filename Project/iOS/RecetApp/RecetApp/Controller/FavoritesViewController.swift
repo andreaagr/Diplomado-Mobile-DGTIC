@@ -16,12 +16,14 @@ class FavoritesViewController: UIViewController {
     let context = (UIApplication.shared.delegate as! AppDelegate).persistentContainer.viewContext
     let showFavoriteDetail = "showFavoriteDetail"
     lazy var dataManager = RecipeDataManager(context: context)
+    lazy var indicatorView = createActivityIndicator(center: self.view.center)
 
     override func viewDidLoad() {
         super.viewDidLoad()
 
         // Do any additional setup after loading the view.
         favoritesTableView.register(UINib(nibName: "RecipeTableViewCell", bundle: nil), forCellReuseIdentifier: "RecipeTableViewCell")
+        self.view.addSubview(indicatorView)
     }
     
     override func viewWillAppear(_ animated: Bool) {
@@ -81,6 +83,7 @@ extension FavoritesViewController: UITableViewDelegate, UITableViewDataSource {
         request.setValue(API_KEY, forHTTPHeaderField: "x-api-key")
         let configuration = URLSessionConfiguration.ephemeral
         let session = URLSession(configuration: configuration)
+        self.indicatorView.startAnimating()
         let task = session.dataTask(with: request) { bytes, response, error in
             if error == nil {
                 guard let data = bytes else { return }
@@ -91,8 +94,12 @@ extension FavoritesViewController: UITableViewDelegate, UITableViewDataSource {
                         performSegue(withIdentifier: self.showFavoriteDetail, sender: Self.self)
                     }
                 }
+                DispatchQueue.main.async {
+                    self.indicatorView.stopAnimating()
+                }
             } else {
                 DispatchQueue.main.async {
+                    self.indicatorView.stopAnimating()
                     self.present(
                         createCustomAlert(
                             animationName: "error_map",

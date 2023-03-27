@@ -18,6 +18,7 @@ class ResultsViewController: UIViewController {
     var results: [Recipe] = []
     private var showDetailSegue = "showResultDetail"
     private var recipeSelected: Recipe?
+    lazy var indicatorView = createActivityIndicator(center: self.view.center)
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -25,6 +26,7 @@ class ResultsViewController: UIViewController {
         // Do any additional setup after loading the view.
         // Register the xib for tableview cell
         resultsTableView.register(UINib(nibName: "RecipeTableViewCell", bundle: nil), forCellReuseIdentifier: "RecipeTableViewCell")
+        self.view.addSubview(indicatorView)
     }
     
     
@@ -70,12 +72,17 @@ class ResultsViewController: UIViewController {
         request.setValue(API_KEY, forHTTPHeaderField: "x-api-key")
         let configuration = URLSessionConfiguration.ephemeral
         let session = URLSession(configuration: configuration)
+        indicatorView.startAnimating()
         let task = session.dataTask(with: request) { bytes, response, error in
             if error == nil {
                 guard let data = bytes else { return }
+                DispatchQueue.main.async {
+                    self.indicatorView.stopAnimating()
+                }
                 onSuccess(data)
             } else {
                 DispatchQueue.main.async {
+                    self.indicatorView.stopAnimating()
                     self.showError()
                 }
             }

@@ -36,3 +36,24 @@ func createCustomAlert(animationName: String, title: String?, message: String?, 
     animationView!.centerYAnchor.constraint(equalTo: alert.view.centerYAnchor).isActive = true
     return alert
 }
+
+func createActivityIndicator(frame: CGRect? = nil, center: CGPoint? = nil) -> UIActivityIndicatorView {
+    
+    let activityIndicatorView = UIActivityIndicatorView()
+    
+    if #available(iOS 13.0, *) {
+        activityIndicatorView.style = .large
+    } else {
+        activityIndicatorView.style = .whiteLarge
+    }
+    
+    if let frame = frame {
+        activityIndicatorView.frame = frame
+    }
+    
+    if let center = center {
+        activityIndicatorView.center = center
+    }
+    
+    return activityIndicatorView
+}
