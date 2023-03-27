@@ -100,10 +100,6 @@ class ResultsViewController: UIViewController {
                         self.resultsTableView.reloadData()
                     }
                 }
-            } else {
-                DispatchQueue.main.async {
-                    self.showError()
-                }
             }
         }
         task.resume()
