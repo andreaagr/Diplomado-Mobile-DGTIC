@@ -26,7 +26,13 @@ class ViewController: UIViewController {
         // Register the xib for tableview cell
         categoriesTableView.register(UINib(nibName: "CategoryTableViewCell", bundle: nil), forCellReuseIdentifier: "CategoryTableViewCell")
         if !InternetMonitor.instance.internetStatus {
-            showInternetError()
+            self.present(
+                createCustomAlert(
+                    animationName: "lost_connection",
+                    title: "No hay conexión a internet",
+                    message: "Algunas funciones podrían no estar disponibles"
+                ), animated: true
+            )
         }
         showCategories()
     }
@@ -67,26 +73,6 @@ class ViewController: UIViewController {
         }
         
         self.categoriesTableView.reloadData()
-    }
-    
-    func showError() {
-        let alert = UIAlertController(
-            title: "Algo salió mal 😔",
-            message: "Por favor intentalo de nuevo",
-            preferredStyle: .alert
-        )
-        alert.addAction(UIAlertAction(title: "Ok", style: .default))
-        self.present(alert, animated: true)
-    }
-    
-    func showInternetError() {
-        let alert = UIAlertController(
-            title: "No se detectó conexión a internet 📶",
-            message: "Algunas funciones podrían no estar disponibles",
-            preferredStyle: .alert
-        )
-        alert.addAction(UIAlertAction(title: "Ok", style: .default))
-        self.present(alert, animated: true)
     }
 }
 

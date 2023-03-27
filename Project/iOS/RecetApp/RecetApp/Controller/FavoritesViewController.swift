@@ -92,7 +92,14 @@ extension FavoritesViewController: UITableViewDelegate, UITableViewDataSource {
                     }
                 }
             } else {
-                print(error?.localizedDescription ?? "")
+                DispatchQueue.main.async {
+                    self.present(
+                        createCustomAlert(
+                            animationName: "error_map",
+                            title: "Algo salió mal",
+                            message: "Por favor intentalo de nuevo"
+                        ), animated: true)
+                }
             }
         }
         task.resume()

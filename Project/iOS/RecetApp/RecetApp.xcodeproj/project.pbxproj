@@ -23,6 +23,11 @@
 		6C1B3C6E29CBDCBF0032B6F5 /* ComplexSearchResponse.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6C1B3C6D29CBDCBF0032B6F5 /* ComplexSearchResponse.swift */; };
 		6C1B3C7029CBE2670032B6F5 /* AppConstants.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6C1B3C6F29CBE2670032B6F5 /* AppConstants.swift */; };
 		6C1CF39E29CFEC5B003FEC66 /* InternetMonitor.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6C1CF39D29CFEC5B003FEC66 /* InternetMonitor.swift */; };
+		6C2338A829D12A3F00813196 /* FaveButton.xcframework in Frameworks */ = {isa = PBXBuildFile; fileRef = 6C1CF3A029CFFBD2003FEC66 /* FaveButton.xcframework */; };
+		6C2338A929D12A3F00813196 /* FaveButton.xcframework in Embed Frameworks */ = {isa = PBXBuildFile; fileRef = 6C1CF3A029CFFBD2003FEC66 /* FaveButton.xcframework */; settings = {ATTRIBUTES = (CodeSignOnCopy, RemoveHeadersOnCopy, ); }; };
+		6C2338AC29D12A4100813196 /* Lottie.xcframework in Frameworks */ = {isa = PBXBuildFile; fileRef = 6C2338AB29D12A4100813196 /* Lottie.xcframework */; };
+		6C2338AD29D12A4100813196 /* Lottie.xcframework in Embed Frameworks */ = {isa = PBXBuildFile; fileRef = 6C2338AB29D12A4100813196 /* Lottie.xcframework */; settings = {ATTRIBUTES = (CodeSignOnCopy, RemoveHeadersOnCopy, ); }; };
+		6C2338AF29D12A7100813196 /* Util.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6C2338AE29D12A7000813196 /* Util.swift */; };
 		6C28ABCD29CD148200DF3405 /* CategoryCollectionViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6C28ABCB29CD148200DF3405 /* CategoryCollectionViewCell.swift */; };
 		6C28ABCE29CD148200DF3405 /* CategoryCollectionViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 6C28ABCC29CD148200DF3405 /* CategoryCollectionViewCell.xib */; };
 		6C28ABD629CD2A8B00DF3405 /* RecipeCategory.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6C28ABD529CD2A8B00DF3405 /* RecipeCategory.swift */; };
@@ -48,6 +53,21 @@
 		6CF5D69E29CA63170099E7CF /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 6CF5D69C29CA63170099E7CF /* LaunchScreen.storyboard */; };
 /* End PBXBuildFile section */
 
+/* Begin PBXCopyFilesBuildPhase section */
+		6C2338AA29D12A3F00813196 /* Embed Frameworks */ = {
+			isa = PBXCopyFilesBuildPhase;
+			buildActionMask = 2147483647;
+			dstPath = "";
+			dstSubfolderSpec = 10;
+			files = (
+				6C2338AD29D12A4100813196 /* Lottie.xcframework in Embed Frameworks */,
+				6C2338A929D12A3F00813196 /* FaveButton.xcframework in Embed Frameworks */,
+			);
+			name = "Embed Frameworks";
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXCopyFilesBuildPhase section */
+
 /* Begin PBXFileReference section */
 		44584DCE29CF9F9300E7D5FD /* InstructionTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = InstructionTableViewCell.swift; sourceTree = "<group>"; };
 		44584DCF29CF9F9300E7D5FD /* InstructionTableViewCell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = InstructionTableViewCell.xib; sourceTree = "<group>"; };
@@ -66,6 +86,8 @@
 		6C1B3C6F29CBE2670032B6F5 /* AppConstants.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppConstants.swift; sourceTree = "<group>"; };
 		6C1CF39D29CFEC5B003FEC66 /* InternetMonitor.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = InternetMonitor.swift; sourceTree = "<group>"; };
 		6C1CF3A029CFFBD2003FEC66 /* FaveButton.xcframework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.xcframework; name = FaveButton.xcframework; path = Carthage/Build/FaveButton.xcframework; sourceTree = "<group>"; };
+		6C2338AB29D12A4100813196 /* Lottie.xcframework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.xcframework; name = Lottie.xcframework; path = Carthage/Build/Lottie.xcframework; sourceTree = "<group>"; };
+		6C2338AE29D12A7000813196 /* Util.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Util.swift; sourceTree = "<group>"; };
 		6C28ABCB29CD148200DF3405 /* CategoryCollectionViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CategoryCollectionViewCell.swift; sourceTree = "<group>"; };
 		6C28ABCC29CD148200DF3405 /* CategoryCollectionViewCell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = CategoryCollectionViewCell.xib; sourceTree = "<group>"; };
 		6C28ABD529CD2A8B00DF3405 /* RecipeCategory.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RecipeCategory.swift; sourceTree = "<group>"; };
@@ -98,6 +120,8 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				6C2338AC29D12A4100813196 /* Lottie.xcframework in Frameworks */,
+				6C2338A829D12A3F00813196 /* FaveButton.xcframework in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -164,6 +188,7 @@
 		6C1CF39F29CFFBD2003FEC66 /* Frameworks */ = {
 			isa = PBXGroup;
 			children = (
+				6C2338AB29D12A4100813196 /* Lottie.xcframework */,
 				6C1CF3A029CFFBD2003FEC66 /* FaveButton.xcframework */,
 			);
 			name = Frameworks;
@@ -193,6 +218,7 @@
 			children = (
 				6CDADB7129CE15D900B7F796 /* UIImageExtension.swift */,
 				6CDADB8229CEE8B700B7F796 /* StringExtensions.swift */,
+				6C2338AE29D12A7000813196 /* Util.swift */,
 			);
 			path = Extensions;
 			sourceTree = "<group>";
@@ -266,6 +292,7 @@
 				6CF5D68729CA63160099E7CF /* Sources */,
 				6CF5D68829CA63160099E7CF /* Frameworks */,
 				6CF5D68929CA63160099E7CF /* Resources */,
+				6C2338AA29D12A3F00813196 /* Embed Frameworks */,
 			);
 			buildRules = (
 			);
@@ -345,6 +372,7 @@
 				6CDADB7229CE15D900B7F796 /* UIImageExtension.swift in Sources */,
 				6CDADB7529CE71CC00B7F796 /* RecipeTableViewCell.swift in Sources */,
 				6C1B3C6A29CBD6700032B6F5 /* RecipeByIngredients.swift in Sources */,
+				6C2338AF29D12A7100813196 /* Util.swift in Sources */,
 				6CDADB8129CE9C9400B7F796 /* RecipeDetailViewController.swift in Sources */,
 				6CF5D69929CA63160099E7CF /* RecetApp.xcdatamodeld in Sources */,
 				6C1B3C6E29CBDCBF0032B6F5 /* ComplexSearchResponse.swift in Sources */,

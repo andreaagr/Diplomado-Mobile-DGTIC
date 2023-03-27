@@ -16,8 +16,8 @@ class ResultsViewController: UIViewController {
     var keyword: String?
     var resultType: ResultType?
     var results: [Recipe] = []
-    var showDetailSegue = "showResultDetail"
-    var recipeSelected: Recipe?
+    private var showDetailSegue = "showResultDetail"
+    private var recipeSelected: Recipe?
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -75,7 +75,9 @@ class ResultsViewController: UIViewController {
                 guard let data = bytes else { return }
                 onSuccess(data)
             } else {
-                print(error?.localizedDescription ?? "")
+                DispatchQueue.main.async {
+                    self.showError()
+                }
             }
         }
         task.resume()
@@ -99,10 +101,22 @@ class ResultsViewController: UIViewController {
                     }
                 }
             } else {
-                print(error?.localizedDescription ?? "")
+                DispatchQueue.main.async {
+                    self.showError()
+                }
             }
         }
         task.resume()
+    }
+    
+    private func showError() {
+        self.present(
+            createCustomAlert(
+                animationName: "error_map",
+                title: "Algo salió mal",
+                message: "Por favor intentalo de nuevo"
+            ), animated: true
+        )
     }
 }
 
